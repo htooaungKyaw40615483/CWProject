@@ -100,3 +100,9 @@ In our team we will work together, not only to engage in collaborative problem-s
 | Sai Sai Oam Hart       | Developer       | <img src="https://github.com/htooaungKyaw40615483/CWProject/blob/master/img/SaiSaiOamHart%20Sign.jpg" alt="Image Description" width="200"/>  |
 | Kyi Sin Min Maw        | Developer       | <img src="https://github.com/htooaungKyaw40615483/CWProject/blob/master/img/KyiSinMinMaw%20Sign.jpg" alt="Image Description" width="200"/> |
 
+**Reference**
+
+The code of conduct is referenced from the Starbucks Business Conduct and Compliance @ 2011 Starbucks Coffee Company. All rights reserved. SJB11-18420.
+
+Howard Schultz (2011) Starbucks Coffee Company’s Business Ethics and Compliance
+   Retrieved from : Starbucks Coffee Company’s Business Ethics and Compliance
