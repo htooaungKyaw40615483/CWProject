@@ -96,7 +96,7 @@ In our team we will work together, not only to engage in collaborative problem-s
 | Name                   | Role            |                                                              |
 |------------------------|-----------------|--------------------------------------------------------------|
 | Htet Aung San          | Product Owner   | <img src="https://github.com/htooaungKyaw40615483/CWProject/blob/master/img/HtetAungSan%20Sign.jpg" alt="Image Description" width="200"/>   |
-| Htoo Aung Kyaw         | SCRUM Master    | ![Semantic description of image](img/HtooAungKyaw Sign.png)  |
-| Sai Sai Oam Hart       | Developer       | ![Semantic description of image](img/KyiSinMinMaw Sign.jpg)  |
-| Kyi Sin Min Maw        | Developer       | ![Semantic description of image](img/SaiSaiOamHart Sign.jpg) |
+| Htoo Aung Kyaw         | SCRUM Master    | <img src="https://github.com/htooaungKyaw40615483/CWProject/blob/master/img/HtooAungKyaw%20Sign.png" alt="Image Description" width="200"/>  |
+| Sai Sai Oam Hart       | Developer       | <img src="https://github.com/htooaungKyaw40615483/CWProject/blob/master/img/SaiSaiOamHart%20Sign.jpg" alt="Image Description" width="200"/>  |
+| Kyi Sin Min Maw        | Developer       | <img src="https://github.com/htooaungKyaw40615483/CWProject/blob/master/img/KyiSinMinMaw%20Sign.jpg" alt="Image Description" width="200"/> |
 
