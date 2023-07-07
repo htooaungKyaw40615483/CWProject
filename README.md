@@ -9,7 +9,7 @@
 
 ![workflow](https://img.shields.io/github/actions/workflow/status/htooaungKyaw40615483/CWProject/main.yml)
 
-CODE OF CONDUCT
+**CODE OF CONDUCT**
 
 **Our Mission**
 
@@ -95,7 +95,7 @@ In our team we will work together, not only to engage in collaborative problem-s
 
 | Name                   | Role            |                                                              |
 |------------------------|-----------------|--------------------------------------------------------------|
-| Htet Aung San          | Product Owner   | ![Semantic description of image](img/HtetAungSan Sign.jpg)   |
+| Htet Aung San          | Product Owner   | <img src="https://github.com/htooaungKyaw40615483/CWProject/blob/master/img/HtetAungSan%20Sign.jpg" alt="Image Description" width="200"/>   |
 | Htoo Aung Kyaw         | SCRUM Master    | ![Semantic description of image](img/HtooAungKyaw Sign.png)  |
 | Sai Sai Oam Hart       | Developer       | ![Semantic description of image](img/KyiSinMinMaw Sign.jpg)  |
 | Kyi Sin Min Maw        | Developer       | ![Semantic description of image](img/SaiSaiOamHart Sign.jpg) |
