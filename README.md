@@ -4,6 +4,6 @@
 
 ![LICENSE](https://img.shields.io/github/license/htooaungKyaw40615483/sem.svg?style=flat-square)
 
-![Releases](https://img.shields.io/github/release/htooaungKyaw40615483/sem/all.svg?style=flat-square)
+![Releases](https://img.shields.io/github/release/htooaungKyaw40615483/CWProject/all.svg?style=flat-square)
 
 ![workflow](https://img.shields.io/github/actions/workflow/status/htooaungKyaw40615483/CWProject/main.yml)
