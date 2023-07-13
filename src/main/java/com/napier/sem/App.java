@@ -14,6 +14,8 @@ public class App
         SQLConnection connection = new SQLConnection();
         connection.connect();
         Connection con = connection.getCon();
+
+        AllCitiesInWorld.printResult(AllCitiesInWorld.getAllCities(con));
         AllCitiesInCountry.printResult(AllCitiesInCountry.ReturnCity(country,con));
         AllCitiesInDistrict.printResult(AllCitiesInDistrict.ReturnCity(district,con));
         AllCitiesInRegion.printResult(AllCitiesInRegion.ReturnCity(region,con));
