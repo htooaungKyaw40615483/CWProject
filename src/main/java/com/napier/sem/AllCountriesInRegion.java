@@ -3,12 +3,13 @@ package com.napier.sem;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class AllCountriesInWorld {
-    public static ArrayList<Country> ReturnCountries(Connection con){
+public class AllCountriesInRegion {
+    public static ArrayList<Country> ReturnCountries(String rn, Connection con){
         try{
             Statement stmt = con.createStatement();
             String sqlQueryCountryInWorld = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name " +
-                                            "FROM country, city WHERE city.ID = country.Capital ORDER BY country.Population DESC;";
+                    "FROM `country` INNER JOIN city ON country.Capital = city.ID " +
+                    "WHERE country.Region = \"" + rn + "\" ORDER BY country.Population DESC;;";
             ResultSet CountriesInWorld = stmt.executeQuery(sqlQueryCountryInWorld);
             ArrayList<Country> Countries = new ArrayList<Country>();
             while(CountriesInWorld.next()) {
@@ -25,12 +26,12 @@ public class AllCountriesInWorld {
         }
         catch(Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get countries population in the world");
+            System.out.println("Failed to get countries population by continent name in the world");
             return null;
         }
     }
     public static void printResult(ArrayList<Country> countries){
-        System.out.println("---------------------------------------------------All Countries in the World By Largest Population To Smallest-------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------All Countries in the Region By Largest Population To Smallest------------------------------------------------------------------");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-4s | %-40s | %-30s | %-30s | %-20s | %-35s | %n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
