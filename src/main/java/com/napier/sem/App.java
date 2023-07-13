@@ -15,6 +15,7 @@ public class App
         connection.connect();
         Connection con = connection.getCon();
 
+        AllCitiesInWorld.printResult(AllCitiesInWorld.getAllCities(con));
         AllCitiesInCountry.printResult(AllCitiesInCountry.ReturnCity(country,con));
         AllCitiesInDistrict.printResult(AllCitiesInDistrict.ReturnCity(district,con));
 
