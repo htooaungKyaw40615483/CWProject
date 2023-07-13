@@ -8,9 +8,9 @@ public class AllCitiesInCountry {
         try{
             Statement stmt = con.createStatement();
             String sqlQueryCityInCountry = "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population FROM world.city " +
-                                            "INNER JOIN world.country ON world.city.CountryCode = world.country.Code " +
-                                            "WHERE world.country.Name= \"" + cn + "\" " +
-                                            "ORDER BY world.city.Population DESC;";
+                    "INNER JOIN world.country ON world.city.CountryCode = world.country.Code " +
+                    "WHERE world.country.Name= \"" + cn + "\" " +
+                    "ORDER BY world.city.Population DESC;";
             ResultSet cityInCountryResult = stmt.executeQuery(sqlQueryCityInCountry);
             ArrayList<City> Cities = new ArrayList<City>();
             while(cityInCountryResult.next()) {
@@ -30,6 +30,7 @@ public class AllCitiesInCountry {
         }
     }
     public static void printResult(ArrayList<City> cities){
+        System.out.println("--------------------------------All Cities In A Country By Largest Population To Smallest----------------------------------");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-30s | %-30s | %-30s | %-20s | %n", "Name", "Country", "District", "Population");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
