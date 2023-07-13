@@ -14,11 +14,16 @@ public class App
         SQLConnection connection = new SQLConnection();
         connection.connect();
         Connection con = connection.getCon();
+
         AllCitiesInCountry.printResult(AllCitiesInCountry.ReturnCity(country,con));
         AllCitiesInDistrict.printResult(AllCitiesInDistrict.ReturnCity(district,con));
+
         AllCitiesInRegion.printResult(AllCitiesInRegion.ReturnCity(region,con));
         AllCitiesInContinent.printResult(AllCitiesInContinent.ReturnCity(continent,con));
+
         AllCountriesInWorld.printResult(AllCountriesInWorld.ReturnCountries(con));
+        AllCountriesInContinent.printResult(AllCountriesInContinent.ReturnCountries(continent,con));
+
         connection.disconnect();
     }
 
