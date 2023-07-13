@@ -5,7 +5,7 @@
 ## Goal in Context
 
 All the countries in a region organized by largest population to
-smallest.
+smallest. 
 
 ## Scope
 
