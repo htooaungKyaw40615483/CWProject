@@ -3,21 +3,67 @@ package com.napier.sem;
 public class Country
 {
         /*** Country Code */
-        public String country_no;
-
+        private String country_no;
         /*** Country name */
-        public String country_name;
-
+        private String country_name;
         /*** Continent */
-        public String continent_name;
-
+        private String continent_name;
         /*** Region */
-        public String region_name;
-
+        private String region_name;
         /** * Country's population */
-        public int population;
-
+        private int population;
         /** * Country's Capital */
-        public String capital_name;
+        private String capital_name;
 
+        // Getters for accessing the class attributes only for reading values.
+
+        public String getCountry_no() {
+                return country_no;
+        }
+
+        public String getCountry_name() {
+                return country_name;
+        }
+
+        public String getContinent_name() {
+                return continent_name;
+        }
+
+        public String getRegion_name() {
+                return region_name;
+        }
+
+        public int getPopulation() {
+                return population;
+        }
+
+        public String getCapital_name() {
+                return capital_name;
+        }
+
+        // Setters for accessing the class attributes only for changing/inserting values.
+
+        public void setCountry_no(String country_no) {
+                this.country_no = country_no;
+        }
+
+        public void setCountry_name(String country_name) {
+                this.country_name = country_name;
+        }
+
+        public void setContinent_name(String continent_name) {
+                this.continent_name = continent_name;
+        }
+
+        public void setRegion_name(String region_name) {
+                this.region_name = region_name;
+        }
+
+        public void setPopulation(int population) {
+                this.population = population;
+        }
+
+        public void setCapital_name(String capital_name) {
+                this.capital_name = capital_name;
+        }
 }
