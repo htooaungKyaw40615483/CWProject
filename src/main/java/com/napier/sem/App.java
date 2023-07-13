@@ -13,6 +13,7 @@ public class App
         Connection con = connection.getCon();
         AllCitiesInCountry.printResult(AllCitiesInCountry.ReturnCity(country,con));
         AllCitiesInDistrict.printResult(AllCitiesInDistrict.ReturnCity(district,con));
+        AllCountriesInWorld.printResult(AllCountriesInWorld.ReturnCountries(con));
         connection.disconnect();
     }
 
