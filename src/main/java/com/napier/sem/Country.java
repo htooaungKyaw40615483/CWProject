@@ -3,7 +3,7 @@ package com.napier.sem;
 public class Country
 {
         /*** Country Code */
-        public int country_no;
+        public String country_no;
 
         /*** Country name */
         public String country_name;
