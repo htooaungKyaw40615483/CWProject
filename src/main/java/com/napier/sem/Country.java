@@ -1,5 +1,7 @@
 package com.napier.sem;
 
+// Encapsulation Applied: Used Getters, Setters, and Private variables.
+// Class Attributes used only with getMethod (read-only) or setMethod(write-only).
 public class Country
 {
         // Country Code
