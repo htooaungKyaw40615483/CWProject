@@ -23,6 +23,7 @@ public class App
 
         AllCountriesInWorld.printResult(AllCountriesInWorld.ReturnCountries(con));
         AllCountriesInContinent.printResult(AllCountriesInContinent.ReturnCountries(continent,con));
+        AllCountriesInRegion.printResult(AllCountriesInRegion.ReturnCountries(region,con));
 
         connection.disconnect();
     }
