@@ -13,12 +13,12 @@ public class AllCountriesInWorld {
             ArrayList<Country> Countries = new ArrayList<Country>();
             while(CountriesInWorld.next()) {
                 Country country = new Country();
-                country.country_no = CountriesInWorld.getString(1);
-                country.country_name = CountriesInWorld.getString(2);
-                country.continent_name = CountriesInWorld.getString(3);
-                country.region_name = CountriesInWorld.getString(4);
-                country.population = CountriesInWorld.getInt(5);
-                country.capital_name = CountriesInWorld.getString(6);
+                country.setCountry_no(CountriesInWorld.getString(1));
+                country.setCountry_name(CountriesInWorld.getString(2));
+                country.setContinent_name(CountriesInWorld.getString(3));
+                country.setContinent_name(CountriesInWorld.getString(4));
+                country.setPopulation(CountriesInWorld.getInt(5));
+                country.setCapital_name(CountriesInWorld.getString(6));
                 Countries.add(country);
             }
             return Countries;
@@ -35,7 +35,7 @@ public class AllCountriesInWorld {
         System.out.printf("| %-4s | %-40s | %-30s | %-30s | %-20s | %-30s | %n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
         for (Country country :countries){
-            System.out.printf("| %-4s | %-40s | %-30s | %-30s | %20d | %-30s | %n", country.country_no, country.country_name, country.continent_name, country.region_name, country.population, country.capital_name);
+            System.out.printf("| %-4s | %-40s | %-30s | %-30s | %20d | %-30s | %n", country.getCountry_no(), country.getCountry_name(), country.getContinent_name(), country.getRegion_name(), country.getPopulation(), country.getCapital_name());
         }
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
 

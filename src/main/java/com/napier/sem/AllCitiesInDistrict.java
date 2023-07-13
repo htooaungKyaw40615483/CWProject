@@ -15,10 +15,10 @@ public class AllCitiesInDistrict {
             ArrayList<City> Cities = new ArrayList<City>();
             while(cityInCountryResult.next()) {
                 City city = new City();
-                city.city_name = cityInCountryResult.getString(1);
-                city.country_name = cityInCountryResult.getString(2);
-                city.district_name = cityInCountryResult.getString(3);
-                city.city_population = cityInCountryResult.getInt(4);
+                city.setCity_name(cityInCountryResult.getString(1));
+                city.setCountry_name(cityInCountryResult.getString(2));
+                city.setDistrict_name(cityInCountryResult.getString(3));
+                city.setCity_population(cityInCountryResult.getInt(4));
                 Cities.add(city);
             }
             return Cities;
@@ -35,7 +35,7 @@ public class AllCitiesInDistrict {
         System.out.printf("| %-30s | %-30s | %-30s | %-20s | %n", "Name", "Country", "District", "Population");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
         for (City city :cities){
-            System.out.printf("| %-30s | %-30s | %-30s | %20d | %n", city.city_name, city.country_name, city.district_name, city.city_population);
+            System.out.printf("| %-30s | %-30s | %-30s | %20d | %n", city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         }
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
 
