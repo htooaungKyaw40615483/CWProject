@@ -68,7 +68,7 @@ public class AllCitiesInCountry {
      */
     public static void printResult(String cn, ArrayList<City> cities){
         System.out.println("--------------------------------All Cities In A Country By Largest Population To Smallest----------------------------------");
-        System.out.println("| District: " + cn + "                                                                ORDER: Largest to Smallest Population");
+        System.out.println("| Country: " + cn + "                                                                     ORDER: Largest to Smallest Population|");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-30s | %-30s | %-30s | %-20s | %n", "Name", "Country", "District", "Population");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
