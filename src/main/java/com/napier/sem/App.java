@@ -19,8 +19,8 @@ public class App
         AllCitiesInCountry.printResult(country, AllCitiesInCountry.ReturnCity(country,con));
         AllCitiesInDistrict.printResult(district, AllCitiesInDistrict.ReturnCity(district,con));
 
-        AllCitiesInRegion.printResult(AllCitiesInRegion.ReturnCity(region,con));
-        AllCitiesInContinent.printResult(AllCitiesInContinent.ReturnCity(continent,con));
+        AllCitiesInRegion.printResult(region,AllCitiesInRegion.ReturnCity(region,con));
+        AllCitiesInContinent.printResult(continent,AllCitiesInContinent.ReturnCity(continent,con));
 
         AllCountriesInWorld.printResult(AllCountriesInWorld.ReturnCountries(con));
         AllCountriesInContinent.printResult(AllCountriesInContinent.ReturnCountries(continent,con));
