@@ -1,11 +1,16 @@
 package com.napier.sem;
 import java.sql.*;
 public class SQLConnection {
+    // Initializing variable for database name, world
+    String dbname = "world";
+
     // Creating Connection Variable
     private Connection con = null;
+
     public Connection getCon(){
         return con;
     }
+
     public void connect() {
         try {
             // Load Database driver
@@ -21,7 +26,7 @@ public class SQLConnection {
                 // Wait a bit for db to start
                 Thread.sleep(30000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://db:3306/" + dbname + "?useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             } catch (SQLException sqle) {
