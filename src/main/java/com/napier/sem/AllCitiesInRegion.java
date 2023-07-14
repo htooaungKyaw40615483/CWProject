@@ -32,7 +32,7 @@ public class AllCitiesInRegion {
         }
     }
     public static void printResult(ArrayList<City> cities){
-        System.out.println("-------------------------------All Cities In A District By Largest Population To Smallest----------------------------------");
+        System.out.println("-------------------------------All Cities In A Region By Largest Population To Smallest----------------------------------");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-30s | %-30s | %-30s | %-20s | %n", "Name", "Country", "District", "Population");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
