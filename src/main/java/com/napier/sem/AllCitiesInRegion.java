@@ -5,7 +5,15 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
+
 public class AllCitiesInRegion {
+    /**
+     * Return a region's cities from the world database
+     * @param ab Predefined region Name
+     * @param con Established Database Connection
+     * @return the City Objects in an ArrayList which is from a single region.
+     */
     public static ArrayList<City> ReturnCity(String ab, Connection con){
         try{
             Statement stmt = con.createStatement();
@@ -31,8 +39,13 @@ public class AllCitiesInRegion {
             return null;
         }
     }
+
+    /**
+     * Printing a region's cities from the world database
+     * @param cities arraylist of city objects.
+     */
     public static void printResult(ArrayList<City> cities){
-        System.out.println("-------------------------------All Cities In A District By Largest Population To Smallest----------------------------------");
+        System.out.println("-------------------------------All Cities In A Region By Largest Population To Smallest----------------------------------");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-30s | %-30s | %-30s | %-20s | %n", "Name", "Country", "District", "Population");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
