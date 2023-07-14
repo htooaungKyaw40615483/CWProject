@@ -5,13 +5,21 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
 public class AllCitiesInContinent {
-    public static ArrayList<City> ReturnCity(String ab, Connection con){
+    /**
+     * Return a continent's cities from the world database
+     * @param bc Predefined continent Name
+     * @param con Established Database Connection
+     * @return the City Objects in an ArrayList which is from a single continent.
+     */
+
+    public static ArrayList<City> ReturnCity(String bc, Connection con){
         try{
             Statement stmt = con.createStatement();
             String sqlQueryCityInCountry = "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population FROM world.city " +
                     "INNER JOIN world.country ON world.city.CountryCode = world.country.Code " +
-                    "WHERE world.country.Continent= \"" + ab + "\" " +
+                    "WHERE world.country.Continent= \"" + bc + "\" " +
                     "ORDER BY world.city.Population DESC;";
             ResultSet cityInCountryResult = stmt.executeQuery(sqlQueryCityInCountry);
             ArrayList<City> Cities = new ArrayList<City>();
@@ -31,6 +39,11 @@ public class AllCitiesInContinent {
             return null;
         }
     }
+
+    /**
+     * Printing a continent's cities from the world database
+     * @param cities arraylist of city objects.
+     */
     public static void printResult(ArrayList<City> cities){
         System.out.println("-------------------------------All Cities In A Continent By Largest Population To Smallest----------------------------------");
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
