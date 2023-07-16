@@ -63,8 +63,9 @@ public class AllCountriesInRegion {
      * @param countries arraylist of city objects.
      */
 
-    public static void printResult(ArrayList<Country> countries){
+    public static void printResult(String rn, ArrayList<Country> countries){
         System.out.println("---------------------------------------------------All Countries in the Region By Largest Population To Smallest------------------------------------------------------------------");
+        System.out.println("| Continent: " + rn + "                                                                                                                      ORDER: Largest to Smallest Population|");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-4s | %-40s | %-30s | %-30s | %-20s | %-35s | %n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");

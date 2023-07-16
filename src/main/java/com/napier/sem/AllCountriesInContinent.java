@@ -69,8 +69,9 @@ public class AllCountriesInContinent {
      * Printing a country's cities from the world database
      * @param countries arraylist of city objects.
      */
-    public static void printResult(ArrayList<Country> countries){
+    public static void printResult(String ctn, ArrayList<Country> countries){
         System.out.println("---------------------------------------------------All Countries in the Continent By Largest Population To Smallest---------------------------------------------------------------");
+        System.out.println("| Continent: " + ctn + "                                                                                                                  ORDER: Largest to Smallest Population|");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-4s | %-40s | %-30s | %-30s | %-20s | %-35s | %n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
