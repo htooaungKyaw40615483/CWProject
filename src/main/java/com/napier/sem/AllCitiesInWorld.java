@@ -64,7 +64,7 @@ public class AllCitiesInWorld {
         for (City city : cities) {
 
             // Printing the city object's attributes with Getter.
-            System.out.printf("| %-35s | %-40s | %-35s | %20d |%n", city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
+            System.out.printf("| %-35s | %-40s | %-35s | %,20d |%n", city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         }
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
     }

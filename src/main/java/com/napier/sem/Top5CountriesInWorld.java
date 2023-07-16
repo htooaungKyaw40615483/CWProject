@@ -1,14 +1,11 @@
 package com.napier.sem;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
-/*
- * Purpose: To Retrieve All The Countries in World
- */
-
-public class AllCountriesInWorld {
-
+public class Top5CountriesInWorld {
     /**
      * Return a country's cities from the world database
      * @param con Established Database Connection
@@ -24,7 +21,7 @@ public class AllCountriesInWorld {
              and capital name after JOINing two tables with City ID ORDERED by population in descending.
             */
             String sqlQueryCountryInWorld = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name " +
-                                            "FROM country, city WHERE city.ID = country.Capital ORDER BY country.Population DESC;";
+                    "FROM country, city WHERE city.ID = country.Capital ORDER BY country.Population DESC LIMIT 5;";
             // Storing the results in a ResultSet object, ALlCountriesInWorldResult
             ResultSet CountriesInWorld = stmt.executeQuery(sqlQueryCountryInWorld);
             // Creating an arraylist of country objects to be stored and returned from the method
@@ -51,7 +48,7 @@ public class AllCountriesInWorld {
         */
         catch(Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get countries population in the world");
+            System.out.println("Failed to get top 5 countries population in the world");
             return null;
         }
     }
@@ -61,7 +58,7 @@ public class AllCountriesInWorld {
      * @param countries arraylist of city objects.
      */
     public static void printResult(ArrayList<Country> countries){
-        System.out.println("---------------------------------------------------All Countries in the World By Largest Population To Smallest-------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------Top 5 Countries in the World By Largest Population To Smallest-----------------------------------------------------------------");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-4s | %-40s | %-30s | %-30s | %-20s | %-35s | %n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
