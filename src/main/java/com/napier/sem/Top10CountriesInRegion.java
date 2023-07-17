@@ -5,13 +5,14 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class Top5CountriesInWorld {
+public class Top10CountriesInRegion {
     /**
      * Return a country's cities from the world database
+     * @param rn Predefined Region Name
      * @param con Established Database Connection
      * @return the Country Objects in an ArrayList which is from a single continent.
      */
-    public static ArrayList<Country> ReturnCountries(Connection con){
+    public static ArrayList<Country> ReturnCountries(String rn, Connection con){
         try{
             // Creating Statement Object to execute Query
             Statement stmt = con.createStatement();
@@ -21,8 +22,9 @@ public class Top5CountriesInWorld {
              and capital name after JOINing two tables with City ID ORDERED by population in descending.
             */
             String sqlQueryCountryInWorld = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name " +
-                    "FROM country, city WHERE city.ID = country.Capital ORDER BY country.Population DESC LIMIT 5;";
-            // Storing the results in a ResultSet object, ALlCountriesInWorldResult
+                    "FROM `country` INNER JOIN city ON country.Capital = city.ID " +
+                    "WHERE country.Region = \"" + rn + "\" ORDER BY country.Population DESC LIMIT 10;;";
+            // Storing the results in a ResultSet object, ALlCountriesInRegionResult
             ResultSet CountriesInWorld = stmt.executeQuery(sqlQueryCountryInWorld);
             // Creating an arraylist of country objects to be stored and returned from the method
             ArrayList<Country> Countries = new ArrayList<Country>();
@@ -42,13 +44,13 @@ public class Top5CountriesInWorld {
             }
             return Countries;
         }
-         /*
+        /*
          Catching the error if there is
          Printing the error and returning null
         */
         catch(Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get top 5 countries population in the world");
+            System.out.println("Failed to get Top 10 countries population by region name in the world");
             return null;
         }
     }
@@ -57,8 +59,10 @@ public class Top5CountriesInWorld {
      * Printing a country's cities from the world database
      * @param countries arraylist of city objects.
      */
-    public static void printResult(ArrayList<Country> countries){
-        System.out.println("---------------------------------------------------Top 5 Countries in the World By Largest Population To Smallest-----------------------------------------------------------------");
+
+    public static void printResult(String rn, ArrayList<Country> countries){
+        System.out.println("---------------------------------------------------Top 10 Countries in the Region By Largest Population To Smallest----------------------------------------------------------------");
+        System.out.println("| Region: " + rn + "                                                                                                                         ORDER: Largest to Smallest Population|");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-4s | %-40s | %-30s | %-30s | %-20s | %-35s | %n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");

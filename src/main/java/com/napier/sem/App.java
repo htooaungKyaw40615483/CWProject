@@ -25,24 +25,23 @@ public class App
         Connection con = connection.getCon();
 
         // Creating the classes to make reports
-        // REPORT: All Countries in the World/Continent/Region.
         AllCountriesInWorld.printResult(AllCountriesInWorld.ReturnCountries(con));
         AllCountriesInContinent.printResult(continent, AllCountriesInContinent.ReturnCountries(continent,con));
         AllCountriesInRegion.printResult(region, AllCountriesInRegion.ReturnCountries(region,con));
-
-        // REPORT: Top 5 Countries in the World/Continent/Region.
         Top5CountriesInWorld.printResult(Top5CountriesInWorld.ReturnCountries(con));
         Top5CountriesInContinent.printResult(continent, Top5CountriesInContinent.ReturnCountries(continent,con));
         Top5CountriesInRegion.printResult(region, Top5CountriesInRegion.ReturnCountries(region,con));
 
-        // REPORT: All Cities in the World/Continent/Region/Country/District.
+
         AllCitiesInWorld.printResult(AllCitiesInWorld.getAllCities(con));
         AllCitiesInContinent.printResult(continent, AllCitiesInContinent.ReturnCity(continent,con));
         AllCitiesInRegion.printResult(region, AllCitiesInRegion.ReturnCity(region,con));
         AllCitiesInCountry.printResult(country, AllCitiesInCountry.ReturnCity(country,con));
         AllCitiesInDistrict.printResult(district, AllCitiesInDistrict.ReturnCity(district,con));
 
-        //REPORT: Top 5 Cities in the World/Continent/Region/Country/District.
+
+
+
 
         // disconnecting the database
         connection.disconnect();
