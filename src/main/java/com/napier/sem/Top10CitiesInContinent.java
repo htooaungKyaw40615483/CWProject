@@ -15,24 +15,43 @@ public class Top10CitiesInContinent {
 
     public static ArrayList<City> ReturnCity(String bc, Connection con){
         try{
-
+            // Creating Statement Object to execute Query
             Statement stmt = con.createStatement();
-            String sqlQueryCityInCountry = "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population FROM world.city " +
+            /*
+             Defining the Query to be executed.
+             QUERY: To SELECT  CityName, CountryName, DistrictName, Population of a city
+             and continent name after JOINing two tables with City ID ORDERED by population in descending.
+            */
+            String sqlQueryCityInContinent = "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population FROM world.city " +
                     "INNER JOIN world.country ON world.city.CountryCode = world.country.Code " +
                     "WHERE world.country.Continent= \"" + bc + "\" " +
                     "ORDER BY world.city.Population DESC LIMIT 10;";
-            ResultSet cityInCountryResult = stmt.executeQuery(sqlQueryCityInCountry);
+
+            // Storing the results in a ResultSet object, ALlCitiesInContinentResult
+            ResultSet cityInCountryResult = stmt.executeQuery(sqlQueryCityInContinent);
+
+            // Creating an arraylist of city objects to be stored and returned from the method
             ArrayList<City> Cities = new ArrayList<City>();
+
+            // Retrieving the results from ResultSet object, CitiesInWorldResult as long as there is data left
             while(cityInCountryResult.next()) {
+
+                // Creating a City object to be stored in arraylist
                 City city = new City();
                 city.setCity_name(cityInCountryResult.getString(1));
                 city.setCountry_name(cityInCountryResult.getString(2));
                 city.setDistrict_name(cityInCountryResult.getString(3));
                 city.setCity_population(cityInCountryResult.getInt(4));
+
+                // adding the city object to the arraylist
                 Cities.add(city);
             }
             return Cities;
         }
+        /*
+         Catching the error if there is
+         Printing the error and returning null
+        */
         catch(Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city populations");
