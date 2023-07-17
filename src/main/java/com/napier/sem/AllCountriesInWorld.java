@@ -10,9 +10,9 @@ import java.util.ArrayList;
 public class AllCountriesInWorld {
 
     /**
-     * Return a country's cities from the world database
+     * Return a countries population in world from the world database
      * @param con Established Database Connection
-     * @return the Country Objects in an ArrayList which is from a single continent.
+     * @return the Country Objects in an ArrayList which is from a world.
      */
     public static ArrayList<Country> ReturnCountries(Connection con){
         try{
@@ -57,8 +57,8 @@ public class AllCountriesInWorld {
     }
 
     /**
-     * Printing a country's cities from the world database
-     * @param countries arraylist of city objects.
+     * Printing a countries population in the world from the world database
+     * @param countries arraylist of country objects.
      */
     public static void printResult(ArrayList<Country> countries){
         System.out.println("---------------------------------------------------All Countries in the World By Largest Population To Smallest-------------------------------------------------------------------");

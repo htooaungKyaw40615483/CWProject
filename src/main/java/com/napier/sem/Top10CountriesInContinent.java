@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Top10CountriesInContinent {
     /**
-     * Return a country's cities from the world database
+     * Return a top 10 populated countries in continent from the world database
      * @param ctn Predefined Continent Name
      * @param con Established Database Connection
      * @return the Country Objects in an ArrayList which is from a single continent.
@@ -20,32 +20,32 @@ public class Top10CountriesInContinent {
              /*
              Defining the Query to be executed.
              QUERY: To SELECT CountryCode, CountryName, ContinentName, RegionName, Population of a Country
-             and capital name after JOINing two tables with City ID ORDERED by population in descending.
+             and capital name after JOINing two tables with City ID ORDERED by population in descending limit 10.
             */
 
-            String sqlQueryCountryInWorld = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name FROM `country`" +
+            String sqlQueryTop10CountryInContinent = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name FROM `country`" +
                     "INNER JOIN city ON country.Capital = city.ID " +
                     "WHERE country.Continent = \"" + ctn + "\" ORDER BY country.Population DESC LIMIT 10;";
 
-            // Storing the results in a ResultSet object, ALlCountriesInContinentResult
-            ResultSet CountriesInWorld = stmt.executeQuery(sqlQueryCountryInWorld);
+            // Storing the results in a ResultSet object, Top10CountriesInContinentResult
+            ResultSet Top10CountriesInContinent = stmt.executeQuery(sqlQueryTop10CountryInContinent);
 
             // Creating an arraylist of country objects to be stored and returned from the method
             ArrayList<Country> Countries = new ArrayList<Country>();
 
-            // Retrieving the results from ResultSet object, CountriesInWorldResult as long as there is data left
-            while(CountriesInWorld.next()) {
+            // Retrieving the results from ResultSet object, Top10CountriesInContinentResult as long as there is data left
+            while(Top10CountriesInContinent.next()) {
 
                 // Creating a Country object to be stored in arraylist
                 Country country = new Country();
 
                 // setting the attributes of country object with Setter
-                country.setCountry_no(CountriesInWorld.getString(1));
-                country.setCountry_name(CountriesInWorld.getString(2));
-                country.setContinent_name(CountriesInWorld.getString(3));
-                country.setRegion_name(CountriesInWorld.getString(4));
-                country.setPopulation(CountriesInWorld.getInt(5));
-                country.setCapital_name(CountriesInWorld.getString(6));
+                country.setCountry_no(Top10CountriesInContinent.getString(1));
+                country.setCountry_name(Top10CountriesInContinent.getString(2));
+                country.setContinent_name(Top10CountriesInContinent.getString(3));
+                country.setRegion_name(Top10CountriesInContinent.getString(4));
+                country.setPopulation(Top10CountriesInContinent.getInt(5));
+                country.setCapital_name(Top10CountriesInContinent.getString(6));
 
                 // adding the country object to the arraylist
                 Countries.add(country);
@@ -63,8 +63,8 @@ public class Top10CountriesInContinent {
         }
     }
     /**
-     * Printing a country's cities from the world database
-     * @param countries arraylist of city objects.
+     * Printing a top 10 populated countries in the continent from the world database
+     * @param countries arraylist of country objects.
      */
     public static void printResult(String ctn, ArrayList<Country> countries){
         System.out.println("---------------------------------------------------Top 10 Countries in the Continent By Largest Population To Smallest-------------------------------------------------------------");
