@@ -17,18 +17,18 @@ public class AllCitiesInContinent {
     public static ArrayList<City> ReturnCity(String bc, Connection con){
         try{
             Statement stmt = con.createStatement();
-            String sqlQueryCityInCountry = "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population FROM world.city " +
+            String sqlQueryCityInContinent = "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population FROM world.city " +
                     "INNER JOIN world.country ON world.city.CountryCode = world.country.Code " +
                     "WHERE world.country.Continent= \"" + bc + "\" " +
                     "ORDER BY world.city.Population DESC;";
-            ResultSet cityInCountryResult = stmt.executeQuery(sqlQueryCityInCountry);
+            ResultSet cityInContinentResult = stmt.executeQuery(sqlQueryCityInContinent);
             ArrayList<City> Cities = new ArrayList<City>();
-            while(cityInCountryResult.next()) {
+            while(cityInContinentResult.next()) {
                 City city = new City();
-                city.setCity_name(cityInCountryResult.getString(1));
-                city.setCountry_name(cityInCountryResult.getString(2));
-                city.setDistrict_name(cityInCountryResult.getString(3));
-                city.setCity_population(cityInCountryResult.getInt(4));
+                city.setCity_name(cityInContinentResult.getString(1));
+                city.setCountry_name(cityInContinentResult.getString(2));
+                city.setDistrict_name(cityInContinentResult.getString(3));
+                city.setCity_population(cityInContinentResult.getInt(4));
                 Cities.add(city);
             }
             return Cities;
