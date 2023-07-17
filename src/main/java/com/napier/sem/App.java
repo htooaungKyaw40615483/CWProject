@@ -38,6 +38,7 @@ public class App
         AllCitiesInRegion.printResult(region, AllCitiesInRegion.ReturnCity(region,con));
         AllCitiesInCountry.printResult(country, AllCitiesInCountry.ReturnCity(country,con));
         AllCitiesInDistrict.printResult(district, AllCitiesInDistrict.ReturnCity(district,con));
+        Top10CitiesInContinent.printResult(continent, Top10CitiesInContinent.ReturnCity(continent,con));
 
 
 
