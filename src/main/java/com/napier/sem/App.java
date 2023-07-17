@@ -39,9 +39,7 @@ public class App
         AllCitiesInCountry.printResult(country, AllCitiesInCountry.ReturnCity(country,con));
         AllCitiesInDistrict.printResult(district, AllCitiesInDistrict.ReturnCity(district,con));
         Top10CitiesInContinent.printResult(continent, Top10CitiesInContinent.ReturnCity(continent,con));
-
-
-
+        Top10CitiesInRegion.printResult(region, Top10CitiesInRegion.ReturnCity(region,con));
 
 
         // disconnecting the database

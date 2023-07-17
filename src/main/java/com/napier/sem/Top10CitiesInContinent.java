@@ -64,7 +64,7 @@ public class Top10CitiesInContinent {
      * @param cities arraylist of city objects.
      */
     public static void printResult(String bc, ArrayList<City> cities){
-        System.out.println("-------------------------------------------Top 10 Cities in A Continent by Largest Population to Smallest-----------------------------------------");
+        System.out.println("-------------------------------------------Top 10 most populated Cities in A Continent by Largest Population to Smallest-----------------------------------------");
         System.out.println("| Continent: " + bc + "                                                                               ORDER: Largest to Smallest Population|");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-35s | %-40s | %-35s | %-20s | %n", "Name", "Country", "District", "Population");
