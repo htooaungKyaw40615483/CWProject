@@ -5,34 +5,59 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-
-
-public class AllCitiesInRegion {
+public class Top10CitiesInRegion {
     /**
-     * Return a region's cities from the world database
+     * Return a top 10 region's cities from the world database
      * @param ab Predefined region Name
      * @param con Established Database Connection
      * @return the City Objects in an ArrayList which is from a single region.
      */
     public static ArrayList<City> ReturnCity(String ab, Connection con){
         try{
+
+            // Creating Statement Object to execute Query
             Statement stmt = con.createStatement();
+
+               /*
+             Defining the Query to be executed.
+             QUERY: To SELECT  CityName, CountryName, DistrictName, Population of a city
+             and region name after JOINing two tables with City ID ORDERED by population in descending with limit of 10.
+            */
+
             String sqlQueryCityInRegion = "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population FROM world.city " +
                     "INNER JOIN world.country ON world.city.CountryCode = world.country.Code " +
                     "WHERE world.country.Region= \"" + ab + "\" " +
-                    "ORDER BY world.city.Population DESC;";
+                    "ORDER BY world.city.Population DESC LIMIT 10;";
+
+            // Storing the results in a ResultSet object, ALlCitiesInRegionResult
             ResultSet cityInRegionResult = stmt.executeQuery(sqlQueryCityInRegion);
+
+            // Creating an arraylist of city objects to be stored and returned from the method
             ArrayList<City> Cities = new ArrayList<City>();
+
+            // Retrieving the results from ResultSet object, CitiesInRegionResult as long as there is data left
             while(cityInRegionResult.next()) {
+
+                // Creating a City object to be stored in arraylist
                 City city = new City();
+
+                // setting the attributes of city object with Setter
                 city.setCity_name(cityInRegionResult.getString(1));
                 city.setCountry_name(cityInRegionResult.getString(2));
                 city.setDistrict_name(cityInRegionResult.getString(3));
                 city.setCity_population(cityInRegionResult.getInt(4));
+
+                // adding the city object to the arraylist
                 Cities.add(city);
             }
             return Cities;
         }
+
+         /*
+         Catching the error if there is
+         Printing the error and returning null
+        */
+
         catch(Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city populations");
@@ -41,11 +66,11 @@ public class AllCitiesInRegion {
     }
 
     /**
-     * Printing a region's cities from the world database
+     * Printing a top 10 cities in region from the world database
      * @param cities arraylist of city objects.
      */
     public static void printResult(String ab, ArrayList<City> cities){
-        System.out.println("-------------------------------------------All Cities in A Region by Largest Population to Smallest--------------------------------------------");
+        System.out.println("------------------------------------------Top 10 most populated Cities in A Region by Largest Population to Smallest--------------------------------------------");
         System.out.println("| Region: " + ab + "                                                                                      ORDER: Largest to Smallest Population|");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-35s | %-40s | %-35s | %-20s | %n", "Name", "Country", "District", "Population");
