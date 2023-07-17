@@ -48,5 +48,4 @@ public class App
         // disconnecting the database
         connection.disconnect();
     }
-
 }
