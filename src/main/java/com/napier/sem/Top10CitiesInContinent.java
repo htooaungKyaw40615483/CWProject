@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Top10CitiesInContinent {
     /**
-     * Return a continent's cities from the world database
+     * Return a top 10 continent's cities from the world database
      * @param bc Predefined continent Name
      * @param con Established Database Connection
      * @return the City Objects in an ArrayList which is from a single continent.
@@ -15,13 +15,16 @@ public class Top10CitiesInContinent {
 
     public static ArrayList<City> ReturnCity(String bc, Connection con){
         try{
+
             // Creating Statement Object to execute Query
             Statement stmt = con.createStatement();
+
             /*
              Defining the Query to be executed.
              QUERY: To SELECT  CityName, CountryName, DistrictName, Population of a city
-             and continent name after JOINing two tables with City ID ORDERED by population in descending.
+             and continent name after JOINing two tables with City ID ORDERED by population in descending with limit of 10.
             */
+
             String sqlQueryCityInContinent = "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population FROM world.city " +
                     "INNER JOIN world.country ON world.city.CountryCode = world.country.Code " +
                     "WHERE world.country.Continent= \"" + bc + "\" " +
@@ -33,11 +36,13 @@ public class Top10CitiesInContinent {
             // Creating an arraylist of city objects to be stored and returned from the method
             ArrayList<City> Cities = new ArrayList<City>();
 
-            // Retrieving the results from ResultSet object, CitiesInWorldResult as long as there is data left
+            // Retrieving the results from ResultSet object, CitiesInContinentResult as long as there is data left
             while(cityInContinentResult.next()) {
 
                 // Creating a City object to be stored in arraylist
                 City city = new City();
+
+                // setting the attributes of city object with Setter
                 city.setCity_name(cityInContinentResult.getString(1));
                 city.setCountry_name(cityInContinentResult.getString(2));
                 city.setDistrict_name(cityInContinentResult.getString(3));
@@ -60,7 +65,7 @@ public class Top10CitiesInContinent {
     }
 
     /**
-     * Printing a continent's cities from the world database
+     * Printing a top 10 cities in continent from the world database
      * @param cities arraylist of city objects.
      */
     public static void printResult(String bc, ArrayList<City> cities){
