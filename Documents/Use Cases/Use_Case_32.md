@@ -43,7 +43,7 @@ The organization requests the report.
 
 2.  Report viewer runs the system.
 
-3.  The system extracts the population of a city.
+3.  The system extracts the result with the percentage of the world population.
 
 4.  System displays the result.
 

@@ -44,15 +44,19 @@ public class AllCitiesInRegion {
      * Printing a region's cities from the world database
      * @param cities arraylist of city objects.
      */
-    public static void printResult(ArrayList<City> cities){
-        System.out.println("-------------------------------All Cities In A Region By Largest Population To Smallest----------------------------------");
-        System.out.println("---------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-30s | %-30s | %-30s | %-20s | %n", "Name", "Country", "District", "Population");
-        System.out.println("---------------------------------------------------------------------------------------------------------------------------");
+    public static void printResult(String ab, ArrayList<City> cities){
+        System.out.println("-------------------------------------------All Cities in A Region by Largest Population to Smallest--------------------------------------------");
+        System.out.println("| Region: " + ab + "                                                                                      ORDER: Largest to Smallest Population|");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-35s | %-40s | %-35s | %-20s | %n", "Name", "Country", "District", "Population");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
+
+        // For all the objects in cities arraylist, formatting and printing the values (Strings and Digits)
         for (City city :cities){
-            System.out.printf("| %-30s | %-30s | %-30s | %20d | %n", city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
+            // Printing the city object's attributes with Getter.
+            System.out.printf("| %-35s | %-40s | %-35s | %,20d | %n", city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         }
-        System.out.println("---------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
 
     }
 }
