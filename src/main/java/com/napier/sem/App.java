@@ -46,6 +46,8 @@ public class App
         Top10CitiesInWorld.printResult(Top10CitiesInWorld.ReturnCity(con));
         Top10CitiesInContinent.printResult(continent, Top10CitiesInContinent.ReturnCity(continent,con));
         Top10CitiesInRegion.printResult(region, Top10CitiesInRegion.ReturnCity(region,con));
+        Top10CitiesInDistrict.printResult(district, Top10CitiesInDistrict.ReturnCitiesInDistrict(district, con));
+        Top10CitiesInCountry.printResult(country, Top10CitiesInCountry.ReturnCitiesInCountry(country, con));
 
 
 

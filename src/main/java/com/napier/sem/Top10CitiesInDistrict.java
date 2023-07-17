@@ -1,0 +1,79 @@
+package com.napier.sem;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+public class Top10CitiesInDistrict {
+    /**
+     * Return a list of top 10 populated cities in a district from the world database
+     * @param districtName The name of the district
+     * @param con Established Database Connection
+     * @return An ArrayList of City objects in the specified district
+     */
+    public static ArrayList<City> ReturnCitiesInDistrict(String districtName, Connection con){
+        try{
+            // Creating Statement Object to execute the query
+            Statement stmt = con.createStatement();
+
+            /*
+             * Defining the query to be executed.
+             * QUERY: SELECT CityName, CountryName, DistrictName, Population of a city
+             *        WHERE DistrictName equals the specified district name
+             *        ORDER BY population in descending order with a limit of 10
+             */
+            String sqlQueryCitiesInDistrict = "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population FROM world.city " +
+                    "INNER JOIN world.country ON world.city.CountryCode = world.country.Code " +
+                    "WHERE world.city.District = \"" + districtName + "\" " +
+                    "ORDER BY world.city.Population DESC LIMIT 10;";
+
+            // Storing the results in a ResultSet object
+            ResultSet citiesInDistrictResult = stmt.executeQuery(sqlQueryCitiesInDistrict);
+
+            // Creating an ArrayList of City objects to store and return the results
+            ArrayList<City> cities = new ArrayList<>();
+
+            // Retrieving the results from the ResultSet object as long as there is data left
+            while (citiesInDistrictResult.next()) {
+                // Creating a City object to be stored in the ArrayList
+                City city = new City();
+
+                // Setting the attributes of the City object
+                city.setCity_name(citiesInDistrictResult.getString(1));
+                city.setCountry_name(citiesInDistrictResult.getString(2));
+                city.setDistrict_name(citiesInDistrictResult.getString(3));
+                city.setCity_population(citiesInDistrictResult.getInt(4));
+
+                // Adding the City object to the ArrayList
+                cities.add(city);
+            }
+
+            return cities;
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city populations");
+            return null;
+        }
+    }
+
+    /**
+     * Prints the top 10 populated cities in a district from the world database
+     * @param districtName The name of the district
+     * @param cities An ArrayList of City objects
+     */
+    public static void printResult(String districtName, ArrayList<City> cities){
+        System.out.println("--------------------------------------Top 10 most populated Cities in a District by Largest Population to Smallest-------------------------------");
+        System.out.println("| District: " + districtName + "                                                                                    ORDER: Largest to Smallest Population|");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-35s | %-40s | %-35s | %-20s | %n", "Name", "Country", "District", "Population");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------");
+
+        // For all the objects in the cities ArrayList, format and print the values (Strings and Digits)
+        for (City city : cities){
+            // Printing the City object's attributes
+            System.out.printf("| %-35s | %-40s | %-35s | %,20d | %n", city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
+        }
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------");
+    }
+}
