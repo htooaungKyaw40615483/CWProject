@@ -45,9 +45,6 @@ public class App
         // REPORT: Top 10 Cities in the World/Continent/Region/Country/District
         Top10CitiesInWorld.printResult(Top10CitiesInWorld.ReturnCity(con));
 
-
-
-
         // disconnecting the database
         connection.disconnect();
     }
