@@ -28,9 +28,9 @@ public class App
         AllCountriesInWorld.printResult(AllCountriesInWorld.ReturnCountries(con));
         AllCountriesInContinent.printResult(continent, AllCountriesInContinent.ReturnCountries(continent,con));
         AllCountriesInRegion.printResult(region, AllCountriesInRegion.ReturnCountries(region,con));
-        Top5CountriesInWorld.printResult(Top5CountriesInWorld.ReturnCountries(con));
-        Top5CountriesInContinent.printResult(continent, Top5CountriesInContinent.ReturnCountries(continent,con));
-        Top5CountriesInRegion.printResult(region, Top5CountriesInRegion.ReturnCountries(region,con));
+        Top10CountriesInWorld.printResult(Top10CountriesInWorld.ReturnCountries(con));
+        Top10CountriesInContinent.printResult(continent, Top10CountriesInContinent.ReturnCountries(continent,con));
+        Top10CountriesInRegion.printResult(region, Top10CountriesInRegion.ReturnCountries(region,con));
 
 
         AllCitiesInWorld.printResult(AllCitiesInWorld.getAllCities(con));
