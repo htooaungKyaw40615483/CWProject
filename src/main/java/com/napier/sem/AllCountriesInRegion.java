@@ -10,10 +10,10 @@ import java.util.ArrayList;
 public class AllCountriesInRegion {
 
     /**
-     * Return a country's cities from the world database
+     * Return a countries population in region from the world database
      * @param rn Predefined Region Name
      * @param con Established Database Connection
-     * @return the Country Objects in an ArrayList which is from a single continent.
+     * @return the Country Objects in an ArrayList which is from a single region.
      */
     public static ArrayList<Country> ReturnCountries(String rn, Connection con){
         try{
@@ -24,24 +24,24 @@ public class AllCountriesInRegion {
              QUERY: To SELECT CountryCode, CountryName, ContinentName, RegionName, Population of a Country
              and capital name after JOINing two tables with City ID ORDERED by population in descending.
             */
-            String sqlQueryCountryInWorld = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name " +
+            String sqlQueryCountryInRegion = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name " +
                     "FROM `country` INNER JOIN city ON country.Capital = city.ID " +
                     "WHERE country.Region = \"" + rn + "\" ORDER BY country.Population DESC;;";
             // Storing the results in a ResultSet object, ALlCountriesInRegionResult
-            ResultSet CountriesInWorld = stmt.executeQuery(sqlQueryCountryInWorld);
+            ResultSet CountriesInRegion = stmt.executeQuery(sqlQueryCountryInRegion);
             // Creating an arraylist of country objects to be stored and returned from the method
             ArrayList<Country> Countries = new ArrayList<Country>();
-            // Retrieving the results from ResultSet object, CountriesInWorldResult as long as there is data left
-            while(CountriesInWorld.next()) {
+            // Retrieving the results from ResultSet object, CountriesInRegionResult as long as there is data left
+            while(CountriesInRegion.next()) {
                 // Creating a Country object to be stored in arraylist
                 Country country = new Country();
                 // setting the attributes of country object with Setter
-                country.setCountry_no(CountriesInWorld.getString(1));
-                country.setCountry_name(CountriesInWorld.getString(2));
-                country.setContinent_name(CountriesInWorld.getString(3));
-                country.setRegion_name(CountriesInWorld.getString(4));
-                country.setPopulation(CountriesInWorld.getInt(5));
-                country.setCapital_name(CountriesInWorld.getString(6));
+                country.setCountry_no(CountriesInRegion.getString(1));
+                country.setCountry_name(CountriesInRegion.getString(2));
+                country.setContinent_name(CountriesInRegion.getString(3));
+                country.setRegion_name(CountriesInRegion.getString(4));
+                country.setPopulation(CountriesInRegion.getInt(5));
+                country.setCapital_name(CountriesInRegion.getString(6));
                 // adding the country object to the arraylist
                 Countries.add(country);
             }
@@ -59,8 +59,8 @@ public class AllCountriesInRegion {
     }
 
     /**
-     * Printing a country's cities from the world database
-     * @param countries arraylist of city objects.
+     * Printing a countries' population by a region name from the world database
+     * @param countries arraylist of country objects.
      */
 
     public static void printResult(String rn, ArrayList<Country> countries){

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class AllCountriesInContinent {
 
     /**
-     * Return a country's cities from the world database
+     * Return a countries population in continent from the world database
      * @param ctn Predefined Continent Name
      * @param con Established Database Connection
      * @return the Country Objects in an ArrayList which is from a single continent.
@@ -26,29 +26,29 @@ public class AllCountriesInContinent {
              and capital name after JOINing two tables with City ID ORDERED by population in descending.
             */
 
-            String sqlQueryCountryInWorld = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name FROM `country` " +
+            String sqlQueryCountryInContinent = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name FROM `country` " +
                                             "INNER JOIN city ON country.Capital = city.ID " +
                                             "WHERE country.Continent = \"" + ctn + "\" ORDER BY country.Population DESC;";
 
             // Storing the results in a ResultSet object, ALlCountriesInContinentResult
-            ResultSet CountriesInWorld = stmt.executeQuery(sqlQueryCountryInWorld);
+            ResultSet CountriesInContinent = stmt.executeQuery(sqlQueryCountryInContinent);
 
             // Creating an arraylist of country objects to be stored and returned from the method
             ArrayList<Country> Countries = new ArrayList<Country>();
 
-            // Retrieving the results from ResultSet object, CountriesInWorldResult as long as there is data left
-            while(CountriesInWorld.next()) {
+            // Retrieving the results from ResultSet object, CountriesInContinentResult as long as there is data left
+            while(CountriesInContinent.next()) {
 
                 // Creating a Country object to be stored in arraylist
                 Country country = new Country();
 
                 // setting the attributes of country object with Setter
-                country.setCountry_no(CountriesInWorld.getString(1));
-                country.setCountry_name(CountriesInWorld.getString(2));
-                country.setContinent_name(CountriesInWorld.getString(3));
-                country.setRegion_name(CountriesInWorld.getString(4));
-                country.setPopulation(CountriesInWorld.getInt(5));
-                country.setCapital_name(CountriesInWorld.getString(6));
+                country.setCountry_no(CountriesInContinent.getString(1));
+                country.setCountry_name(CountriesInContinent.getString(2));
+                country.setContinent_name(CountriesInContinent.getString(3));
+                country.setRegion_name(CountriesInContinent.getString(4));
+                country.setPopulation(CountriesInContinent.getInt(5));
+                country.setCapital_name(CountriesInContinent.getString(6));
 
                 // adding the country object to the arraylist
                 Countries.add(country);
@@ -66,8 +66,8 @@ public class AllCountriesInContinent {
         }
     }
     /**
-     * Printing a country's cities from the world database
-     * @param countries arraylist of city objects.
+     * Printing a countries' population by continent from the world database
+     * @param countries arraylist of country objects.
      */
     public static void printResult(String ctn, ArrayList<Country> countries){
         System.out.println("---------------------------------------------------All Countries in the Continent By Largest Population To Smallest---------------------------------------------------------------");

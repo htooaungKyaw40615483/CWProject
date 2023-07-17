@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 public class Top10CountriesInRegion {
     /**
-     * Return a country's cities from the world database
+     * Return a top 10 populated countries in region from the world database
      * @param rn Predefined Region Name
      * @param con Established Database Connection
-     * @return the Country Objects in an ArrayList which is from a single continent.
+     * @return the Country Objects in an ArrayList which is from a single region.
      */
     public static ArrayList<Country> ReturnCountries(String rn, Connection con){
         try{
@@ -19,26 +19,26 @@ public class Top10CountriesInRegion {
             /*
              Defining the Query to be executed.
              QUERY: To SELECT CountryCode, CountryName, ContinentName, RegionName, Population of a Country
-             and capital name after JOINing two tables with City ID ORDERED by population in descending.
+             and capital name after JOINing two tables with City ID ORDERED by population in descending limit 10.
             */
-            String sqlQueryCountryInWorld = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name " +
+            String sqlQueryTop10CountryInRegion = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name " +
                     "FROM `country` INNER JOIN city ON country.Capital = city.ID " +
                     "WHERE country.Region = \"" + rn + "\" ORDER BY country.Population DESC LIMIT 10;;";
-            // Storing the results in a ResultSet object, ALlCountriesInRegionResult
-            ResultSet CountriesInWorld = stmt.executeQuery(sqlQueryCountryInWorld);
+            // Storing the results in a ResultSet object, Top10CountriesInRegionResult
+            ResultSet Top10CountriesInRegion = stmt.executeQuery(sqlQueryTop10CountryInRegion);
             // Creating an arraylist of country objects to be stored and returned from the method
             ArrayList<Country> Countries = new ArrayList<Country>();
-            // Retrieving the results from ResultSet object, CountriesInWorldResult as long as there is data left
-            while(CountriesInWorld.next()) {
+            // Retrieving the results from ResultSet object, Top10CountriesInRegionResult as long as there is data left
+            while(Top10CountriesInRegion.next()) {
                 // Creating a Country object to be stored in arraylist
                 Country country = new Country();
                 // setting the attributes of country object with Setter
-                country.setCountry_no(CountriesInWorld.getString(1));
-                country.setCountry_name(CountriesInWorld.getString(2));
-                country.setContinent_name(CountriesInWorld.getString(3));
-                country.setRegion_name(CountriesInWorld.getString(4));
-                country.setPopulation(CountriesInWorld.getInt(5));
-                country.setCapital_name(CountriesInWorld.getString(6));
+                country.setCountry_no(Top10CountriesInRegion.getString(1));
+                country.setCountry_name(Top10CountriesInRegion.getString(2));
+                country.setContinent_name(Top10CountriesInRegion.getString(3));
+                country.setRegion_name(Top10CountriesInRegion.getString(4));
+                country.setPopulation(Top10CountriesInRegion.getInt(5));
+                country.setCapital_name(Top10CountriesInRegion.getString(6));
                 // adding the country object to the arraylist
                 Countries.add(country);
             }
@@ -56,8 +56,8 @@ public class Top10CountriesInRegion {
     }
 
     /**
-     * Printing a country's cities from the world database
-     * @param countries arraylist of city objects.
+     * Printing a top 10 populated countries in a region from the world database
+     * @param countries arraylist of country objects.
      */
 
     public static void printResult(String rn, ArrayList<Country> countries){
