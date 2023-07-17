@@ -28,20 +28,20 @@ public class Top10CitiesInContinent {
                     "ORDER BY world.city.Population DESC LIMIT 10;";
 
             // Storing the results in a ResultSet object, ALlCitiesInContinentResult
-            ResultSet cityInCountryResult = stmt.executeQuery(sqlQueryCityInContinent);
+            ResultSet cityInContinentResult = stmt.executeQuery(sqlQueryCityInContinent);
 
             // Creating an arraylist of city objects to be stored and returned from the method
             ArrayList<City> Cities = new ArrayList<City>();
 
             // Retrieving the results from ResultSet object, CitiesInWorldResult as long as there is data left
-            while(cityInCountryResult.next()) {
+            while(cityInContinentResult.next()) {
 
                 // Creating a City object to be stored in arraylist
                 City city = new City();
-                city.setCity_name(cityInCountryResult.getString(1));
-                city.setCountry_name(cityInCountryResult.getString(2));
-                city.setDistrict_name(cityInCountryResult.getString(3));
-                city.setCity_population(cityInCountryResult.getInt(4));
+                city.setCity_name(cityInContinentResult.getString(1));
+                city.setCountry_name(cityInContinentResult.getString(2));
+                city.setDistrict_name(cityInContinentResult.getString(3));
+                city.setCity_population(cityInContinentResult.getInt(4));
 
                 // adding the city object to the arraylist
                 Cities.add(city);
@@ -64,7 +64,7 @@ public class Top10CitiesInContinent {
      * @param cities arraylist of city objects.
      */
     public static void printResult(String bc, ArrayList<City> cities){
-        System.out.println("-------------------------------------------All Cities in A Continent by Largest Population to Smallest-----------------------------------------");
+        System.out.println("-------------------------------------------Top 10 Cities in A Continent by Largest Population to Smallest-----------------------------------------");
         System.out.println("| Continent: " + bc + "                                                                               ORDER: Largest to Smallest Population|");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-35s | %-40s | %-35s | %-20s | %n", "Name", "Country", "District", "Population");
