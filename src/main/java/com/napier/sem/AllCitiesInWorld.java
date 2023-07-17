@@ -12,6 +12,7 @@ public class AllCitiesInWorld {
         try {
             // Creating SQL Statement
             Statement stmt = con.createStatement();
+
             /*
              * Create string for SQL statement for extracting City Name, Country Name, District name, Population,
              * Country Code
