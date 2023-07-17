@@ -64,8 +64,8 @@ public class Top10CitiesInWorld {
      * Printing a country's cities from the world database
      * @param cities arraylist of city objects.
      */
-    public static void printResult(String cn, ArrayList<City> cities){
-        System.out.println("-------------------------------------------Top 10 Populated Cities in The World-------------------------------------------");
+    public static void printResult(ArrayList<City> cities){
+        System.out.println("------------------------------------------------------Top 10 Populated Cities in The World-----------------------------------------------------");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-35s | %-40s | %-35s | %-20s | %n", "Name", "Country", "District", "Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
