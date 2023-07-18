@@ -12,7 +12,7 @@ public class Top10CitiesInDistrict {
      * @param con Established Database Connection
      * @return An ArrayList of City objects in the specified district
      */
-    public static ArrayList<City> ReturnCitiesInDistrict(String districtName, Connection con){
+    public static ArrayList<City> returnCitiesInDistrict(String districtName, Connection con){
         try{
             // Creating Statement Object to execute the query
             Statement stmt = con.createStatement();

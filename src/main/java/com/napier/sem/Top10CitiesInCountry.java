@@ -13,7 +13,7 @@ public class Top10CitiesInCountry {
      * @param con         Established database connection.
      * @return An ArrayList of City objects representing the top 10 populated cities in the country.
      */
-    public static ArrayList<City> ReturnCitiesInCountry(String countryName, Connection con) {
+    public static ArrayList<City> returnCitiesInCountry(String countryName, Connection con) {
         try {
             // Creating a Statement object to execute the query
             Statement stmt = con.createStatement();
