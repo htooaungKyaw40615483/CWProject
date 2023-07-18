@@ -67,7 +67,16 @@ public class AllCitiesInDistrict {
      * @param cities arraylist of city objects.
      */
     public static void printResult(String dn, ArrayList<City> cities){
-        if(cities == null || dn == null){
+        if(dn == null && cities == null){
+            System.out.println("There is no cities or defined district name");
+            return;
+        }
+        if (cities == null) {
+            System.out.println("There is no cities");
+            return;
+        }
+        if(dn == null){
+            System.out.println("The district name is not defined");
             return;
         }
         System.out.println("-------------------------------------------All Cities in A District by Largest Population to Smallest------------------------------------------");
