@@ -58,18 +58,14 @@ public class AllCitiesInWorld {
     public static void printResult(ArrayList<City> cities) {
         System.out.println("-------------------------------------------All Cities in the World by Largest Population to Smallest-------------------------------------------");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-35s | %-40s | %-35s | %-20s |%n", "No.", "Name", "Country", "District", "Population");
+        System.out.printf("| %-35s | %-40s | %-35s | %-20s |%n", "Name", "Country", "District", "Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
 
         // For all the objects in cities arraylist, formatting and printing the values (Strings and Digits)
         for (City city : cities) {
-        int i=1;
-        int count = cities.size();
+
             // Printing the city object's attributes with Getter.
-            while (i<=count) {
-                System.out.printf("| %-35s | %-40s | %-35s | %,20d |%n", i, city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
-                i++;
-            }
+            System.out.printf("| %-35s | %-40s | %-35s | %,20d |%n", city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         }
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
     }
