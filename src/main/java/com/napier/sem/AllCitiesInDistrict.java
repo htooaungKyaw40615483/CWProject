@@ -14,7 +14,13 @@ public class AllCitiesInDistrict {
      * @return the City Objects in an ArrayList which is from a single District.
      */
     public static ArrayList<City> ReturnCity(String dn, Connection con){
+        //Checking if the district name is entered.
+        if (dn == null){
+            System.out.println("The district name is not defined.");
+        }
+
         try{
+
             // Creating Statement Object to execute Query
             Statement stmt = con.createStatement();
 
@@ -67,18 +73,25 @@ public class AllCitiesInDistrict {
      * @param cities arraylist of city objects.
      */
     public static void printResult(String dn, ArrayList<City> cities){
+        // Check if the district name AND cities is null. If not, move on to the next condition.
         if(dn == null && cities == null){
             System.out.println("There is no cities or defined district name");
             return;
         }
+
+        // Check if cities arraylist is null. If not, move on to the next condition.
         if (cities == null) {
             System.out.println("There is no cities");
             return;
         }
+
+        // Check if district name (dn) is null. If not, move on to the next condition.
         if(dn == null){
             System.out.println("The district name is not defined");
             return;
         }
+
+        // Printing out the headers of the report table.
         System.out.println("-------------------------------------------All Cities in A District by Largest Population to Smallest------------------------------------------");
         System.out.println("| District: " + dn + "                                                                                       ORDER: Largest to Smallest Population|");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
