@@ -12,7 +12,7 @@ public class Top10CitiesInDistrict {
      * @param con Established Database Connection
      * @return An ArrayList of City objects in the specified district
      */
-    public static ArrayList<City> ReturnCitiesInDistrict(String districtName, Connection con){
+    public static ArrayList<City> returnCitiesInDistrict(String districtName, Connection con){
         try{
             // Creating Statement Object to execute the query
             Statement stmt = con.createStatement();
@@ -23,27 +23,27 @@ public class Top10CitiesInDistrict {
              *        WHERE DistrictName equals the specified district name
              *        ORDER BY population in descending order with a limit of 10
              */
-            String sqlQueryCitiesInDistrict = "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population FROM world.city " +
+            String sqlQueryTop10CitiesInDistrict = "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population FROM world.city " +
                     "INNER JOIN world.country ON world.city.CountryCode = world.country.Code " +
                     "WHERE world.city.District = \"" + districtName + "\" " +
                     "ORDER BY world.city.Population DESC LIMIT 10;";
 
             // Storing the results in a ResultSet object
-            ResultSet citiesInDistrictResult = stmt.executeQuery(sqlQueryCitiesInDistrict);
+            ResultSet top10citiesInDistrictResult = stmt.executeQuery(sqlQueryTop10CitiesInDistrict);
 
             // Creating an ArrayList of City objects to store and return the results
             ArrayList<City> cities = new ArrayList<>();
 
             // Retrieving the results from the ResultSet object as long as there is data left
-            while (citiesInDistrictResult.next()) {
+            while (top10citiesInDistrictResult.next()) {
                 // Creating a City object to be stored in the ArrayList
                 City city = new City();
 
                 // Setting the attributes of the City object
-                city.setCity_name(citiesInDistrictResult.getString(1));
-                city.setCountry_name(citiesInDistrictResult.getString(2));
-                city.setDistrict_name(citiesInDistrictResult.getString(3));
-                city.setCity_population(citiesInDistrictResult.getInt(4));
+                city.setCityName(top10citiesInDistrictResult.getString(1));
+                city.setCountryName(top10citiesInDistrictResult.getString(2));
+                city.setDistrictName(top10citiesInDistrictResult.getString(3));
+                city.setCityPopulation(top10citiesInDistrictResult.getInt(4));
 
                 // Adding the City object to the ArrayList
                 cities.add(city);

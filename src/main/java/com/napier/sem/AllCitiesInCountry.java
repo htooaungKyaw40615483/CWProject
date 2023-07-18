@@ -9,11 +9,11 @@ import java.util.ArrayList;
 public class AllCitiesInCountry {
     /**
      * Return a country's cities from the world database
-     * @param cn Predefined Country Name
+     * @param countryName Predefined Country Name
      * @param con Established Database Connection
      * @return the City Objects in an ArrayList which is from a single country.
      */
-    public static ArrayList<City> ReturnCity(String cn, Connection con){
+    public static ArrayList<City> ReturnCity(String countryName, Connection con){
         try{
             // Creating Statement Object to execute Query
             Statement stmt = con.createStatement();
@@ -25,14 +25,14 @@ public class AllCitiesInCountry {
             */
             String sqlQueryCityInCountry = "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population FROM world.city " +
                     "INNER JOIN world.country ON world.city.CountryCode = world.country.Code " +
-                    "WHERE world.country.Name= \"" + cn + "\" " +
+                    "WHERE world.country.Name= \"" + countryName + "\" " +
                     "ORDER BY world.city.Population DESC;";
 
             // Storing the results in a ResultSet object, cityInCountryResult
             ResultSet cityInCountryResult = stmt.executeQuery(sqlQueryCityInCountry);
 
             // Creating an arraylist of city objects to be stored and returned from the method
-            ArrayList<City> Cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<City>();
 
             // Retrieving the results from ResultSet object, cityInCountryResult as long as there is data left
             while(cityInCountryResult.next()) {
@@ -41,15 +41,15 @@ public class AllCitiesInCountry {
                 City city = new City();
 
                 // setting the attributes of city object with Setter
-                city.setCity_name(cityInCountryResult.getString(1));
-                city.setCountry_name(cityInCountryResult.getString(2));
-                city.setDistrict_name(cityInCountryResult.getString(3));
-                city.setCity_population(cityInCountryResult.getInt(4));
+                city.setCityName(cityInCountryResult.getString(1));
+                city.setCountryName(cityInCountryResult.getString(2));
+                city.setDistrictName(cityInCountryResult.getString(3));
+                city.setCityPopulation(cityInCountryResult.getInt(4));
 
                 // adding the city object to the arraylist
-                Cities.add(city);
+                cities.add(city);
             }
-            return Cities;
+            return cities;
         }
         /*
          Catching the error if there is
@@ -68,7 +68,7 @@ public class AllCitiesInCountry {
      */
     public static void printResult(String cn, ArrayList<City> cities){
         System.out.println("-------------------------------------------All Cities in A Country by Largest Population to Smallest-------------------------------------------");
-        System.out.println("| Country: " + cn + "                                                                                         ORDER: Largest to Smallest Population|");
+        System.out.println("| Country: " + cn + "                                                                                         Total Cities: " + cities.size());
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-35s | %-40s | %-35s | %-20s | %n", "Name", "Country", "District", "Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");

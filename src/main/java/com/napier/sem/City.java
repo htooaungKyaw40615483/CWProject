@@ -4,13 +4,13 @@ package com.napier.sem;
 // Class Attributes used only with getMethod (read-only) or setMethod(write-only).
 public class City {
     // City Name
-    private String city_name;
+    private String cityName;
     // Country Name
-    private String country_name;
+    private String countryName;
     // District Name
-    private String district_name;
+    private String districtName;
     // City Population
-    private int city_population;
+    private int cityPopulation;
 
 
     // Getters for accessing the class attributes only for reading values.
@@ -20,7 +20,7 @@ public class City {
      * @return City Name
      */
     public String getCityName(){
-        return city_name;
+        return cityName;
     }
 
     /**
@@ -28,7 +28,7 @@ public class City {
      * @return Country Name
      */
     public String getCountryName(){
-        return country_name;
+        return countryName;
     }
 
     /**
@@ -36,7 +36,7 @@ public class City {
      * @return District Name
      */
     public String getDistrictName(){
-        return district_name;
+        return districtName;
     }
 
     /**
@@ -44,7 +44,7 @@ public class City {
      * @return City Population
      */
     public int getCityPopulation(){
-        return city_population;
+        return cityPopulation;
     }
 
 
@@ -52,30 +52,30 @@ public class City {
 
     /**
      * Setting the City Name of the Class
-     * @param city_name City Name
+     * @param cityName City Name
      */
-    public void setCity_name(String city_name) {
-        this.city_name = city_name;
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
     }
     /**
      * Setting the Country Name of the Class
-     * @param country_name Country Name
+     * @param countryName Country Name
      */
-    public void setCountry_name(String country_name) {
-        this.country_name = country_name;
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
     }
     /**
      * Setting the District Name of the Class
-     * @param district_name District Name
+     * @param districtName District Name
      */
-    public void setDistrict_name(String district_name) {
-        this.district_name = district_name;
+    public void setDistrictName(String districtName) {
+        this.districtName = districtName;
     }
     /**
      * Setting the City Population of the Class
-     * @param city_population City Population
+     * @param cityPopulation City Population
      */
-    public void setCity_population(int city_population) {
-        this.city_population = city_population;
+    public void setCityPopulation(int cityPopulation) {
+        this.cityPopulation = cityPopulation;
     }
 }
