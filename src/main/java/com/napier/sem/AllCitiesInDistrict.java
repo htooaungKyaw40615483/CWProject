@@ -67,6 +67,9 @@ public class AllCitiesInDistrict {
      * @param cities arraylist of city objects.
      */
     public static void printResult(String dn, ArrayList<City> cities){
+        if(cities == null || dn == null){
+            return;
+        }
         System.out.println("-------------------------------------------All Cities in A District by Largest Population to Smallest------------------------------------------");
         System.out.println("| District: " + dn + "                                                                                       ORDER: Largest to Smallest Population|");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");

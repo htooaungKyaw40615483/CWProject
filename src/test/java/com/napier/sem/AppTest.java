@@ -21,7 +21,7 @@ public class AppTest
     @Test
     void printResultsTestNull()
     {
-        // Do
+        // will throw java.lang.NullPointerException if the null is not checked in AllCitiesInDistrict.
         ACID.printResult(null, null);
     }
 }
