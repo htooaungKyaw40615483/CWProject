@@ -14,6 +14,11 @@ public class AllCitiesInDistrict {
      * @return the City Objects in an ArrayList which is from a single District.
      */
     public static ArrayList<City> returnCity(String districtName, Connection con){
+        //Checking if the district name is entered.
+        if (districtName == null){
+            System.out.println("The district name is not defined.");
+        }
+
         try{
             // Creating Statement Object to execute Query
             Statement stmt = con.createStatement();

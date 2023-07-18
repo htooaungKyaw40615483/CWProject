@@ -39,13 +39,14 @@ public class App
         AllCitiesInWorld.printResult(AllCitiesInWorld.getAllCities(con));
         AllCitiesInContinent.printResult(CONTINENT, AllCitiesInContinent.returnCity(CONTINENT,con));
         AllCitiesInRegion.printResult(REGION, AllCitiesInRegion.returnCity(REGION,con));
-        AllCitiesInCountry.printResult(COUNTRY, AllCitiesInCountry.ReturnCity(COUNTRY,con));
+        AllCitiesInCountry.printResult(COUNTRY, AllCitiesInCountry.returnCity(COUNTRY,con));
         AllCitiesInDistrict.printResult(DISTRICT, AllCitiesInDistrict.returnCity(DISTRICT,con));
 
         // REPORT: Top 10 Cities in the World/Continent/Region/Country/District
         Top10CitiesInWorld.printResult(Top10CitiesInWorld.returnCity(con));
         Top10CitiesInContinent.printResult(CONTINENT, Top10CitiesInContinent.returnCity(CONTINENT,con));
         Top10CitiesInRegion.printResult(REGION, Top10CitiesInRegion.returnCity(REGION,con));
+
         Top10CitiesInDistrict.printResult(DISTRICT, Top10CitiesInDistrict.returnCitiesInDistrict(DISTRICT, con));
         Top10CitiesInCountry.printResult(COUNTRY, Top10CitiesInCountry.returnCitiesInCountry(COUNTRY, con));
 
