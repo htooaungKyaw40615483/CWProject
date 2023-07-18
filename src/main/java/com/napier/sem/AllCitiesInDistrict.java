@@ -79,14 +79,11 @@ public class AllCitiesInDistrict {
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
         for (int  i = 1; i<=cities.size(); i++) {
         // For all the objects in cities arraylist, formatting and printing the values (Strings and Digits)
+            System.out.println(i);
         for (City city :cities){
 
-
                 // Printing the city object's attributes with Getter.
-                System.out.println(i);
                 System.out.printf("| %-35s | %-40s | %-35s | %,20d | %n", city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
-
-
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
 }
         }
