@@ -9,29 +9,29 @@ import java.util.ArrayList;
 public class AllCitiesInContinent {
     /**
      * Return a continent's cities from the world database
-     * @param bc Predefined continent Name
+     * @param continentName Predefined continent Name
      * @param con Established Database Connection
      * @return the City Objects in an ArrayList which is from a single continent.
      */
 
-    public static ArrayList<City> ReturnCity(String bc, Connection con){
+    public static ArrayList<City> returnCity(String continentName, Connection con){
         try{
             Statement stmt = con.createStatement();
             String sqlQueryCityInContinent = "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population FROM world.city " +
                     "INNER JOIN world.country ON world.city.CountryCode = world.country.Code " +
-                    "WHERE world.country.Continent= \"" + bc + "\" " +
+                    "WHERE world.country.Continent= \"" + continentName + "\" " +
                     "ORDER BY world.city.Population DESC;";
             ResultSet cityInContinentResult = stmt.executeQuery(sqlQueryCityInContinent);
-            ArrayList<City> Cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<City>();
             while(cityInContinentResult.next()) {
                 City city = new City();
-                city.setCity_name(cityInContinentResult.getString(1));
-                city.setCountry_name(cityInContinentResult.getString(2));
-                city.setDistrict_name(cityInContinentResult.getString(3));
-                city.setCity_population(cityInContinentResult.getInt(4));
-                Cities.add(city);
+                city.setCityName(cityInContinentResult.getString(1));
+                city.setCountryName(cityInContinentResult.getString(2));
+                city.setDistrictName(cityInContinentResult.getString(3));
+                city.setCityPopulation(cityInContinentResult.getInt(4));
+                cities.add(city);
             }
-            return Cities;
+            return cities;
         }
         catch(Exception e) {
             System.out.println(e.getMessage());
@@ -44,9 +44,9 @@ public class AllCitiesInContinent {
      * Printing a continent's cities from the world database
      * @param cities arraylist of city objects.
      */
-    public static void printResult(String bc, ArrayList<City> cities){
+    public static void printResult(String continentName, ArrayList<City> cities){
         System.out.println("-------------------------------------------All Cities in A Continent by Largest Population to Smallest-----------------------------------------");
-        System.out.println("| Continent: " + bc + "                                                                               ORDER: Largest to Smallest Population|");
+        System.out.println("| Continent: " + continentName + "                                                                               Total Cities: " + cities.size());
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-35s | %-40s | %-35s | %-20s | %n", "Name", "Country", "District", "Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");

@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public class Top10CitiesInContinent {
     /**
      * Return a top 10 continent's cities from the world database
-     * @param bc Predefined continent Name
+     * @param continentName Predefined continent Name
      * @param con Established Database Connection
      * @return the City Objects in an ArrayList which is from a single continent.
      */
 
-    public static ArrayList<City> ReturnCity(String bc, Connection con){
+    public static ArrayList<City> returnCity(String continentName, Connection con){
         try{
 
             // Creating Statement Object to execute Query
@@ -25,33 +25,33 @@ public class Top10CitiesInContinent {
              and continent name after JOINing two tables with City ID ORDERED by population in descending with limit of 10.
             */
 
-            String sqlQueryCityInContinent = "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population FROM world.city " +
+            String sqlQueryTop10CityInContinent = "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population FROM world.city " +
                     "INNER JOIN world.country ON world.city.CountryCode = world.country.Code " +
-                    "WHERE world.country.Continent= \"" + bc + "\" " +
+                    "WHERE world.country.Continent= \"" + continentName + "\" " +
                     "ORDER BY world.city.Population DESC LIMIT 10;";
 
             // Storing the results in a ResultSet object, ALlCitiesInContinentResult
-            ResultSet cityInContinentResult = stmt.executeQuery(sqlQueryCityInContinent);
+            ResultSet top10CityInContinentResult = stmt.executeQuery(sqlQueryTop10CityInContinent);
 
             // Creating an arraylist of city objects to be stored and returned from the method
-            ArrayList<City> Cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<City>();
 
             // Retrieving the results from ResultSet object, CitiesInContinentResult as long as there is data left
-            while(cityInContinentResult.next()) {
+            while(top10CityInContinentResult.next()) {
 
                 // Creating a City object to be stored in arraylist
                 City city = new City();
 
                 // setting the attributes of city object with Setter
-                city.setCity_name(cityInContinentResult.getString(1));
-                city.setCountry_name(cityInContinentResult.getString(2));
-                city.setDistrict_name(cityInContinentResult.getString(3));
-                city.setCity_population(cityInContinentResult.getInt(4));
+                city.setCityName(top10CityInContinentResult.getString(1));
+                city.setCountryName(top10CityInContinentResult.getString(2));
+                city.setDistrictName(top10CityInContinentResult.getString(3));
+                city.setCityPopulation(top10CityInContinentResult.getInt(4));
 
                 // adding the city object to the arraylist
-                Cities.add(city);
+                cities.add(city);
             }
-            return Cities;
+            return cities;
         }
         /*
          Catching the error if there is
@@ -68,9 +68,9 @@ public class Top10CitiesInContinent {
      * Printing a top 10 cities in continent from the world database
      * @param cities arraylist of city objects.
      */
-    public static void printResult(String bc, ArrayList<City> cities){
+    public static void printResult(String continentName, ArrayList<City> cities){
         System.out.println("--------------------------------------Top 10 most populated Cities in A Continent by Largest Population to Smallest----------------------------");
-        System.out.println("| Continent: " + bc + "                                                                               ORDER: Largest to Smallest Population|");
+        System.out.println("| Continent: " + continentName + "                                                                               ORDER: Largest to Smallest Population|");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-35s | %-40s | %-35s | %-20s | %n", "Name", "Country", "District", "Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");

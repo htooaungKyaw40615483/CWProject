@@ -11,11 +11,11 @@ public class AllCountriesInRegion {
 
     /**
      * Return a countries population in region from the world database
-     * @param rn Predefined Region Name
+     * @param regionName Predefined Region Name
      * @param con Established Database Connection
      * @return the Country Objects in an ArrayList which is from a single region.
      */
-    public static ArrayList<Country> ReturnCountries(String rn, Connection con){
+    public static ArrayList<Country> returnCountries(String regionName, Connection con){
         try{
             // Creating Statement Object to execute Query
             Statement stmt = con.createStatement();
@@ -26,26 +26,26 @@ public class AllCountriesInRegion {
             */
             String sqlQueryCountryInRegion = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name " +
                     "FROM `country` INNER JOIN city ON country.Capital = city.ID " +
-                    "WHERE country.Region = \"" + rn + "\" ORDER BY country.Population DESC;;";
+                    "WHERE country.Region = \"" + regionName + "\" ORDER BY country.Population DESC;;";
             // Storing the results in a ResultSet object, ALlCountriesInRegionResult
-            ResultSet CountriesInRegion = stmt.executeQuery(sqlQueryCountryInRegion);
+            ResultSet countriesInRegion = stmt.executeQuery(sqlQueryCountryInRegion);
             // Creating an arraylist of country objects to be stored and returned from the method
-            ArrayList<Country> Countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<Country>();
             // Retrieving the results from ResultSet object, CountriesInRegionResult as long as there is data left
-            while(CountriesInRegion.next()) {
+            while(countriesInRegion.next()) {
                 // Creating a Country object to be stored in arraylist
                 Country country = new Country();
                 // setting the attributes of country object with Setter
-                country.setCountry_no(CountriesInRegion.getString(1));
-                country.setCountry_name(CountriesInRegion.getString(2));
-                country.setContinent_name(CountriesInRegion.getString(3));
-                country.setRegion_name(CountriesInRegion.getString(4));
-                country.setPopulation(CountriesInRegion.getInt(5));
-                country.setCapital_name(CountriesInRegion.getString(6));
+                country.setCountryNo(countriesInRegion.getString(1));
+                country.setCountryName(countriesInRegion.getString(2));
+                country.setContinentName(countriesInRegion.getString(3));
+                country.setRegionName(countriesInRegion.getString(4));
+                country.setPopulation(countriesInRegion.getInt(5));
+                country.setCapitalName(countriesInRegion.getString(6));
                 // adding the country object to the arraylist
-                Countries.add(country);
+                countries.add(country);
             }
-            return Countries;
+            return countries;
         }
         /*
          Catching the error if there is
@@ -63,16 +63,16 @@ public class AllCountriesInRegion {
      * @param countries arraylist of country objects.
      */
 
-    public static void printResult(String rn, ArrayList<Country> countries){
+    public static void printResult(String regionName, ArrayList<Country> countries){
         System.out.println("---------------------------------------------------All Countries in the Region By Largest Population To Smallest------------------------------------------------------------------");
-        System.out.println("| Region: " + rn + "                                                                                                                         ORDER: Largest to Smallest Population|");
+        System.out.println("| Region: " + regionName + "                                                                                                                         Total Countries: " + countries.size());
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-4s | %-40s | %-30s | %-30s | %-20s | %-35s | %n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         // For all the objects in countries arraylist, formatting and printing the values (Strings and Digits)
         for (Country country :countries){
             // Printing the country object's attributes with Getter.
-            System.out.printf("| %-4s | %-40s | %-30s | %-30s | %,20d | %-35s | %n", country.getCountry_no(), country.getCountry_name(), country.getContinent_name(), country.getRegion_name(), country.getPopulation(), country.getCapital_name());
+            System.out.printf("| %-4s | %-40s | %-30s | %-30s | %,20d | %-35s | %n", country.getCountryNo(), country.getCountryName(), country.getContinentName(), country.getRegionName(), country.getPopulation(), country.getCapitalName());
         }
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
