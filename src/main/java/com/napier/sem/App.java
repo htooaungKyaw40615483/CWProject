@@ -26,26 +26,26 @@ public class App
 
         // Creating the classes to make reports
         // REPORT: All Countries in the World/Continent/Region
-        AllCountriesInWorld.printResult(AllCountriesInWorld.ReturnCountries(con));
-        AllCountriesInContinent.printResult(continent, AllCountriesInContinent.ReturnCountries(continent,con));
-        AllCountriesInRegion.printResult(region, AllCountriesInRegion.ReturnCountries(region,con));
+        AllCountriesInWorld.printResult(AllCountriesInWorld.returnCountries(con));
+        AllCountriesInContinent.printResult(continent, AllCountriesInContinent.returnCountries(continent,con));
+        AllCountriesInRegion.printResult(region, AllCountriesInRegion.returnCountries(region,con));
 
         // REPORT: Top 10 Countries in the World/Continent/Region
-        Top10CountriesInWorld.printResult(Top10CountriesInWorld.ReturnCountries(con));
-        Top10CountriesInContinent.printResult(continent, Top10CountriesInContinent.ReturnCountries(continent,con));
-        Top10CountriesInRegion.printResult(region, Top10CountriesInRegion.ReturnCountries(region,con));
+        Top10CountriesInWorld.printResult(Top10CountriesInWorld.returnCountries(con));
+        Top10CountriesInContinent.printResult(continent, Top10CountriesInContinent.returnCountries(continent,con));
+        Top10CountriesInRegion.printResult(region, Top10CountriesInRegion.returnCountries(region,con));
 
         // REPORT: All Cities in the World/Continent/Region/Country/District
         AllCitiesInWorld.printResult(AllCitiesInWorld.getAllCities(con));
-        AllCitiesInContinent.printResult(continent, AllCitiesInContinent.ReturnCity(continent,con));
-        AllCitiesInRegion.printResult(region, AllCitiesInRegion.ReturnCity(region,con));
-        AllCitiesInCountry.printResult(country, AllCitiesInCountry.ReturnCity(country,con));
-        AllCitiesInDistrict.printResult(district, AllCitiesInDistrict.ReturnCity(district,con));
+        AllCitiesInContinent.printResult(continent, AllCitiesInContinent.returnCity(continent,con));
+        AllCitiesInRegion.printResult(region, AllCitiesInRegion.returnCity(region,con));
+        AllCitiesInCountry.printResult(country, AllCitiesInCountry.returnCity(country,con));
+        AllCitiesInDistrict.printResult(district, AllCitiesInDistrict.returnCity(district,con));
 
         // REPORT: Top 10 Cities in the World/Continent/Region/Country/District
-        Top10CitiesInWorld.printResult(Top10CitiesInWorld.ReturnCity(con));
-        Top10CitiesInContinent.printResult(continent, Top10CitiesInContinent.ReturnCity(continent,con));
-        Top10CitiesInRegion.printResult(region, Top10CitiesInRegion.ReturnCity(region,con));
+        Top10CitiesInWorld.printResult(Top10CitiesInWorld.returnCity(con));
+        Top10CitiesInContinent.printResult(continent, Top10CitiesInContinent.returnCity(continent,con));
+        Top10CitiesInRegion.printResult(region, Top10CitiesInRegion.returnCity(region,con));
 
         Top10CitiesInDistrict.printResult(district, Top10CitiesInDistrict.returnCitiesInDistrict(district, con));
         Top10CitiesInCountry.printResult(country, Top10CitiesInCountry.returnCitiesInCountry(country, con));

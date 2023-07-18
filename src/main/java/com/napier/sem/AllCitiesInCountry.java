@@ -13,7 +13,7 @@ public class AllCitiesInCountry {
      * @param con Established Database Connection
      * @return the City Objects in an ArrayList which is from a single country.
      */
-    public static ArrayList<City> ReturnCity(String countryName, Connection con){
+    public static ArrayList<City> returnCity(String countryName, Connection con){
         try{
             // Creating Statement Object to execute Query
             Statement stmt = con.createStatement();
@@ -66,9 +66,9 @@ public class AllCitiesInCountry {
      * Printing a country's cities from the world database
      * @param cities arraylist of city objects.
      */
-    public static void printResult(String cn, ArrayList<City> cities){
+    public static void printResult(String countryName, ArrayList<City> cities){
         System.out.println("-------------------------------------------All Cities in A Country by Largest Population to Smallest-------------------------------------------");
-        System.out.println("| Country: " + cn + "                                                                                         Total Cities: " + cities.size());
+        System.out.println("| Country: " + countryName + "                                                                                         Total Cities: " + cities.size());
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-35s | %-40s | %-35s | %-20s | %n", "Name", "Country", "District", "Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
