@@ -74,7 +74,7 @@ public class AllCitiesInCountry {
     public static void printResult(String countryName, ArrayList<City> cities){
         // Check if the country name AND cities is null. If not, move on to the next condition.
         if(countryName == null && cities == null){
-            System.out.println("There is no cities or defined district name");
+            System.out.println("There is no cities or defined country name");
             return;
         }
 
@@ -86,7 +86,7 @@ public class AllCitiesInCountry {
 
         // Check if country name is null. If not, move on to the next condition.
         if(countryName == null){
-            System.out.println("The district name is not defined");
+            System.out.println("The country name is not defined");
             return;
         }
 
