@@ -14,9 +14,22 @@ public class AllCitiesInCountry {
      * @return the City Objects in an ArrayList which is from a single country.
      */
     public static ArrayList<City> returnCity(String countryName, Connection con){
+        // Checking if both the country name and connection object is null.
+        if (con == null && countryName == null){
+            System.out.println("The country name is empty and connection has not been established.");
+            return null;
+        }
+
         //Checking if the country name is entered.
         if (countryName == null){
             System.out.println("The Country name is not defined.");
+            return null;
+        }
+
+        // Checking if the connection has been established.
+        if (con == null){
+            System.out.println("The connection has not been established");
+            return null;
         }
 
         try{
