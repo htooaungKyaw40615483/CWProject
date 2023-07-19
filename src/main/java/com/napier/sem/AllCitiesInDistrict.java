@@ -84,7 +84,7 @@ public class AllCitiesInDistrict {
             return;
         }
 
-        // Check if district name (dn) is null. If not, move on to the next condition.
+        // Check if district name is null. If not, move on to the next condition.
         if(districtName == null){
             System.out.println("The district name is not defined");
             return;
