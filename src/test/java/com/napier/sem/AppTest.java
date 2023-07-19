@@ -44,13 +44,13 @@ public class AppTest
     void printResultCityTestNull(){
         ArrayList<City> cities = new ArrayList<City>();
         City city = new City();
-        city.setCity_population(99999999);
+        city.setCityPopulation(99999999);
         cities.add(city);
         ACID.printResult("Bíobío", cities);
     }
 
     @Test
     void ReturnCityTestNull(){
-        ACID.ReturnCity(null, null);
+        ACID.returnCity(null,null);
     }
 }
