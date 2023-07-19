@@ -17,7 +17,7 @@ public class AllCitiesInDistrictTest
 
     // Testing printResults
     @Test
-    void printResultsTestNull()
+    void printResultTestNull()
     {
         // will throw java.lang.NullPointerException if the null is not checked in AllCitiesInDistrict.
         ACID.printResult(null, null);
@@ -46,7 +46,7 @@ public class AllCitiesInDistrictTest
     }
 
     @Test
-    void ReturnCityTestNull(){
+    void returnCityTestNull(){
         ACID.returnCity(null,null);
     }
 }
