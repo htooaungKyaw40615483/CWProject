@@ -11,7 +11,7 @@ public class Top10CountriesInWorld {
      * @param con Established Database Connection
      * @return the Country Objects in an ArrayList which is from the whole world.
      */
-    public static ArrayList<Country> ReturnCountries(Connection con){
+    public static ArrayList<Country> returnCountries(Connection con){
         try{
             // Creating Statement Object to execute Query
             Statement stmt = con.createStatement();
@@ -23,24 +23,24 @@ public class Top10CountriesInWorld {
             String sqlQueryTop10CountryInWorld = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name " +
                     "FROM country, city WHERE city.ID = country.Capital ORDER BY country.Population DESC LIMIT 10;";
             // Storing the results in a ResultSet object, Top10CountriesInWorldResult
-            ResultSet Top10CountriesInWorld = stmt.executeQuery(sqlQueryTop10CountryInWorld);
+            ResultSet top10CountriesInWorld = stmt.executeQuery(sqlQueryTop10CountryInWorld);
             // Creating an arraylist of country objects to be stored and returned from the method
-            ArrayList<Country> Countries = new ArrayList<Country>();
+            ArrayList<Country> countries = new ArrayList<Country>();
             // Retrieving the results from ResultSet object, Top10CountriesInWorldResult as long as there is data left
-            while(Top10CountriesInWorld.next()) {
+            while(top10CountriesInWorld.next()) {
                 // Creating a Country object to be stored in arraylist
                 Country country = new Country();
                 // setting the attributes of country object with Setter
-                country.setCountry_no(Top10CountriesInWorld.getString(1));
-                country.setCountry_name(Top10CountriesInWorld.getString(2));
-                country.setContinent_name(Top10CountriesInWorld.getString(3));
-                country.setRegion_name(Top10CountriesInWorld.getString(4));
-                country.setPopulation(Top10CountriesInWorld.getInt(5));
-                country.setCapital_name(Top10CountriesInWorld.getString(6));
+                country.setCountryNo(top10CountriesInWorld.getString(1));
+                country.setCountryName(top10CountriesInWorld.getString(2));
+                country.setContinentName(top10CountriesInWorld.getString(3));
+                country.setRegionName(top10CountriesInWorld.getString(4));
+                country.setPopulation(top10CountriesInWorld.getInt(5));
+                country.setCapitalName(top10CountriesInWorld.getString(6));
                 // adding the country object to the arraylist
-                Countries.add(country);
+                countries.add(country);
             }
-            return Countries;
+            return countries;
         }
          /*
          Catching the error if there is
@@ -65,7 +65,7 @@ public class Top10CountriesInWorld {
         // For all the objects in countries arraylist, formatting and printing the values (Strings and Digits)
         for (Country country :countries){
             // Printing the country object's attributes with Getter.
-            System.out.printf("| %-4s | %-40s | %-30s | %-30s | %,20d | %-35s | %n", country.getCountry_no(), country.getCountry_name(), country.getContinent_name(), country.getRegion_name(), country.getPopulation(), country.getCapital_name());
+            System.out.printf("| %-4s | %-40s | %-30s | %-30s | %,20d | %-35s | %n", country.getCountryNo(), country.getCountryName(), country.getContinentName(), country.getRegionName(), country.getPopulation(), country.getCapitalName());
         }
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 

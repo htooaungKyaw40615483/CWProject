@@ -5,17 +5,17 @@ package com.napier.sem;
 public class Country
 {
         // Country Code
-        private String country_no;
+        private String countryNo;
         // Country Name
-        private String country_name;
+        private String countryName;
         // Continent Name
-        private String continent_name;
+        private String continentName;
         // Region Name
-        private String region_name;
+        private String regionName;
         // Country's Population
         private int population;
         // Capital City of Country
-        private String capital_name;
+        private String capitalName;
 
 
         // Getters for accessing the class attributes only for reading values.
@@ -24,29 +24,29 @@ public class Country
          * Getting the Country Code of the Class
          * @return Country Code
          */
-        public String getCountry_no() {
-                return country_no;
+        public String getCountryNo() {
+                return countryNo;
         }
         /**
          * Getting the Country Name of the Class
          * @return Country Name
          */
-        public String getCountry_name() {
-                return country_name;
+        public String getCountryName() {
+                return countryName;
         }
         /**
          * Getting the Continent Name of the Class
          * @return Continent Name of the Country
          */
-        public String getContinent_name() {
-                return continent_name;
+        public String getContinentName() {
+                return continentName;
         }
         /**
          * Getting the Region Name of the Class
          * @return Region Name of the Country
          */
-        public String getRegion_name() {
-                return region_name;
+        public String getRegionName() {
+                return regionName;
         }
         /**
          * Getting the Country Population of the Class
@@ -59,8 +59,8 @@ public class Country
          * Getting the Country Capital City Name of the Class
          * @return Country's Capital City Name
          */
-        public String getCapital_name() {
-                return capital_name;
+        public String getCapitalName() {
+                return capitalName;
         }
 
 
@@ -68,31 +68,31 @@ public class Country
 
         /**
          * Setting the Country Code of the Class
-         * @param country_no Country Code
+         * @param countryNo Country Code
          */
-        public void setCountry_no(String country_no) {
-                this.country_no = country_no;
+        public void setCountryNo(String countryNo) {
+                this.countryNo = countryNo;
         }
         /**
          * Setting the Country Name of the Class
-         * @param country_name Country Name
+         * @param countryName Country Name
          */
-        public void setCountry_name(String country_name) {
-                this.country_name = country_name;
+        public void setCountryName(String countryName) {
+                this.countryName = countryName;
         }
         /**
          * Setting the Continent Name of the Class
-         * @param continent_name Continent Name of the country
+         * @param continentName Continent Name of the country
          */
-        public void setContinent_name(String continent_name) {
-                this.continent_name = continent_name;
+        public void setContinentName(String continentName) {
+                this.continentName = continentName;
         }
         /**
          * Setting the Region Name of the Class
-         * @param region_name Region Name of the country
+         * @param regionName Region Name of the country
          */
-        public void setRegion_name(String region_name) {
-                this.region_name = region_name;
+        public void setRegionName(String regionName) {
+                this.regionName = regionName;
         }
         /**
          * Setting the Country's Population of the Class
@@ -103,9 +103,9 @@ public class Country
         }
         /**
          * Setting the Country's Capital City Name of the Class
-         * @param capital_name Country's Capital City Name
+         * @param capitalName Country's Capital City Name
          */
-        public void setCapital_name(String capital_name) {
-                this.capital_name = capital_name;
+        public void setCapitalName(String capitalName) {
+                this.capitalName = capitalName;
         }
 }

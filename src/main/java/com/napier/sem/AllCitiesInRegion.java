@@ -10,28 +10,28 @@ import java.util.ArrayList;
 public class AllCitiesInRegion {
     /**
      * Return a region's cities from the world database
-     * @param ab Predefined region Name
+     * @param regionName Predefined region Name
      * @param con Established Database Connection
      * @return the City Objects in an ArrayList which is from a single region.
      */
-    public static ArrayList<City> ReturnCity(String ab, Connection con){
+    public static ArrayList<City> returnCity(String regionName, Connection con){
         try{
             Statement stmt = con.createStatement();
             String sqlQueryCityInRegion = "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population FROM world.city " +
                     "INNER JOIN world.country ON world.city.CountryCode = world.country.Code " +
-                    "WHERE world.country.Region= \"" + ab + "\" " +
+                    "WHERE world.country.Region= \"" + regionName + "\" " +
                     "ORDER BY world.city.Population DESC;";
             ResultSet cityInRegionResult = stmt.executeQuery(sqlQueryCityInRegion);
-            ArrayList<City> Cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<City>();
             while(cityInRegionResult.next()) {
                 City city = new City();
-                city.setCity_name(cityInRegionResult.getString(1));
-                city.setCountry_name(cityInRegionResult.getString(2));
-                city.setDistrict_name(cityInRegionResult.getString(3));
-                city.setCity_population(cityInRegionResult.getInt(4));
-                Cities.add(city);
+                city.setCityName(cityInRegionResult.getString(1));
+                city.setCountryName(cityInRegionResult.getString(2));
+                city.setDistrictName(cityInRegionResult.getString(3));
+                city.setCityPopulation(cityInRegionResult.getInt(4));
+                cities.add(city);
             }
-            return Cities;
+            return cities;
         }
         catch(Exception e) {
             System.out.println(e.getMessage());
@@ -44,9 +44,9 @@ public class AllCitiesInRegion {
      * Printing a region's cities from the world database
      * @param cities arraylist of city objects.
      */
-    public static void printResult(String ab, ArrayList<City> cities){
+    public static void printResult(String regionName, ArrayList<City> cities){
         System.out.println("-------------------------------------------All Cities in A Region by Largest Population to Smallest--------------------------------------------");
-        System.out.println("| Region: " + ab + "                                                                                      ORDER: Largest to Smallest Population|");
+        System.out.println("| Region: " + regionName + "                                                                                      Total Cities: " + cities.size());
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-35s | %-40s | %-35s | %-20s | %n", "Name", "Country", "District", "Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");

@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public class Top10CitiesInRegion {
     /**
      * Return a top 10 region's cities from the world database
-     * @param ab Predefined region Name
+     * @param regionName Predefined region Name
      * @param con Established Database Connection
      * @return the City Objects in an ArrayList which is from a single region.
      */
-    public static ArrayList<City> ReturnCity(String ab, Connection con){
+    public static ArrayList<City> returnCity(String regionName, Connection con){
         try{
 
             // Creating Statement Object to execute Query
@@ -24,33 +24,33 @@ public class Top10CitiesInRegion {
              and region name after JOINing two tables with City ID ORDERED by population in descending with limit of 10.
             */
 
-            String sqlQueryCityInRegion = "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population FROM world.city " +
+            String sqlQueryTop10CityInRegion = "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population FROM world.city " +
                     "INNER JOIN world.country ON world.city.CountryCode = world.country.Code " +
-                    "WHERE world.country.Region= \"" + ab + "\" " +
+                    "WHERE world.country.Region= \"" + regionName + "\" " +
                     "ORDER BY world.city.Population DESC LIMIT 10;";
 
             // Storing the results in a ResultSet object, ALlCitiesInRegionResult
-            ResultSet cityInRegionResult = stmt.executeQuery(sqlQueryCityInRegion);
+            ResultSet top10CityInRegionResult = stmt.executeQuery(sqlQueryTop10CityInRegion);
 
             // Creating an arraylist of city objects to be stored and returned from the method
-            ArrayList<City> Cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<City>();
 
             // Retrieving the results from ResultSet object, CitiesInRegionResult as long as there is data left
-            while(cityInRegionResult.next()) {
+            while(top10CityInRegionResult.next()) {
 
                 // Creating a City object to be stored in arraylist
                 City city = new City();
 
                 // setting the attributes of city object with Setter
-                city.setCity_name(cityInRegionResult.getString(1));
-                city.setCountry_name(cityInRegionResult.getString(2));
-                city.setDistrict_name(cityInRegionResult.getString(3));
-                city.setCity_population(cityInRegionResult.getInt(4));
+                city.setCityName(top10CityInRegionResult.getString(1));
+                city.setCountryName(top10CityInRegionResult.getString(2));
+                city.setDistrictName(top10CityInRegionResult.getString(3));
+                city.setCityPopulation(top10CityInRegionResult.getInt(4));
 
                 // adding the city object to the arraylist
-                Cities.add(city);
+                cities.add(city);
             }
-            return Cities;
+            return cities;
         }
 
          /*
@@ -69,9 +69,9 @@ public class Top10CitiesInRegion {
      * Printing a top 10 cities in region from the world database
      * @param cities arraylist of city objects.
      */
-    public static void printResult(String ab, ArrayList<City> cities){
+    public static void printResult(String regionName, ArrayList<City> cities){
         System.out.println("--------------------------------------Top 10 most populated Cities in A Region by Largest Population to Smallest-------------------------------");
-        System.out.println("| Region: " + ab + "                                                                                      ORDER: Largest to Smallest Population|");
+        System.out.println("| Region: " + regionName + "                                                                                      ORDER: Largest to Smallest Population|");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-35s | %-40s | %-35s | %-20s | %n", "Name", "Country", "District", "Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");

@@ -34,10 +34,10 @@ public class AllCitiesInWorld {
                 City city = new City();
 
                 // setting the attributes of city object with Setter
-                city.setCity_name(allCitiesResult.getString(1));
-                city.setCountry_name(allCitiesResult.getString(2));
-                city.setDistrict_name(allCitiesResult.getString(3));
-                city.setCity_population(allCitiesResult.getInt(4));
+                city.setCityName(allCitiesResult.getString(1));
+                city.setCountryName(allCitiesResult.getString(2));
+                city.setDistrictName(allCitiesResult.getString(3));
+                city.setCityPopulation(allCitiesResult.getInt(4));
 
                 //adding the city object to the arraylist
                 cities.add(city);
@@ -57,7 +57,7 @@ public class AllCitiesInWorld {
 
     public static void printResult(ArrayList<City> cities) {
         System.out.println("-------------------------------------------All Cities in the World by Largest Population to Smallest-------------------------------------------");
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("Total number of Cities: " + cities.size() + " -----------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-35s | %-40s | %-35s | %-20s |%n", "Name", "Country", "District", "Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
 

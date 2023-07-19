@@ -11,7 +11,7 @@ public class Top10CitiesInWorld {
      * @param con Established Database Connection
      * @return the City Objects in an ArrayList
      */
-    public static ArrayList<City> ReturnCity(Connection con){
+    public static ArrayList<City> returnCity(Connection con){
         try{
             // Creating Statement Object to execute Query
             Statement stmt = con.createStatement();
@@ -21,33 +21,33 @@ public class Top10CitiesInWorld {
              QUERY: To SELECT CityName, CountryName, DistrictName, Population of a City
              after JOINing two tables with country code ORDERED by population in descending.
             */
-            String sqlQueryCityInWorld =
+            String sqlQueryTop10CityInWorld =
                     "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population " +
                             "FROM world.city INNER JOIN world.country ON world.city.CountryCode = world.country.Code " +
                             "ORDER BY world.city.Population DESC LIMIT 10;";
 
-            // Storing the results in a ResultSet object, cityInWorldResult
-            ResultSet cityInWorldResult = stmt.executeQuery(sqlQueryCityInWorld);
+            // Storing the results in a ResultSet object, top10CityInWorldResult
+            ResultSet top10CityInWorldResult = stmt.executeQuery(sqlQueryTop10CityInWorld);
 
             // Creating an arraylist of city objects to be stored and returned from the method
-            ArrayList<City> Cities = new ArrayList<City>();
+            ArrayList<City> cities = new ArrayList<City>();
 
-            // Retrieving the results from ResultSet object, cityInWorldResult as long as there is data left
-            while(cityInWorldResult.next()) {
+            // Retrieving the results from ResultSet object, top10CityInWorldResult as long as there is data left
+            while(top10CityInWorldResult.next()) {
 
                 // Creating a City object to be stored in arraylist
                 City city = new City();
 
                 // setting the attributes of city object with Setter
-                city.setCity_name(cityInWorldResult.getString(1));
-                city.setCountry_name(cityInWorldResult.getString(2));
-                city.setDistrict_name(cityInWorldResult.getString(3));
-                city.setCity_population(cityInWorldResult.getInt(4));
+                city.setCityName(top10CityInWorldResult.getString(1));
+                city.setCountryName(top10CityInWorldResult.getString(2));
+                city.setDistrictName(top10CityInWorldResult.getString(3));
+                city.setCityPopulation(top10CityInWorldResult.getInt(4));
 
                 // adding the city object to the arraylist
-                Cities.add(city);
+                cities.add(city);
             }
-            return Cities;
+            return cities;
         }
         /*
          Catching the error if there is
