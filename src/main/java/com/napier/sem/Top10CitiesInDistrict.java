@@ -63,17 +63,17 @@ public class Top10CitiesInDistrict {
      * @param cities An ArrayList of City objects
      */
     public static void printResult(String districtName, ArrayList<City> cities){
-        System.out.println("--------------------------------------Top 10 most populated Cities in a District by Largest Population to Smallest-------------------------------");
+        System.out.println("--------------------------------------Top 10 most populated Cities in a District by Largest Population to Smallest-----------------------------");
         System.out.println("| District: " + districtName + "                                                                                    ORDER: Largest to Smallest Population|");
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-35s | %-40s | %-35s | %-20s | %n", "Name", "Country", "District", "Population");
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
 
         // For all the objects in the cities ArrayList, format and print the values (Strings and Digits)
         for (City city : cities){
             // Printing the City object's attributes
             System.out.printf("| %-35s | %-40s | %-35s | %,20d | %n", city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         }
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
     }
 }
