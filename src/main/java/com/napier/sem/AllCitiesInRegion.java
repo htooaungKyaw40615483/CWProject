@@ -48,7 +48,7 @@ public class AllCitiesInRegion {
         System.out.println("-------------------------------------------All Cities in A Region by Largest Population to Smallest--------------------------------------------");
         System.out.println("| Region: " + regionName + "                                                                                      Total Cities: " + cities.size());
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-35s | %-35s | %-35s | %-20s | %n", "Name", "Country", "District", "Population");
+        System.out.printf("| %-35s | %-35s | %-35s | %-21s | %n", "Name", "Country", "District", "Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
 
         int  i = 1;
