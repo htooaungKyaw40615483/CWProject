@@ -84,7 +84,7 @@ public class AllCitiesInDistrict {
 
 
                 // Printing the city object's attributes with Getter.
-                System.out.printf("| %,2d | %-35s | %-30s | %-30s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
+                System.out.printf("| %,2d | %-31s | %-30s | %-30s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
 
 }
