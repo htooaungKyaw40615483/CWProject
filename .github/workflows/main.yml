@@ -2,8 +2,23 @@ name: Workflow For World Population Report
 on: push
 
 jobs:
+  UnitTests:
+    name: Unit Tests
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      - name: Unit Tests
+        run: mvn -Dtest=com.napier.sem.AllCitiesInCountry test
   build:
-    name: Population Report Action
+    name: Build and Start Using Docker-compose
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
@@ -19,4 +34,3 @@ jobs:
         run: mvn package
       - name: Run docker compose
         run: docker-compose up --abort-on-container-exit
-
