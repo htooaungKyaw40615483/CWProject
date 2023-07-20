@@ -75,7 +75,7 @@ public class AllCitiesInDistrict {
         System.out.println("-------------------------------------------All Cities in A District by Largest Population to Smallest------------------------------------------");
         System.out.println("| District: " + districtName + "                                                                                       Total Cities: " + cities.size());
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-35s | %-40s | %-35s | %-20s | %n", "Name", "Country", "District", "Population");
+        System.out.printf("| %,2d | %-30s | %-35s | %-35s | %-20s | %n", "Name", "Country", "District", "Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
 
             // For all the objects in cities arraylist, formatting and printing the values (Strings and Digits)
@@ -84,7 +84,7 @@ public class AllCitiesInDistrict {
 
 
                 // Printing the city object's attributes with Getter.
-                System.out.printf("| %,2d | %-35s | %-40s | %-35s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
+                System.out.printf("| %,2d | %-30s | %-35s | %-35s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
 
 }
