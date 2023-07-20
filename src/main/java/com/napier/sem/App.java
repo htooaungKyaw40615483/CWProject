@@ -10,7 +10,7 @@ public class App
     public static void main(String[] args)
     {
         // Initialize the variables.
-        String DISTRICT = "Bíobío";
+        String DISTRICT = "Saitama";
         String COUNTRY = "China";
         String REGION = "Caribbean";
         String CONTINENT="North America";
