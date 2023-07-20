@@ -70,7 +70,7 @@ public class AllCitiesInCountry {
         System.out.println("-------------------------------------------All Cities in A Country by Largest Population to Smallest-------------------------------------------");
         System.out.println("| Country: " + countryName + "                                                                                         Total Cities: " + cities.size());
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-36s | %-35s | %-35s | %-21s | %n", "Name", "Country", "District", "Population");
+        System.out.printf("| %-37s | %-35s | %-35s | %-21s | %n", "Name", "Country", "District", "Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
 
         int  i = 1;

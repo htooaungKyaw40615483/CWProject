@@ -48,7 +48,7 @@ public class AllCitiesInContinent {
         System.out.println("-------------------------------------------All Cities in A Continent by Largest Population to Smallest-----------------------------------------");
         System.out.println("| Continent: " + continentName + "                                                                               Total Cities: " + cities.size());
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-35s | %-35s | %-35s | %-21s | %n", "Name", "Country", "District", "Population");
+        System.out.printf("| %-37s | %-35s | %-35s | %-21s | %n", "Name", "Country", "District", "Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
 
         int  i = 1;
@@ -56,7 +56,7 @@ public class AllCitiesInContinent {
         // For all the objects in cities arraylist, formatting and printing the values (Strings and Digits)
         for (City city :cities){
             // Printing the city object's attributes with Getter.
-            System.out.printf("| %,2d | %-30s | %-35s | %-34s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
+            System.out.printf("| %,3d | %-31s | %-35s | %-34s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         }
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
 
