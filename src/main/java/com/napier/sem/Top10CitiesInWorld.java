@@ -67,7 +67,7 @@ public class Top10CitiesInWorld {
     public static void printResult(ArrayList<City> cities){
         System.out.println("------------------------------------------------------Top 10 Populated Cities in The World-----------------------------------------------------");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-37s | %-38s | %-35s | %-20s | %n", "Name", "Country", "District", "Population");
+        System.out.printf("| %-40s | %-33s | %-33s | %-20s | %n", "Name", "Country", "District", "Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
 
         int  i = 1;
@@ -76,7 +76,7 @@ public class Top10CitiesInWorld {
         for (City city :cities){
 
             // Printing the city object's attributes with Getter.
-            System.out.printf("| %,2d | %-35s | %-40s | %-35s | %,20d | %n", i++, city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
+            System.out.printf("| %,2d | %-35s | %-35s | %-32s | %,20d | %n", i++, city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         }
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
 
