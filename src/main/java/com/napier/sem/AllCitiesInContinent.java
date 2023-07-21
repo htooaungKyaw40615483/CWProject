@@ -15,6 +15,9 @@ public class AllCitiesInContinent {
      */
 
     public static ArrayList<City> returnCity(String continentName, Connection con){
+        if (continentName == null){
+            System.out.println("The continent name is not defined.");
+        }
         try{
             Statement stmt = con.createStatement();
             String sqlQueryCityInContinent = "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population FROM world.city " +
@@ -33,6 +36,10 @@ public class AllCitiesInContinent {
             }
             return cities;
         }
+        /*
+         Catching the error if there is
+         Printing the error and returning null
+        */
         catch(Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city populations");
@@ -45,6 +52,23 @@ public class AllCitiesInContinent {
      * @param cities arraylist of city objects.
      */
     public static void printResult(String continentName, ArrayList<City> cities){
+        // Check if the continent name AND cities is null. If not, move on to the next condition.
+        if(continentName == null && cities == null){
+            System.out.println("There is no cities or defined continent name");
+            return;
+        }
+
+        // Check if cities arraylist is null. If not, move on to the next condition.
+        if (cities == null) {
+            System.out.println("There is no cities");
+            return;
+        }
+
+        // Check if district name is null. If not, move on to the next condition.
+        if(continentName == null){
+            System.out.println("The continent name is not defined");
+            return;
+        }
         System.out.println("-------------------------------------------All Cities in A Continent by Largest Population to Smallest--------------------------------------------");
         System.out.println("| Continent: " + continentName + "                                                                               Total Cities: " + cities.size());
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");

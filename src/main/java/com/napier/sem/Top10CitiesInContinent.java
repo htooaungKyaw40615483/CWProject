@@ -15,6 +15,9 @@ public class Top10CitiesInContinent {
 
     public static ArrayList<City> returnCity(String continentName, Connection con){
         try{
+            if (continentName == null){
+                System.out.println("The continent name is not defined.");
+            }
 
             // Creating Statement Object to execute Query
             Statement stmt = con.createStatement();
@@ -69,6 +72,23 @@ public class Top10CitiesInContinent {
      * @param cities arraylist of city objects.
      */
     public static void printResult(String continentName, ArrayList<City> cities){
+        // Check if the continent name AND cities is null. If not, move on to the next condition.
+        if(continentName == null && cities == null){
+            System.out.println("There is no cities or defined continent name");
+            return;
+        }
+
+        // Check if cities arraylist is null. If not, move on to the next condition.
+        if (cities == null) {
+            System.out.println("There is no cities");
+            return;
+        }
+
+        // Check if district name is null. If not, move on to the next condition.
+        if(continentName == null){
+            System.out.println("The continent name is not defined");
+            return;
+        }
         System.out.println("--------------------------------------Top 10 most populated Cities in A Continent by Largest Population to Smallest------------------------");
         System.out.println("| Continent: " + continentName + "                                                                           ORDER: Largest to Smallest Population");
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
