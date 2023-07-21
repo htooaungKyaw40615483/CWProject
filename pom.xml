@@ -8,32 +8,42 @@
   <artifactId>CWProject</artifactId>
   <version>0.1.0.3</version>
 
+  <!-- Dependencies -->
   <dependencies>
+    <!-- MySQL Connector -->
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.18</version>
     </dependency>
+
+    <!-- JUnit Jupiter API -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <version>5.1.0</version>
       <scope>test</scope>
     </dependency>
+
+    <!-- Mockito Core -->
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
       <version>5.4.0</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
+  <!-- Build Configuration -->
   <properties>
-    <maven.compiler.source>10</maven.compiler.source>
-    <maven.compiler.target>10</maven.compiler.target>
+    <!-- Set Java version to 11 -->
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
   </properties>
 
   <build>
     <plugins>
+      <!-- JaCoCo Maven Plugin for Code Coverage -->
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
@@ -53,6 +63,23 @@
           </execution>
         </executions>
       </plugin>
+
+      <!-- Maven Surefire Plugin for Running Tests -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.22.2</version> <!-- Updated version to ensure JUnit 5 compatibility -->
+        <dependencies>
+          <!-- JUnit Jupiter Engine -->
+          <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.1.0</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+
+      <!-- Maven Assembly Plugin for Creating an Executable JAR -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
@@ -80,26 +107,8 @@
         </executions>
       </plugin>
 
+      <!-- Maven Dependency Plugin for Copying Test Dependencies -->
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.19.1</version>
-        <dependencies>
-          <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-surefire-provider</artifactId>
-            <version>1.1.0</version>
-          </dependency>
-          <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.1.0</version>
-          </dependency>
-        </dependencies>
-      </plugin>
-      <plugin>
-
-
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
         <version>3.1.2</version>
@@ -113,13 +122,10 @@
             <configuration>
               <includeScope>test</includeScope>
               <outputDirectory>${project.build.directory}/lib</outputDirectory>
-
             </configuration>
           </execution>
         </executions>
       </plugin>
-
     </plugins>
   </build>
-
 </project>
