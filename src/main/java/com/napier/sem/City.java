@@ -55,13 +55,20 @@ public class City {
      * @param cityName City Name
      */
     public void setCityName(String cityName) {
-        this.cityName = cityName;
+        if (cityName == null){
+            System.out.println("The city name is null");
+            this.cityName = "-";
+        }
+        else {
+            this.cityName = cityName;
+        }
     }
     /**
      * Setting the Country Name of the Class
      * @param countryName Country Name
      */
     public void setCountryName(String countryName) {
+
         this.countryName = countryName;
     }
     /**
