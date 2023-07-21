@@ -95,7 +95,7 @@ public class AllCountriesInContinent {
         System.out.println("---------------------------------------------------All Countries in the Continent By Largest Population To Smallest---------------------------------------------------------------------------");
         System.out.println("| Continent: " + continentName + "                                                                                                                  Total Countries: " + countries.size());
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-5s | %-8s | %-40s | %-30s | %-30s | %-20s | %-35s | %n", "No", "Code", "Name", "Continent", "Region", "Population", "Capital");
+        System.out.printf("| %-5s | %-7s | %-40s | %-25s | %-30s | %-15s | %-35s | %n", "No", "Code", "Name", "Continent", "Region", "Population", "Capital");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
         int  i = 1;
@@ -103,7 +103,7 @@ public class AllCountriesInContinent {
         // For all the objects in countries arraylist, formatting and printing the values (Strings and Digits)
         for (Country country :countries){
             // Printing the country object's attributes with Getter.
-            System.out.printf("| %,5d | %-8s | %-40s | %-30s | %-30s | %,20d | %-35s | %n", i++, country.getCountryNo(), country.getCountryName(), country.getContinentName(), country.getRegionName(), country.getPopulation(), country.getCapitalName());
+            System.out.printf("| %,5d | %-7s | %-40s | %-25s | %-30s | %,15d | %-35s | %n", i++, country.getCountryNo(), country.getCountryName(), country.getContinentName(), country.getRegionName(), country.getPopulation(), country.getCapitalName());
         }
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
