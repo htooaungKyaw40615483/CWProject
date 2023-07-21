@@ -59,7 +59,7 @@ public class AllCitiesInWorld {
         System.out.println("-------------------------------------------All Cities in the World by Largest Population to Smallest-------------------------------------------");
         System.out.println("Total number of Cities: " + cities.size());
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-37s | %-37s | %-33s | %-21s | %n", "Name", "Country", "District", "Population");
+        System.out.printf("| %-38s | %-37s | %-32s | %-21s | %n", "Name", "Country", "District", "Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
 
         int  i = 1;
@@ -67,7 +67,7 @@ public class AllCitiesInWorld {
         // For all the objects in cities arraylist, formatting and printing the values (Strings and Digits)
         for (City city :cities){
             // Printing the city object's attributes with Getter.
-            System.out.printf("| %,3d | %-31s | %-37s | %-32s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
+            System.out.printf("| %,4d | %-31s | %-37s | %-31s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         }
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
     }
