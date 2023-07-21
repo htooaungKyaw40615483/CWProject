@@ -54,5 +54,4 @@ public class AllCitiesInCountryIntegrationTest {
         assertNull(citiesNullCountry);
         ACIC.printResult(nullCountryName, citiesNullCountry);
     }
-
 }
