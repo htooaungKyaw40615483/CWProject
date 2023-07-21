@@ -2,7 +2,7 @@ package com.napier.sem;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
+import org.junit.jupiter.api.AfterAll;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -55,4 +55,33 @@ public class AllCitiesInCountryIntegrationTest {
         ACIC.printResult(nullCountryName, citiesNullCountry);
     }
 
+    @Test
+    public void testReturnCityCountryWithNoCities() {
+        String countryWithNoCities = "Antarctica";
+        ArrayList<City> citiesNoCities = ACIC.returnCity(countryWithNoCities, con);
+
+        // Since no cities are found, returnCity should return null, and the cities list should be empty
+        assertNull(citiesNoCities, "Cities list should be null for a country with no cities.");
+    }
+
+    @Test
+    public void testReturnCityCaseInsensitive() {
+        String countryName = "UnItEd KinGdOm"; // Mixed case country name
+        ArrayList<City> citiesCaseInsensitive = ACIC.returnCity(countryName, con);
+        assertNotNull(citiesCaseInsensitive, "Cities list should not be null.");
+        assertFalse(citiesCaseInsensitive.isEmpty(), "Cities list should not be empty for a valid country.");
+        ACIC.printResult(countryName, citiesCaseInsensitive);
+    }
+
+    @AfterAll
+    public static void tearDown() {
+        // Close the database connection after all tests
+        try {
+            if (con != null) {
+                con.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

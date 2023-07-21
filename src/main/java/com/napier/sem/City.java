@@ -53,16 +53,15 @@ public class City {
     /**
      * Setting the City Name of the Class
      * @param cityName City Name
+     * @throws IllegalArgumentException if cityName is null
      */
     public void setCityName(String cityName) {
-        if (cityName == null){
-            System.out.println("The city name is null");
-            this.cityName = "-";
+        if (cityName == null) {
+            throw new IllegalArgumentException("City name cannot be null.");
         }
-        else {
-            this.cityName = cityName;
-        }
+        this.cityName = cityName;
     }
+
     /**
      * Setting the Country Name of the Class
      * @param countryName Country Name
@@ -85,4 +84,5 @@ public class City {
     public void setCityPopulation(int cityPopulation) {
         this.cityPopulation = cityPopulation;
     }
+
 }
