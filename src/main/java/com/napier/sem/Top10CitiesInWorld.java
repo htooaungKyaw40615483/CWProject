@@ -70,11 +70,13 @@ public class Top10CitiesInWorld {
         System.out.printf("| %-37s | %-38s | %-35s | %-20s | %n", "Name", "Country", "District", "Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
 
+        int  i = 1;
+
         // For all the objects in cities arraylist, formatting and printing the values (Strings and Digits)
         for (City city :cities){
 
             // Printing the city object's attributes with Getter.
-            System.out.printf("| %,2d | %-35s | %-40s | %-35s | %,20d | %n", city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
+            System.out.printf("| %,2d | %-35s | %-40s | %-35s | %,20d | %n", i++, city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         }
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
 
