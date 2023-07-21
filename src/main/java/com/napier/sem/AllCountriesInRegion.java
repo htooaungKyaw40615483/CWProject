@@ -16,6 +16,11 @@ public class AllCountriesInRegion {
      * @return the Country Objects in an ArrayList which is from a single region.
      */
     public static ArrayList<Country> returnCountries(String regionName, Connection con){
+
+        if (regionName == null){
+            System.out.println("The Region name is not defined.");
+        }
+
         try{
             // Creating Statement Object to execute Query
             Statement stmt = con.createStatement();
@@ -64,6 +69,24 @@ public class AllCountriesInRegion {
      */
 
     public static void printResult(String regionName, ArrayList<Country> countries){
+
+        if(regionName == null && countries == null){
+            System.out.println("There is no country or defined region name");
+            return;
+        }
+
+        // Check if countries arraylist is null. If not, move on to the next condition.
+        if (countries == null) {
+            System.out.println("There is no countries");
+            return;
+        }
+
+        // Check if region name is null. If not, move on to the next condition.
+        if(regionName == null){
+            System.out.println("The district name is not defined");
+            return;
+        }
+
         System.out.println("---------------------------------------------------All Countries in the Region By Largest Population To Smallest------------------------------------------------------------------");
         System.out.println("| Region: " + regionName + "                                                                                                                         Total Countries: " + countries.size());
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
