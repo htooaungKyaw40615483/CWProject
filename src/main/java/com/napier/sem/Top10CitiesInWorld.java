@@ -65,6 +65,10 @@ public class Top10CitiesInWorld {
      * @param cities arraylist of city objects.
      */
     public static void printResult(ArrayList<City> cities){
+        if(cities == null){
+            System.out.println("There is no results");
+            return;
+        }
         System.out.println("------------------------------------------------------Top 10 Populated Cities in The World-----------------------------------------------------");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-35s | %-40s | %-35s | %-20s | %n", "Name", "Country", "District", "Population");
