@@ -56,6 +56,12 @@ public class AllCitiesInWorld {
     }
 
     public static void printResult(ArrayList<City> cities) {
+        // Check if cities arraylist is null. If not, move on to the next condition.
+        if (cities == null) {
+            System.out.println("There is no cities");
+            return;
+        }
+
         System.out.println("-------------------------------------------All Cities in the World by Largest Population to Smallest----------------------------------------------");
         System.out.println("Total number of Cities: " + cities.size());
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");

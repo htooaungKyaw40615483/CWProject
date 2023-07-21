@@ -14,6 +14,22 @@ public class Top10CitiesInCountry {
      * @return An ArrayList of City objects representing the top 10 populated cities in the country.
      */
     public static ArrayList<City> returnCitiesInCountry(String countryName, Connection con) {
+        if (con == null && countryName == null){
+            System.out.println("The country name is empty and connection has not been established.");
+            return null;
+        }
+
+        //Checking if the country name is entered.
+        if (countryName == null){
+            System.out.println("The Country name is not defined.");
+            return null;
+        }
+
+        // Checking if the connection has been established.
+        if (con == null){
+            System.out.println("The connection has not been established");
+            return null;
+        }
         try {
             // Creating a Statement object to execute the query
             Statement stmt = con.createStatement();
@@ -65,6 +81,23 @@ public class Top10CitiesInCountry {
      * @param cities      An ArrayList of City objects representing the top 10 populated cities in the country.
      */
     public static void printResult(String countryName, ArrayList<City> cities) {
+        // Check if the country name AND cities is null. If not, move on to the next condition.
+        if(countryName == null && cities == null){
+            System.out.println("There is no cities or defined country name");
+            return;
+        }
+
+        // Check if cities arraylist is null. If not, move on to the next condition.
+        if (cities == null) {
+            System.out.println("There is no cities");
+            return;
+        }
+
+        // Check if country name is null. If not, move on to the next condition.
+        if(countryName == null){
+            System.out.println("The country name is not defined");
+            return;
+        }
         System.out.println("-----------------------------------Top 10 most populated Cities in a Country by Largest Population to Smallest-----------------------------");
         System.out.println("| Country: " + countryName + "                                                                               ORDER: Largest to Smallest Population");
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
