@@ -89,20 +89,20 @@ public class Top10CountriesInContinent {
             return;
         }
 
-        System.out.println("---------------------------------------------------Top 10 Countries in the Continent By Largest Population To Smallest-------------------------------------------------------------");
+        System.out.println("---------------------------------------------------Top 10 Countries in the Continent By Largest Population To Smallest------------------------------------------------------------------------");
         System.out.println("| Continent: " + continentName + "                                                                                                                  ORDER: Largest to Smallest Population|");
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf(" | %-7s | %-25s | %-22s | %-27s | %-20s | %-33s | %n", "Code", "Name", "Continent", "Region", "Population", "Capital");
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-5s | %-8s | %-40s | %-30s | %-30s | %-20s | %-35s | %n", "No", "Code", "Name", "Continent", "Region", "Population", "Capital");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
         int  i = 1;
 
         // For all the objects in countries arraylist, formatting and printing the values (Strings and Digits)
         for (Country country :countries){
             // Printing the country object's attributes with Getter.
-            System.out.printf("| %,2d | %-4s | %-25s | %-19s | %-30s | %,20d | %-33s | %n", i++, country.getCountryNo(), country.getCountryName(), country.getContinentName(), country.getRegionName(), country.getPopulation(), country.getCapitalName());
+            System.out.printf("| %,5d | %-8s | %-40s | %-30s | %-30s | %,20d | %-35s | %n", i++, country.getCountryNo(), country.getCountryName(), country.getContinentName(), country.getRegionName(), country.getPopulation(), country.getCapitalName());
         }
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
     }
 }
