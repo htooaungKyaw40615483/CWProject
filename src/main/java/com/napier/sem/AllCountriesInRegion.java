@@ -92,7 +92,9 @@ public class AllCountriesInRegion {
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-10s | %-40s | %-30s | %-30s | %-20s | %-35s | %n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
         int  i = 1;
+
         // For all the objects in countries arraylist, formatting and printing the values (Strings and Digits)
         for (Country country :countries){
             // Printing the country object's attributes with Getter.
