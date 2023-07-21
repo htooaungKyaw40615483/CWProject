@@ -56,19 +56,19 @@ public class AllCitiesInWorld {
     }
 
     public static void printResult(ArrayList<City> cities) {
-        System.out.println("-------------------------------------------All Cities in the World by Largest Population to Smallest-------------------------------------------");
+        System.out.println("-------------------------------------------All Cities in the World by Largest Population to Smallest----------------------------------------------");
         System.out.println("Total number of Cities: " + cities.size());
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-39s | %-37s | %-32s | %-21s | %n", "Name", "Country", "District", "Population");
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-5s | %-35s | %-37s | %-32s | %-21s | %n", "No", "Name", "Country", "District", "Population");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");
 
         int  i = 1;
 
         // For all the objects in cities arraylist, formatting and printing the values (Strings and Digits)
         for (City city :cities){
             // Printing the city object's attributes with Getter.
-            System.out.printf("| %,5d | %-31s | %-37s | %-31s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
+            System.out.printf("| %,5d | %-35s | %-37s | %-31s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         }
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");
     }
 }

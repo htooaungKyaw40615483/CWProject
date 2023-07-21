@@ -91,20 +91,20 @@ public class AllCitiesInDistrict {
         }
 
         // Printing out the headers of the report table.
-        System.out.println("-------------------------------------------All Cities in A District by Largest Population to Smallest------------------------------------------");
+        System.out.println("-------------------------------------------All Cities in A District by Largest Population to Smallest---------------------------------------------");
         System.out.println("| District: " + districtName + "                                                                                       Total Cities: " + cities.size());
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-35s | %-35s | %-35s | %-21s | %n", "Name", "Country", "District", "Population");
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-5s | %-35s | %-37s | %-32s | %-21s | %n", "No", "Name", "Country", "District", "Population");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");
 
         int  i = 1;
 
         // For all the objects in cities arraylist, formatting and printing the values (Strings and Digits)
         for (City city :cities){
             //Printing the city object's attributes with Getter.
-            System.out.printf("| %,2d | %-30s | %-35s | %-34s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
+            System.out.printf("| %,5d | %-35s | %-37s | %-31s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         }
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");
 
     }
 }
