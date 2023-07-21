@@ -71,7 +71,7 @@ public class Top10CitiesInWorld {
         }
         System.out.println("------------------------------------------------------Top 10 Populated Cities in The World-------------------------------------------------");
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-35s | %-35s | %-35s | %-21s | %n", "Name", "Country", "District", "Population");
+        System.out.printf("| %-2s | %-30s | %-35s | %-34s | %-20s | %n", "No", "Name", "Country", "District", "Population");
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
 
         int  i = 1;
@@ -80,7 +80,7 @@ public class Top10CitiesInWorld {
         for (City city :cities){
 
             // Printing the city object's attributes with Getter.
-            System.out.printf("| %,2d | %-30s | %-35s | %-34s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
+            System.out.printf("| %,2d | %-30s | %-35s | %-34s  | %,20d  | %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         }
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
 
