@@ -18,25 +18,25 @@ public class AllCitiesInDistrictTest
     static AllCitiesInDistrict ACID;
 
     @BeforeAll
-    static void init(){
+    public static void init(){
         ACID = new AllCitiesInDistrict();
     }
 
     // Testing printResults
     @Test
-    void printResultTestNull()
+    public void printResultTestNull()
     {
         // will throw java.lang.NullPointerException if the null is not checked in AllCitiesInDistrict.
         ACID.printResult(null, null);
     }
 
     @Test
-    void printResultCitiesTestNull(){
+    public void printResultCitiesTestNull(){
         ACID.printResult("Bíobío", null);
     }
 
     @Test
-    void printResultDnTestNull(){
+    public void printResultDnTestNull(){
         ArrayList<City> cities = new ArrayList<City>();
         City c = new City();
         cities.add(c);
@@ -44,7 +44,7 @@ public class AllCitiesInDistrictTest
     }
 
     @Test
-    void printResultCityTestNull(){
+    public void printResultCityTestNull(){
         ArrayList<City> cities = new ArrayList<City>();
         City city = new City();
         city.setCityPopulation(99999999);
@@ -53,7 +53,7 @@ public class AllCitiesInDistrictTest
     }
 
     @Test
-    void returnCityTestNull(){
+    public void returnCityTestNull(){
         ACID.returnCity(null,null);
     }
     @Test

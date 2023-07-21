@@ -21,19 +21,19 @@ public class AllCitiesInCountryTest
 
     // Testing printResults
     @Test
-    void printResultTestNull()
+    public void printResultTestNull()
     {
         // will throw java.lang.NullPointerException if the null is not checked in AllCitiesInDistrict.
         ACIC.printResult(null, null);
     }
 
     @Test
-    void printResultCitiesTestNull(){
+    public void printResultCitiesTestNull(){
         ACIC.printResult("China", null);
     }
 
     @Test
-    void printResultDnTestNull(){
+    public void printResultDnTestNull(){
         ArrayList<City> cities = new ArrayList<City>();
         City c = new City();
         cities.add(c);
@@ -41,7 +41,7 @@ public class AllCitiesInCountryTest
     }
 
     @Test
-    void printResultCityTestNull(){
+    public void printResultCityTestNull(){
         ArrayList<City> cities = new ArrayList<City>();
         City city = new City();
         city.setCityPopulation(99999999);
@@ -50,17 +50,17 @@ public class AllCitiesInCountryTest
     }
 
     @Test
-    void returnCityTestNull(){
+    public void returnCityTestNull(){
         ACIC.returnCity(null,null);
     }
 
     @Test
-    void returnCityConTestNull(){
+    public void returnCityConTestNull(){
         ACIC.returnCity("China", null);
     }
 
     @Test
-    void returnCityCountryTestNull(){
+    public void returnCityCountryTestNull(){
         Connection con = mock(Connection.class);
         ACIC.returnCity(null, con);
     }
