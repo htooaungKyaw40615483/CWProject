@@ -16,7 +16,7 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Unit Tests
-        run: mvn -Dtest=com.napier.sem.AllCitiesInCountry test
+        run: mvn -Dtest=com.napier.sem.AllCitiesInCountryTest test
   build:
     name: Build and Start Using Docker-compose
     runs-on: ubuntu-20.04
