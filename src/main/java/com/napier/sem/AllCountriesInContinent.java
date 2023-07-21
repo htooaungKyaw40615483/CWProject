@@ -16,6 +16,10 @@ public class AllCountriesInContinent {
      * @return the Country Objects in an ArrayList which is from a single continent.
      */
     public static ArrayList<Country> returnCountries(String continentName, Connection con){
+        if (continentName == null){
+            System.out.println("The Continent name is not defined.");
+        }
+
         try{
             // Creating Statement Object to execute Query
             Statement stmt = con.createStatement();
@@ -70,6 +74,24 @@ public class AllCountriesInContinent {
      * @param countries arraylist of country objects.
      */
     public static void printResult(String continentName, ArrayList<Country> countries){
+
+        if(continentName == null && countries == null){
+            System.out.println("There is no cities or defined district name");
+            return;
+        }
+
+        // Check if cities arraylist is null. If not, move on to the next condition.
+        if (countries == null) {
+            System.out.println("There is no cities");
+            return;
+        }
+
+        // Check if district name is null. If not, move on to the next condition.
+        if(continentName == null){
+            System.out.println("The district name is not defined");
+            return;
+        }
+
         System.out.println("---------------------------------------------------All Countries in the Continent By Largest Population To Smallest---------------------------------------------------------------");
         System.out.println("| Continent: " + continentName + "                                                                                                                  Total Countries: " + countries.size());
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
