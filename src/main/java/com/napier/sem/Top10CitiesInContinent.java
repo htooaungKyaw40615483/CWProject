@@ -72,13 +72,17 @@ public class Top10CitiesInContinent {
         System.out.println("--------------------------------------Top 10 most populated Cities in A Continent by Largest Population to Smallest----------------------------");
         System.out.println("| Continent: " + continentName + "                                                                               ORDER: Largest to Smallest Population|");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-35s | %-40s | %-35s | %-20s | %n", "Name", "Country", "District", "Population");
+        System.out.printf("| %-35s | %-35s | %-35s | %-21s | %n", "Name", "Country", "District", "Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
+
+
+        int  i = 1;
 
         // For all the objects in cities arraylist, formatting and printing the values (Strings and Digits)
         for (City city :cities){
+
             // Printing the city object's attributes with Getter.
-            System.out.printf("| %-35s | %-40s | %-35s | %,20d | %n", city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
+            System.out.printf("| %,2d | %-30s | %-35s | %-34s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         }
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
 
