@@ -60,7 +60,7 @@ public class Top10CountriesInWorld {
     public static void printResult(ArrayList<Country> countries){
         System.out.println("---------------------------------------------------Top 10 Countries in the World By Largest Population To Smallest------------------------------");
         System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf(" | %-7s | %-25s | %-22s | %-30s | %-20s | %-33s | %n", "Code", "Name", "Continent", "Region", "Population", "Capital");
+        System.out.printf(" | %-7s | %-25s | %-22s | %-27s | %-20s | %-33s | %n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------");
 
         int  i = 1;
@@ -68,7 +68,7 @@ public class Top10CountriesInWorld {
         // For all the objects in countries arraylist, formatting and printing the values (Strings and Digits)
         for (Country country :countries){
             // Printing the country object's attributes with Getter.
-            System.out.printf("| %,2d | %-4s | %-25s | %-22s | %-30s | %,20d | %-33s | %n", i++, country.getCountryNo(), country.getCountryName(), country.getContinentName(), country.getRegionName(), country.getPopulation(), country.getCapitalName());
+            System.out.printf("| %,2d | %-4s | %-25s | %-19s | %-30s | %,20d | %-33s | %n", i++, country.getCountryNo(), country.getCountryName(), country.getContinentName(), country.getRegionName(), country.getPopulation(), country.getCapitalName());
         }
         System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------");
 
