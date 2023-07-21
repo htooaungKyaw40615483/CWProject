@@ -14,6 +14,24 @@ public class AllCitiesInCountry {
      * @return the City Objects in an ArrayList which is from a single country.
      */
     public static ArrayList<City> returnCity(String countryName, Connection con){
+        // Checking if both the country name and connection object is null.
+        if (con == null && countryName == null){
+            System.out.println("The country name is empty and connection has not been established.");
+            return null;
+        }
+
+        //Checking if the country name is entered.
+        if (countryName == null){
+            System.out.println("The Country name is not defined.");
+            return null;
+        }
+
+        // Checking if the connection has been established.
+        if (con == null){
+            System.out.println("The connection has not been established");
+            return null;
+        }
+
         try{
             // Creating Statement Object to execute Query
             Statement stmt = con.createStatement();
@@ -67,6 +85,24 @@ public class AllCitiesInCountry {
      * @param cities arraylist of city objects.
      */
     public static void printResult(String countryName, ArrayList<City> cities){
+        // Check if the country name AND cities is null. If not, move on to the next condition.
+        if(countryName == null && cities == null){
+            System.out.println("There is no cities or defined country name");
+            return;
+        }
+
+        // Check if cities arraylist is null. If not, move on to the next condition.
+        if (cities == null) {
+            System.out.println("There is no cities");
+            return;
+        }
+
+        // Check if country name is null. If not, move on to the next condition.
+        if(countryName == null){
+            System.out.println("The country name is not defined");
+            return;
+        }
+
         System.out.println("-------------------------------------------All Cities in A Country by Largest Population to Smallest-------------------------------------------");
         System.out.println("| Country: " + countryName + "                                                                                         Total Cities: " + cities.size());
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");

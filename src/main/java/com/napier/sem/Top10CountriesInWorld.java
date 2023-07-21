@@ -58,6 +58,10 @@ public class Top10CountriesInWorld {
      * @param countries arraylist of country objects.
      */
     public static void printResult(ArrayList<Country> countries){
+        if(countries == null){
+            System.out.println("There is no results");
+            return;
+        }
         System.out.println("---------------------------------------------------Top 10 Countries in the World By Largest Population To Smallest------------------------------");
         System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf(" | %-7s | %-25s | %-22s | %-27s | %-20s | %-33s | %n", "Code", "Name", "Continent", "Region", "Population", "Capital");

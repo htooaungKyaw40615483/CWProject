@@ -72,6 +72,25 @@ public class AllCitiesInDistrict {
      * @param cities arraylist of city objects.
      */
     public static void printResult(String districtName, ArrayList<City> cities){
+        // Check if the district name AND cities is null. If not, move on to the next condition.
+        if(districtName == null && cities == null){
+            System.out.println("There is no cities or defined district name");
+            return;
+        }
+
+        // Check if cities arraylist is null. If not, move on to the next condition.
+        if (cities == null) {
+            System.out.println("There is no cities");
+            return;
+        }
+
+        // Check if district name is null. If not, move on to the next condition.
+        if(districtName == null){
+            System.out.println("The district name is not defined");
+            return;
+        }
+
+        // Printing out the headers of the report table.
         System.out.println("-------------------------------------------All Cities in A District by Largest Population to Smallest------------------------------------------");
         System.out.println("| District: " + districtName + "                                                                                       Total Cities: " + cities.size());
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
@@ -82,9 +101,10 @@ public class AllCitiesInDistrict {
 
         // For all the objects in cities arraylist, formatting and printing the values (Strings and Digits)
         for (City city :cities){
-        //Printing the city object's attributes with Getter.
-        System.out.printf("| %,2d | %-30s | %-35s | %-34s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
-}
+            //Printing the city object's attributes with Getter.
+            System.out.printf("| %,2d | %-30s | %-35s | %-34s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
+        }
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
+
     }
 }
