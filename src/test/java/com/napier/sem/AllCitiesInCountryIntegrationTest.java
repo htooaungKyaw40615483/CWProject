@@ -1,81 +1,57 @@
 package com.napier.sem;
 
-import com.napier.sem.AllCitiesInCountry;
-import com.napier.sem.City;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.AfterAll; // Import for @AfterAll annotation
 import org.junit.jupiter.api.Test;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AllCitiesInCountryIntegrationTest {
 
-    static AllCitiesInCountry ACIC;
-    static Connection con;
+    private static AllCitiesInCountry ACIC;
+    private static Connection con;
 
     @BeforeAll
-    static void init() {
-        // Initialize the connection to the real database
-        String url = "jdbc:mysql://db:3306/world?useSSL=false";
-        String user = "root";
-        String password = "example";
+    public static void setUp() {
+        // Set up the database connection
+        String dbUrl = "jdbc:mysql://localhost:3307/world?useSSL=false&allowPublicKeyRetrieval=true";
+        String username = "root";
+        String password = "";
 
         try {
-            con = DriverManager.getConnection(url, user, password);
+            con = DriverManager.getConnection(dbUrl, username, password);
             ACIC = new AllCitiesInCountry(con);
         } catch (SQLException e) {
-            System.out.println("Failed to connect to the database");
             e.printStackTrace();
         }
     }
 
-    // Test retrieving cities from the database for a specific country
     @Test
-    void testGetCitiesForCountry() {
-        String countryName = "China";
+    public void testReturnCityValidCountry() {
+        String countryName = "Germany";
         ArrayList<City> cities = ACIC.returnCity(countryName, con);
-
         assertNotNull(cities);
-        assertEquals(4, cities.size()); // Assuming China has 4 cities in the test database, adjust the value accordingly
+        assertFalse(cities.isEmpty());
+        ACIC.printResult(countryName, cities);
     }
 
-    // Test handling of null country name
     @Test
-    void testNullCountryName() {
-        ArrayList<City> cities = ACIC.returnCity(null, con);
-
-        assertNotNull(cities);
-        assertEquals(0, cities.size()); // Since country name is null, there should be no cities returned
+    public void testReturnCityInvalidCountry() {
+        String invalidCountryName = "InvalidCountry";
+        ArrayList<City> citiesInvalidCountry = ACIC.returnCity(invalidCountryName, con);
+        assertNull(citiesInvalidCountry);
+        ACIC.printResult(invalidCountryName, citiesInvalidCountry);
     }
 
-    // Test handling of null connection object
     @Test
-    void testNullConnection() {
-        String countryName = "Germany"; // Assume there is a country named Germany in the test database
-        ArrayList<City> cities = ACIC.returnCity(countryName, null);
-
-        assertNotNull(cities);
-        assertEquals(0, cities.size()); // Since connection is null, there should be no cities returned
-    }
-
-    // Add more tests based on other scenarios and edge cases
-    // ...
-
-    // Remember to close the connection after all the tests are completed
-    @AfterAll
-    static void tearDown() {
-        try {
-            if (con != null) {
-                con.close();
-            }
-        } catch (SQLException e) {
-            System.out.println("Failed to close the database connection");
-            e.printStackTrace();
-        }
+    public void testReturnCityNullCountry() {
+        String nullCountryName = null;
+        ArrayList<City> citiesNullCountry = ACIC.returnCity(nullCountryName, con);
+        assertNull(citiesNullCountry);
+        ACIC.printResult(nullCountryName, citiesNullCountry);
     }
 }

@@ -66,6 +66,11 @@ public class AllCitiesInCountry {
                 // adding the city object to the arraylist
                 cities.add(city);
             }
+            // If no cities were found, return null instead of an empty ArrayList
+            if (cities.isEmpty()) {
+                return null;
+            }
+
             return cities;
         }
         /*
