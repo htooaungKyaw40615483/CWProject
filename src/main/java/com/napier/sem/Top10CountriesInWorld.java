@@ -58,10 +58,10 @@ public class Top10CountriesInWorld {
      * @param countries arraylist of country objects.
      */
     public static void printResult(ArrayList<Country> countries){
-        System.out.println("---------------------------------------------------Top 10 Countries in the World By Largest Population To Smallest-----------------------------------------------------------------");
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------Top 10 Countries in the World By Largest Population To Smallest------------------");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-4s | %-40s | %-30s | %-30s | %-20s | %-35s | %n", "Code", "Name", "Continent", "Region", "Population", "Capital");
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
         // For all the objects in countries arraylist, formatting and printing the values (Strings and Digits)
         for (Country country :countries){
             // Printing the country object's attributes with Getter.
