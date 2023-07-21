@@ -71,7 +71,7 @@ public class Top10CitiesInRegion {
      */
     public static void printResult(String regionName, ArrayList<City> cities){
         System.out.println("--------------------------------------Top 10 most populated Cities in A Region by Largest Population to Smallest-------------------------------");
-        System.out.println("| Region: " + regionName + "                                                                                      ORDER: Largest to Smallest Population|");
+        System.out.println("| Region: " + regionName + "                                                                                      ORDER: Largest to Smallest Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-35s | %-35s | %-35s | %-21s | %n", "Name", "Country", "District", "Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
