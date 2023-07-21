@@ -76,19 +76,19 @@ public class AllCountriesInContinent {
     public static void printResult(String continentName, ArrayList<Country> countries){
 
         if(continentName == null && countries == null){
-            System.out.println("There is no cities or defined district name");
+            System.out.println("There is no countries or defined district name");
             return;
         }
 
         // Check if cities arraylist is null. If not, move on to the next condition.
         if (countries == null) {
-            System.out.println("There is no cities");
+            System.out.println("There is no countries");
             return;
         }
 
         // Check if district name is null. If not, move on to the next condition.
         if(continentName == null){
-            System.out.println("The district name is not defined");
+            System.out.println("The continent name is not defined");
             return;
         }
 

@@ -61,6 +61,13 @@ public class AllCountriesInWorld {
      * @param countries arraylist of country objects.
      */
     public static void printResult(ArrayList<Country> countries){
+
+        // Check if countries arraylist is null. If not, move on to the next condition.
+        if (countries == null) {
+            System.out.println("There is no countries");
+            return;
+        }
+
         System.out.println("---------------------------------------------------All Countries in the World By Largest Population To Smallest-------------------------------------------------------------------");
         System.out.println("Total Countries: " + countries.size() + " ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-4s | %-40s | %-30s | %-30s | %-20s | %-35s | %n", "Code", "Name", "Continent", "Region", "Population", "Capital");
