@@ -34,8 +34,8 @@ public class AllCitiesInCountryIntegrationTest {
     public void testReturnCityValidCountry() {
         String countryName = "Germany";
         ArrayList<City> cities = ACIC.returnCity(countryName, con);
-        assertNotNull(cities);
-        assertFalse(cities.isEmpty());
+        assertNotNull(cities, "Cities list should not be null.");
+        assertFalse(cities.isEmpty(), "Cities list should not be empty.");
         ACIC.printResult(countryName, cities);
     }
 
@@ -43,7 +43,7 @@ public class AllCitiesInCountryIntegrationTest {
     public void testReturnCityInvalidCountry() {
         String invalidCountryName = "InvalidCountry";
         ArrayList<City> citiesInvalidCountry = ACIC.returnCity(invalidCountryName, con);
-        assertNull(citiesInvalidCountry);
+        assertNull(citiesInvalidCountry, "Cities list should be null for an invalid country.");
         ACIC.printResult(invalidCountryName, citiesInvalidCountry);
     }
 
@@ -51,7 +51,8 @@ public class AllCitiesInCountryIntegrationTest {
     public void testReturnCityNullCountry() {
         String nullCountryName = null;
         ArrayList<City> citiesNullCountry = ACIC.returnCity(nullCountryName, con);
-        assertNull(citiesNullCountry);
+        assertNull(citiesNullCountry, "Cities list should be null for a null country.");
         ACIC.printResult(nullCountryName, citiesNullCountry);
     }
+
 }
