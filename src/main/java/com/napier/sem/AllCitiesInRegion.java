@@ -54,7 +54,7 @@ public class AllCitiesInRegion {
     public static void printResult(String regionName, ArrayList<City> cities){
         // Check if the region name AND cities is null. If not, move on to the next condition.
         if(regionName == null && cities == null){
-            System.out.println("There is no cities or defined regionname");
+            System.out.println("There is no cities or defined region name");
             return;
         }
 
