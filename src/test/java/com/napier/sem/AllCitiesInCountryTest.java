@@ -3,8 +3,6 @@ package com.napier.sem;
 import org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-
 import java.sql.Connection;
 import java.util.ArrayList;
 
@@ -13,10 +11,12 @@ import static org.mockito.Mockito.mock;
 public class AllCitiesInCountryTest
 {
     static AllCitiesInCountry ACIC;
+    static Connection mockConnection;
 
     @BeforeAll
     static void init(){
-        ACIC = new AllCitiesInCountry();
+        mockConnection = mock(Connection.class);
+        ACIC = new AllCitiesInCountry(mockConnection);
     }
 
     // Testing printResults
