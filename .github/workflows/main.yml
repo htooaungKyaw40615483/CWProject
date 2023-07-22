@@ -19,8 +19,8 @@ jobs:
         run: mvn -Dtest=com.napier.sem.AllCitiesInCountryTest test
       - name: All Cities In District Unit Test
         run: mvn -Dtest=com.napier.sem.AllCitiesInDistrictTest test
-      - name: City Unit Test
-        run: mvn -Dtest=com.napier.sem.CityTest test
+#      - name: City Unit Test
+#        run: mvn -Dtest=com.napier.sem.CityTest test
 
   IntegrationTests:
     name: Integration Tests

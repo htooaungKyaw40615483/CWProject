@@ -18,9 +18,9 @@ public class AllCitiesInCountryIntegrationTest {
     @BeforeAll
     public static void setUp() {
         // Set up the database connection
-        String dbUrl = "jdbc:mysql://localhost:3307/world?useSSL=false&allowPublicKeyRetrieval=true";
+        String dbUrl = "jdbc:mysql://localhost:33060/world?useSSL=false&allowPublicKeyRetrieval=true";
         String username = "root";
-        String password = "";
+        String password = "example";
 
         try {
             // Establish a connection to the database
