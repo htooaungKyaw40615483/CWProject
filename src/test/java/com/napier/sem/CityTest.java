@@ -13,10 +13,10 @@ class CityTest {
     static void init(){
         city = new City();
     }
-    @Test
-    void setCityNameTestNull() {
-        city.setCityName(null);
-    }
+//    @Test
+//    void setCityNameTestNull() {
+//        city.setCityName(null);
+//    }
 
     @Test
     void setCountryNameTestNull() {

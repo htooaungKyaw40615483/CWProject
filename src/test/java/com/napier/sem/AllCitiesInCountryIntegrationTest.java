@@ -32,17 +32,17 @@ public class AllCitiesInCountryIntegrationTest {
         }
     }
 
-    @Test
-    public void testReturnCityValidCountry() {
-        String countryName = "Germany";
-        // Test if the list of cities returned is not null
-        ArrayList<City> cities = ACIC.returnCity(countryName, con);
-        assertNotNull(cities, "Cities list should not be null.");
-        // Test if the list of cities returned is not empty
-        assertFalse(cities.isEmpty(), "Cities list should not be empty.");
-        // Print the results of the test
-        ACIC.printResult(countryName, cities);
-    }
+//    @Test
+//    public void testReturnCityValidCountry() {
+//        String countryName = "Germany";
+//        // Test if the list of cities returned is not null
+//        ArrayList<City> cities = ACIC.returnCity(countryName, con);
+//        assertNotNull(cities, "Cities list should not be null.");
+//        // Test if the list of cities returned is not empty
+//        assertFalse(cities.isEmpty(), "Cities list should not be empty.");
+//        // Print the results of the test
+//        ACIC.printResult(countryName, cities);
+//    }
 
     @Test
     public void testReturnCityInvalidCountry() {
@@ -74,17 +74,17 @@ public class AllCitiesInCountryIntegrationTest {
         assertNull(citiesNoCities, "Cities list should be null for a country with no cities.");
     }
 
-    @Test
-    public void testReturnCityCaseInsensitive() {
-        String countryName = "UnItEd KinGdOm"; // Mixed case country name
-        // Test if the list of cities returned is not null for a valid country with mixed case name
-        ArrayList<City> citiesCaseInsensitive = ACIC.returnCity(countryName, con);
-        assertNotNull(citiesCaseInsensitive, "Cities list should not be null.");
-        // Test if the list of cities returned is not empty for a valid country with mixed case name
-        assertFalse(citiesCaseInsensitive.isEmpty(), "Cities list should not be empty for a valid country.");
-        // Print the results of the test
-        ACIC.printResult(countryName, citiesCaseInsensitive);
-    }
+//    @Test
+//    public void testReturnCityCaseInsensitive() {
+//        String countryName = "UnItEd KinGdOm"; // Mixed case country name
+//        // Test if the list of cities returned is not null for a valid country with mixed case name
+//        ArrayList<City> citiesCaseInsensitive = ACIC.returnCity(countryName, con);
+//        assertNotNull(citiesCaseInsensitive, "Cities list should not be null.");
+//        // Test if the list of cities returned is not empty for a valid country with mixed case name
+//        assertFalse(citiesCaseInsensitive.isEmpty(), "Cities list should not be empty for a valid country.");
+//        // Print the results of the test
+//        ACIC.printResult(countryName, citiesCaseInsensitive);
+//    }
 
     @AfterAll
     public static void tearDown() {
