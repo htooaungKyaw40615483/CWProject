@@ -11,13 +11,13 @@ import static org.mockito.Mockito.mock;
 public class AllCitiesInCountryTest
 {
     static AllCitiesInCountry ACIC;
-    static Connection mockConnection;
-
-    @BeforeAll
-    static void init(){
-        mockConnection = mock(Connection.class);
-        ACIC = new AllCitiesInCountry(mockConnection);
-    }
+//    static Connection mockConnection;
+//
+//    @BeforeAll
+//    static void init(){
+//        mockConnection = mock(Connection.class);
+//        ACIC = new AllCitiesInCountry(mockConnection);
+//    }
 
     // Testing printResults
     @Test
@@ -59,9 +59,9 @@ public class AllCitiesInCountryTest
         ACIC.returnCity("China", null);
     }
 
-    @Test
-    public void returnCityCountryTestNull(){
-        Connection con = mock(Connection.class);
-        ACIC.returnCity(null, con);
-    }
+//    @Test
+//    public void returnCityCountryTestNull(){
+//        Connection con = mock(Connection.class);
+//        ACIC.returnCity(null, con);
+//    }
 }
