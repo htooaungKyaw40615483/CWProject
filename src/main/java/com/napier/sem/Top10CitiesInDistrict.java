@@ -13,6 +13,10 @@ public class Top10CitiesInDistrict {
      * @return An ArrayList of City objects in the specified district
      */
     public static ArrayList<City> returnCitiesInDistrict(String districtName, Connection con){
+        //Checking if the district name is entered.
+        if (districtName == null){
+            System.out.println("The district name is not defined.");
+        }
         try{
             // Creating Statement Object to execute the query
             Statement stmt = con.createStatement();
@@ -63,11 +67,29 @@ public class Top10CitiesInDistrict {
      * @param cities An ArrayList of City objects
      */
     public static void printResult(String districtName, ArrayList<City> cities){
-        System.out.println("--------------------------------------Top 10 most populated Cities in a District by Largest Population to Smallest------------------------------");
-        System.out.println("| District: " + districtName + "                                                                                    ORDER: Largest to Smallest Population");
-        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-35s | %-35s | %-35s | %-21s | %n", "Name", "Country", "District", "Population");
-        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------");
+        // Check if the district name AND cities is null. If not, move on to the next condition.
+        if(districtName == null && cities == null){
+            System.out.println("There is no cities or defined district name");
+            return;
+        }
+
+        // Check if cities arraylist is null. If not, move on to the next condition.
+        if (cities == null) {
+            System.out.println("There is no cities");
+            return;
+        }
+
+        // Check if district name is null. If not, move on to the next condition.
+        if(districtName == null){
+            System.out.println("The district name is not defined");
+            return;
+        }
+
+        System.out.println("--------------------------------------Top 10 most populated Cities in a District by Largest Population to Smallest-------------------------");
+        System.out.println("| District: " + districtName + "                                                                                ORDER: Largest to Smallest Population");
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-2s | %-30s | %-35s | %-34s | %-20s | %n", "No", "Name", "Country", "District", "Population");
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
 
 
         int  i = 1;
@@ -76,8 +98,8 @@ public class Top10CitiesInDistrict {
         for (City city :cities){
 
             // Printing the city object's attributes with Getter.
-            System.out.printf("| %,2d | %-30s | %-35s | %-34s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
+            System.out.printf("| %,2d | %-30s | %-35s | %-34s  | %,20d  | %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         }
-        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
     }
 }

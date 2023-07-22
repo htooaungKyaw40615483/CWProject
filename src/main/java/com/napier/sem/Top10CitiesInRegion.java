@@ -13,6 +13,9 @@ public class Top10CitiesInRegion {
      * @return the City Objects in an ArrayList which is from a single region.
      */
     public static ArrayList<City> returnCity(String regionName, Connection con){
+        if (regionName == null){
+            System.out.println("The region name is not defined.");
+        }
         try{
 
             // Creating Statement Object to execute Query
@@ -70,11 +73,28 @@ public class Top10CitiesInRegion {
      * @param cities arraylist of city objects.
      */
     public static void printResult(String regionName, ArrayList<City> cities){
-        System.out.println("--------------------------------------Top 10 most populated Cities in A Region by Largest Population to Smallest-------------------------------");
-        System.out.println("| Region: " + regionName + "                                                                                      ORDER: Largest to Smallest Population");
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-35s | %-35s | %-35s | %-21s | %n", "Name", "Country", "District", "Population");
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
+        // Check if the region name AND cities is null. If not, move on to the next condition.
+        if(regionName == null && cities == null){
+            System.out.println("There is no cities or defined region name");
+            return;
+        }
+
+        // Check if cities arraylist is null. If not, move on to the next condition.
+        if (cities == null) {
+            System.out.println("There is no cities");
+            return;
+        }
+
+        // Check if district name is null. If not, move on to the next condition.
+        if(regionName == null){
+            System.out.println("The region name is not defined");
+            return;
+        }
+        System.out.println("--------------------------------------Top 10 most populated Cities in A Region by Largest Population to Smallest---------------------------");
+        System.out.println("| Region: " + regionName + "                                                                                  ORDER: Largest to Smallest Population");
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-2s | %-30s | %-35s | %-34s | %-20s | %n", "No", "Name", "Country", "District", "Population");
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
 
 
         int  i = 1;
@@ -83,9 +103,9 @@ public class Top10CitiesInRegion {
         for (City city :cities){
 
             // Printing the city object's attributes with Getter.
-            System.out.printf("| %,2d | %-30s | %-35s | %-34s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
+            System.out.printf("| %,2d | %-30s | %-35s | %-34s  | %,20d  | %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         }
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
 
     }
 }

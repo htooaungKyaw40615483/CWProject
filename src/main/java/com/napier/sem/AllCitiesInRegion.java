@@ -15,6 +15,9 @@ public class AllCitiesInRegion {
      * @return the City Objects in an ArrayList which is from a single region.
      */
     public static ArrayList<City> returnCity(String regionName, Connection con){
+        if (regionName == null){
+            System.out.println("The region name is not defined.");
+        }
         try{
             Statement stmt = con.createStatement();
             String sqlQueryCityInRegion = "SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population FROM world.city " +
@@ -33,6 +36,10 @@ public class AllCitiesInRegion {
             }
             return cities;
         }
+         /*
+         Catching the error if there is
+         Printing the error and returning null
+        */
         catch(Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city populations");
@@ -45,20 +52,37 @@ public class AllCitiesInRegion {
      * @param cities arraylist of city objects.
      */
     public static void printResult(String regionName, ArrayList<City> cities){
-        System.out.println("-------------------------------------------All Cities in A Region by Largest Population to Smallest--------------------------------------------");
+        // Check if the region name AND cities is null. If not, move on to the next condition.
+        if(regionName == null && cities == null){
+            System.out.println("There is no cities or defined region name");
+            return;
+        }
+
+        // Check if cities arraylist is null. If not, move on to the next condition.
+        if (cities == null) {
+            System.out.println("There is no cities");
+            return;
+        }
+
+        // Check if district name is null. If not, move on to the next condition.
+        if(regionName == null){
+            System.out.println("The region name is not defined");
+            return;
+        }
+        System.out.println("-------------------------------------------All Cities in A Region by Largest Population to Smallest-----------------------------------------------");
         System.out.println("| Region: " + regionName + "                                                                                      Total Cities: " + cities.size());
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-35s | %-35s | %-35s | %-21s | %n", "Name", "Country", "District", "Population");
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-5s | %-35s | %-37s | %-32s | %-21s | %n", "No", "Name", "Country", "District", "Population");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");
 
         int  i = 1;
 
         // For all the objects in cities arraylist, formatting and printing the values (Strings and Digits)
         for (City city :cities){
             // Printing the city object's attributes with Getter.
-            System.out.printf("| %,2d | %-30s | %-35s | %-34s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
+            System.out.printf("| %,5d | %-35s | %-37s | %-31s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         }
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");
 
     }
 }
