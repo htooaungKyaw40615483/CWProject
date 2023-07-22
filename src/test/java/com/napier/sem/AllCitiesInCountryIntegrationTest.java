@@ -23,7 +23,9 @@ public class AllCitiesInCountryIntegrationTest {
         String password = "";
 
         try {
+            // Establish a connection to the database
             con = DriverManager.getConnection(dbUrl, username, password);
+            // Create an instance of AllCitiesInCountry to be tested
             ACIC = new AllCitiesInCountry(con);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -33,31 +35,39 @@ public class AllCitiesInCountryIntegrationTest {
     @Test
     public void testReturnCityValidCountry() {
         String countryName = "Germany";
+        // Test if the list of cities returned is not null
         ArrayList<City> cities = ACIC.returnCity(countryName, con);
         assertNotNull(cities, "Cities list should not be null.");
+        // Test if the list of cities returned is not empty
         assertFalse(cities.isEmpty(), "Cities list should not be empty.");
+        // Print the results of the test
         ACIC.printResult(countryName, cities);
     }
 
     @Test
     public void testReturnCityInvalidCountry() {
         String invalidCountryName = "InvalidCountry";
+        // Test if the list of cities returned is null for an invalid country
         ArrayList<City> citiesInvalidCountry = ACIC.returnCity(invalidCountryName, con);
         assertNull(citiesInvalidCountry, "Cities list should be null for an invalid country.");
+        // Print the results of the test
         ACIC.printResult(invalidCountryName, citiesInvalidCountry);
     }
 
     @Test
     public void testReturnCityNullCountry() {
         String nullCountryName = null;
+        // Test if the list of cities returned is null for a null country
         ArrayList<City> citiesNullCountry = ACIC.returnCity(nullCountryName, con);
         assertNull(citiesNullCountry, "Cities list should be null for a null country.");
+        // Print the results of the test
         ACIC.printResult(nullCountryName, citiesNullCountry);
     }
 
     @Test
     public void testReturnCityCountryWithNoCities() {
         String countryWithNoCities = "Antarctica";
+        // Test if the list of cities returned is null for a country with no cities
         ArrayList<City> citiesNoCities = ACIC.returnCity(countryWithNoCities, con);
 
         // Since no cities are found, returnCity should return null, and the cities list should be empty
@@ -67,9 +77,12 @@ public class AllCitiesInCountryIntegrationTest {
     @Test
     public void testReturnCityCaseInsensitive() {
         String countryName = "UnItEd KinGdOm"; // Mixed case country name
+        // Test if the list of cities returned is not null for a valid country with mixed case name
         ArrayList<City> citiesCaseInsensitive = ACIC.returnCity(countryName, con);
         assertNotNull(citiesCaseInsensitive, "Cities list should not be null.");
+        // Test if the list of cities returned is not empty for a valid country with mixed case name
         assertFalse(citiesCaseInsensitive.isEmpty(), "Cities list should not be empty for a valid country.");
+        // Print the results of the test
         ACIC.printResult(countryName, citiesCaseInsensitive);
     }
 
