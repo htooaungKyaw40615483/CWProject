@@ -50,6 +50,19 @@ public class AllCitiesInCountryTest
     }
 
     @Test
+    void printResultCityTestEmpty(){
+        ArrayList<City> cities = new ArrayList<City>();
+        ACIC.printResult("China", cities);
+    }
+
+    @Test
+    void printResultCityTestContainsNull(){
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        ACIC.printResult("China", cities);
+    }
+
+    @Test
     void returnCityTestNull(){
         ACIC.returnCity(null,null);
     }
