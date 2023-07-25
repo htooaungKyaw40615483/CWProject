@@ -97,6 +97,20 @@ public class AllCitiesInCountry {
             return;
         }
 
+        // Checking if the arraylist of cities is initialized but empty.
+        if (cities.isEmpty()){
+            System.out.print("The cities ArrayList is empty.");
+            return;
+        }
+
+        // Checking if the element of arraylist is null
+        for(int i = 0; i<= cities.size()-1; i++){
+            if (cities.get(i) == null){
+                System.out.println("The cities ArrayList contains null value.");
+                return;
+            }
+        }
+
         // Check if country name is null. If not, move on to the next condition.
         if(countryName == null){
             System.out.println("The country name is not defined");
