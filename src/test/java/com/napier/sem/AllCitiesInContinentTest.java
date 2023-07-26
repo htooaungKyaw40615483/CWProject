@@ -57,6 +57,7 @@ public class AllCitiesInContinentTest {
         ACIC.printResult("North America", cities);
     }
 
+    // Testing returnCity
     @Test
     void returnCityTestNull(){
         ACIC.returnCity(null,null);
