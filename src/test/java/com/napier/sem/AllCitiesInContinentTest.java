@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import static org.mockito.Mockito.mock;
 
 public class AllCitiesInContinentTest {
+
     static AllCitiesInContinent ACIC;
 
     @BeforeAll
