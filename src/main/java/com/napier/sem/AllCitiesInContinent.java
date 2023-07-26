@@ -14,7 +14,7 @@ public class AllCitiesInContinent {
      * @return the City Objects in an ArrayList which is from a single continent.
      */
     public static ArrayList<City> returnCity(String continentName, Connection con){
-        //Checking if the country name is entered.
+        //Checking if the continent name is entered.
         if (continentName == null){
             System.out.println("The continent name is not defined.");
             return null;
