@@ -68,21 +68,34 @@ public class City {
      * @param countryName Country Name
      */
     public void setCountryName(String countryName) {
-
-        this.countryName = countryName;
+        if (countryName == null){
+            System.out.println("The country name is null");
+            this.countryName = "-";
+        }
+        else this.countryName = countryName;
     }
     /**
      * Setting the District Name of the Class
      * @param districtName District Name
      */
     public void setDistrictName(String districtName) {
-        this.districtName = districtName;
+        if (districtName == null) {
+            System.out.println("The district name is null");
+            this.districtName = "-";
+        } else this.districtName = districtName;
     }
+
     /**
      * Setting the City Population of the Class
      * @param cityPopulation City Population
      */
     public void setCityPopulation(int cityPopulation) {
-        this.cityPopulation = cityPopulation;
+        if (cityPopulation < 0){
+            System.out.println("City Population is less than zero. Storing as zero population");
+            this.cityPopulation = 0;
+        }
+        else{
+            this.cityPopulation = cityPopulation;
+        }
     }
 }
