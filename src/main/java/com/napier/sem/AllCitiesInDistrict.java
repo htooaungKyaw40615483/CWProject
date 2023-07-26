@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 /*
- * Purpose: To Retrieve All The Cities In A District
+ * Purpose: To Retrieve All Cities In A District
  */
 public class AllCitiesInDistrict {
     /**
@@ -17,6 +17,7 @@ public class AllCitiesInDistrict {
         //Checking if the district name is entered.
         if (districtName == null){
             System.out.println("The district name is not defined.");
+            return null;
         }
 
         try{
@@ -84,6 +85,20 @@ public class AllCitiesInDistrict {
             return;
         }
 
+        // Checking if the arraylist of cities is initialized but empty.
+        if (cities.isEmpty()){
+            System.out.print("The cities ArrayList is empty.");
+            return;
+        }
+
+        // Checking if the element of arraylist is null
+        for(int i = 0; i<= cities.size()-1; i++){
+            if (cities.get(i) == null){
+                System.out.println("The cities ArrayList contains null value.");
+                return;
+            }
+        }
+
         // Check if district name is null. If not, move on to the next condition.
         if(districtName == null){
             System.out.println("The district name is not defined");
@@ -97,6 +112,7 @@ public class AllCitiesInDistrict {
         System.out.printf("| %-5s | %-35s | %-37s | %-32s | %-21s | %n", "No", "Name", "Country", "District", "Population");
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");
 
+        // Initializing the variable to be shown as row number.
         int  i = 1;
 
         // For all the objects in cities arraylist, formatting and printing the values (Strings and Digits)
@@ -105,6 +121,5 @@ public class AllCitiesInDistrict {
             System.out.printf("| %,5d | %-35s | %-37s | %-31s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         }
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");
-
     }
 }

@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 /*
- * Purpose: To Retrieve All The Cities In A Country
+ * Purpose: To Retrieve All Cities In A Country
  */
 public class AllCitiesInCountry {
     /**
@@ -14,21 +14,9 @@ public class AllCitiesInCountry {
      * @return the City Objects in an ArrayList which is from a single country.
      */
     public static ArrayList<City> returnCity(String countryName, Connection con){
-        // Checking if both the country name and connection object is null.
-        if (con == null && countryName == null){
-            System.out.println("The country name is empty and connection has not been established.");
-            return null;
-        }
-
         //Checking if the country name is entered.
         if (countryName == null){
             System.out.println("The Country name is not defined.");
-            return null;
-        }
-
-        // Checking if the connection has been established.
-        if (con == null){
-            System.out.println("The connection has not been established");
             return null;
         }
 
@@ -117,12 +105,14 @@ public class AllCitiesInCountry {
             return;
         }
 
+        // Printing out the headers of the report table.
         System.out.println("-------------------------------------------All Cities in A Country by Largest Population to Smallest----------------------------------------------");
         System.out.println("| Country: " + countryName + "                                                                                         Total Cities: " + cities.size());
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-5s | %-35s | %-37s | %-32s | %-21s | %n", "No", "Name", "Country", "District", "Population");
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");
 
+        // Initializing the variable to be shown as row number.
         int  i = 1;
 
         // For all the objects in cities arraylist, formatting and printing the values (Strings and Digits)
@@ -131,6 +121,5 @@ public class AllCitiesInCountry {
             System.out.printf("| %,5d | %-35s | %-37s | %-31s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         }
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");
-
     }
 }
