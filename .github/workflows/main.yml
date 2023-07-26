@@ -40,7 +40,23 @@ jobs:
           docker build -t database ./db
           docker run --name world -dp 33060:3306 database
           mvn -Dtest=com.napier.sem.AllCitiesInCountryIntegrationTest test
-          mvn -Dtest=com.napier.sem.AllCitiesInContinentIntegrationTest test
+#          mvn -Dtest=com.napier.sem.AllCitiesInContinentIntegrationTest test
+#          mvn -Dtest=com.napier.sem.AllCitiesInDistrictIntegrationTest test
+          mvn -Dtest=com.napier.sem.AllCitiesInRegionIntegrationTest test
+          mvn -Dtest=com.napier.sem.AllCitiesInWorldIntegrationTest test
+          mvn -Dtest=com.napier.sem.AllCountriesInContinentIntegrationTest test
+#          mvn -Dtest=com.napier.sem.AllCountriesInRegionIntegrationTest test
+          mvn -Dtest=com.napier.sem.AllCountriesInWorldIntegrationTest test
+          mvn -Dtest=com.napier.sem.Top10CitiesInContinentIntegrationTest test
+#          mvn -Dtest=com.napier.sem.Top10CitiesInCountryIntegrationTest test
+#          mvn -Dtest=com.napier.sem.Top10CitiesInDistrictIntegrationTest test
+          mvn -Dtest=com.napier.sem.Top10CitiesInRegionIntegrationTest test
+          mvn -Dtest=com.napier.sem.Top10CitiesInWorldIntegrationTest test
+          mvn -Dtest=com.napier.sem.Top10CountriesInContinentIntegrationTest test
+          mvn -Dtest=com.napier.sem.Top10CountriesInCountryIntegrationTest test
+          mvn -Dtest=com.napier.sem.Top10CountriesInDistrictIntegrationTest test
+          mvn -Dtest=com.napier.sem.Top10CountriesInRegionIntegrationTest test
+          mvn -Dtest=com.napier.sem.Top10CitiesInWorldIntegrationTest test
           docker stop world
           docker rm world
           docker image rm database
