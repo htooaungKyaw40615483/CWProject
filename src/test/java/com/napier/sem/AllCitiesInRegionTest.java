@@ -17,10 +17,10 @@ import static org.mockito.Mockito.times;
 public class AllCitiesInRegionTest {
     static AllCitiesInRegion ACIR;
 
-    @BeforeAll
-    static void init(){
-        ACIR = new AllCitiesInRegion();
-    }
+//    @BeforeAll
+//    static void init(){
+//        ACIR = new AllCitiesInRegion();
+//    }
 
     // Testing printResults
     @Test

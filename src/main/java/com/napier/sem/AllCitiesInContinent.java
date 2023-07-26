@@ -14,6 +14,12 @@ public class AllCitiesInContinent {
      * @return the City Objects in an ArrayList which is from a single continent.
      */
 
+    private Connection con; // Class member variable to store the database connection
+
+    // Constructor to initialize the database connection
+    public AllCitiesInContinent(Connection con) {
+        this.con = con;
+    }
     public static ArrayList<City> returnCity(String continentName, Connection con){
         if (continentName == null){
             System.out.println("The continent name is not defined.");
@@ -33,6 +39,9 @@ public class AllCitiesInContinent {
                 city.setDistrictName(cityInContinentResult.getString(3));
                 city.setCityPopulation(cityInContinentResult.getInt(4));
                 cities.add(city);
+            }
+            if (cities.isEmpty()) {
+                return null;
             }
             return cities;
         }

@@ -14,6 +14,12 @@ public class AllCitiesInDistrict {
      * @param con          Established Database Connection
      * @return the City Objects in an ArrayList which is from a single District.
      */
+    private Connection con; // Class member variable to store the database connection
+
+    // Constructor to initialize the database connection
+    public AllCitiesInDistrict(Connection con) {
+        this.con = con;
+    }
     public static ArrayList<City> returnCity(String districtName, Connection con) {
         // Checking if the district name is entered.
         if (districtName == null) {
@@ -54,6 +60,9 @@ public class AllCitiesInDistrict {
 
                 // adding the city object to the arraylist
                 cities.add(city);
+            }
+            if (cities.isEmpty()) {
+                return null;
             }
             return cities;
         }

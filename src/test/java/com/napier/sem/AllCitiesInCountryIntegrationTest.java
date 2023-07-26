@@ -31,7 +31,6 @@ public class AllCitiesInCountryIntegrationTest {
             e.printStackTrace();
         }
     }
-
     @Test
     void testReturnCityForUSA() {
         // Fetch the cities for a predefined country (e.g., "USA")
