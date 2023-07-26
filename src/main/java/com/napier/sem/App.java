@@ -53,6 +53,7 @@ public class App
         // REPORT: Population percentage of Continent/Region/Country
         PopulationPercentInContinent.printResult(PopulationPercentInContinent.returnPopulation(con));
         PopulationPercentInRegion.printResult(PopulationPercentInRegion.returnPopulation(con));
+        PopulationPercentInCountry.printResult(PopulationPercentInCountry.returnPopulation(con));
 
         // disconnecting the database
         connection.disconnect();
