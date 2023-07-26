@@ -6,9 +6,7 @@ import java.util.ArrayList;
 /*
  * Purpose: To Retrieve All The Countries in Continent
  */
-
 public class AllCountriesInContinent {
-
     /**
      * Return a countries population in continent from the world database
      * @param continentName Predefined Continent Name
@@ -16,23 +14,25 @@ public class AllCountriesInContinent {
      * @return the Country Objects in an ArrayList which is from a single continent.
      */
     public static ArrayList<Country> returnCountries(String continentName, Connection con){
+        // Check if the continent name is null.
         if (continentName == null){
             System.out.println("The Continent name is not defined.");
+            return null;
         }
 
         try{
             // Creating Statement Object to execute Query
             Statement stmt = con.createStatement();
 
-             /*
+            /*
              Defining the Query to be executed.
              QUERY: To SELECT CountryCode, CountryName, ContinentName, RegionName, Population of a Country
              and capital name after JOINing two tables with City ID ORDERED by population in descending.
             */
-
             String sqlQueryCountryInContinent = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name FROM `country` " +
                                             "INNER JOIN city ON country.Capital = city.ID " +
-                                            "WHERE country.Continent = \"" + continentName + "\" ORDER BY country.Population DESC;";
+                                            "WHERE country.Continent = \"" + continentName +
+                                            "\" ORDER BY country.Population DESC;";
 
             // Storing the results in a ResultSet object, ALlCountriesInContinentResult
             ResultSet countriesInContinent = stmt.executeQuery(sqlQueryCountryInContinent);
@@ -74,7 +74,7 @@ public class AllCountriesInContinent {
      * @param countries arraylist of country objects.
      */
     public static void printResult(String continentName, ArrayList<Country> countries){
-
+        // Check if both continent name and countries arraylist is null
         if(continentName == null && countries == null){
             System.out.println("There is no countries or defined district name");
             return;
@@ -92,12 +92,28 @@ public class AllCountriesInContinent {
             return;
         }
 
+        // Checking if the arraylist of countries is initialized but empty.
+        if (countries.isEmpty()){
+            System.out.print("The countries ArrayList is empty.");
+            return;
+        }
+
+        // Checking if the element of arraylist is null
+        for(int i = 0; i<= countries.size()-1; i++){
+            if (countries.get(i) == null){
+                System.out.println("The countries ArrayList contains null value.");
+                return;
+            }
+        }
+
+        // Printing out the headers of the report table.
         System.out.println("---------------------------------------------------All Countries in the Continent By Largest Population To Smallest----------------------------------------------------------------");
         System.out.println("| Continent: " + continentName + "                                                                                                                  Total Countries: " + countries.size());
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-5s | %-7s | %-40s | %-25s | %-30s | %-15s | %-35s | %n", "No", "Code", "Name", "Continent", "Region", "Population", "Capital");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
+        // Initializing the variable to be shown as row number.
         int  i = 1;
 
         // For all the objects in countries arraylist, formatting and printing the values (Strings and Digits)
@@ -106,6 +122,5 @@ public class AllCountriesInContinent {
             System.out.printf("| %,5d | %-7s | %-40s | %-25s | %-30s | %,15d | %-35s | %n", i++, country.getCountryNo(), country.getCountryName(), country.getContinentName(), country.getRegionName(), country.getPopulation(), country.getCapitalName());
         }
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-
     }
 }
