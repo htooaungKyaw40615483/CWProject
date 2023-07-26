@@ -69,6 +69,21 @@ public class AllCitiesInContinent {
             System.out.println("The continent name is not defined");
             return;
         }
+
+        // Checking if the element of arraylist is null
+        for(int i = 0; i<= cities.size()-1; i++){
+            if (cities.get(i) == null){
+                System.out.println("The cities ArrayList contains null value.");
+                return;
+            }
+        }
+
+        // Check if country name is null. If not, move on to the next condition.
+        if(continentName == null){
+            System.out.println("The continent name is not defined");
+            return;
+        }
+
         System.out.println("-------------------------------------------All Cities in A Continent by Largest Population to Smallest--------------------------------------------");
         System.out.println("| Continent: " + continentName + "                                                                               Total Cities: " + cities.size());
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");
