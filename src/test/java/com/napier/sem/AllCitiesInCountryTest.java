@@ -1,17 +1,12 @@
 package com.napier.sem;
 
-import org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-
 import java.sql.Connection;
 import java.util.ArrayList;
-
 import static org.mockito.Mockito.mock;
 
-public class AllCitiesInCountryTest
-{
+public class AllCitiesInCountryTest {
     static AllCitiesInCountry ACIC;
 
     @BeforeAll
