@@ -32,59 +32,89 @@ public class AllCitiesInCountryIntegrationTest {
         }
     }
 
-//    @Test
-//    public void testReturnCityValidCountry() {
-//        String countryName = "Germany";
-//        // Test if the list of cities returned is not null
-//        ArrayList<City> cities = ACIC.returnCity(countryName, con);
-//        assertNotNull(cities, "Cities list should not be null.");
-//        // Test if the list of cities returned is not empty
-//        assertFalse(cities.isEmpty(), "Cities list should not be empty.");
-//        // Print the results of the test
-//        ACIC.printResult(countryName, cities);
-//    }
+    @Test
+    void testReturnCityForUSA() {
+        // Fetch the cities for a predefined country (e.g., "USA")
+        String countryName = "United States";
+        ArrayList<City> cities = AllCitiesInCountry.returnCity(countryName, con);
+
+        // Check if cities arraylist is not null
+        assertNotNull(cities);
+
+        // Check each row of the cities ArrayList using assertions
+        for (City city : cities) {
+            // Use the getters to retrieve the values and compare with the expected values
+            if (city.getCityName().equals("New York")) {
+                assertEquals("United States", city.getCountryName());
+                assertEquals("New York", city.getDistrictName());
+                assertEquals(8008278, city.getCityPopulation());
+            }
+            // You can add more assertions for other cities if needed
+        }
+    }
+
+    // Add test methods for other countries or scenarios here
 
     @Test
-    public void testReturnCityInvalidCountry() {
-        String invalidCountryName = "InvalidCountry";
-        // Test if the list of cities returned is null for an invalid country
-        ArrayList<City> citiesInvalidCountry = ACIC.returnCity(invalidCountryName, con);
-        assertNull(citiesInvalidCountry, "Cities list should be null for an invalid country.");
-        // Print the results of the test
-        ACIC.printResult(invalidCountryName, citiesInvalidCountry);
+    void testReturnCityForChina() {
+        // Fetch the cities for another predefined country (e.g., "China")
+        String countryName = "China";
+        ArrayList<City> cities = AllCitiesInCountry.returnCity(countryName, con);
+
+        // Check if cities arraylist is not null
+        assertNotNull(cities);
+
+        // Check each row of the cities ArrayList using assertions
+        for (City city : cities) {
+            // Use the getters to retrieve the values and compare with the expected values
+            if (city.getCityName().equals("Shanghai")) {
+                assertEquals("China", city.getCountryName());
+                assertEquals("Shanghai", city.getDistrictName());
+                assertEquals(9696300, city.getCityPopulation());
+            }
+            // You can add more assertions for other cities if needed
+        }
     }
 
     @Test
-    public void testReturnCityNullCountry() {
-        String nullCountryName = null;
-        // Test if the list of cities returned is null for a null country
-        ArrayList<City> citiesNullCountry = ACIC.returnCity(nullCountryName, con);
-        assertNull(citiesNullCountry, "Cities list should be null for a null country.");
-        // Print the results of the test
-        ACIC.printResult(nullCountryName, citiesNullCountry);
+    void testReturnCityForNonexistentCountry() {
+        // Fetch the cities for a non-existing country
+        String countryName = "Nonexistent Country";
+        ArrayList<City> cities = AllCitiesInCountry.returnCity(countryName, con);
+
+        // Check if cities arraylist is null, as there are no cities for the non-existing country
+        assertNull(cities);
     }
 
     @Test
-    public void testReturnCityCountryWithNoCities() {
-        String countryWithNoCities = "Antarctica";
-        // Test if the list of cities returned is null for a country with no cities
-        ArrayList<City> citiesNoCities = ACIC.returnCity(countryWithNoCities, con);
+    void testReturnCityForCountryWithEmptyName() {
+        // Fetch the cities for a country with an empty name
+        String countryName = "";
+        ArrayList<City> cities = AllCitiesInCountry.returnCity(countryName, con);
 
-        // Since no cities are found, returnCity should return null, and the cities list should be empty
-        assertNull(citiesNoCities, "Cities list should be null for a country with no cities.");
+        // Check if cities arraylist is null, as the country name is empty
+        assertNull(cities);
     }
 
-//    @Test
-//    public void testReturnCityCaseInsensitive() {
-//        String countryName = "UnItEd KinGdOm"; // Mixed case country name
-//        // Test if the list of cities returned is not null for a valid country with mixed case name
-//        ArrayList<City> citiesCaseInsensitive = ACIC.returnCity(countryName, con);
-//        assertNotNull(citiesCaseInsensitive, "Cities list should not be null.");
-//        // Test if the list of cities returned is not empty for a valid country with mixed case name
-//        assertFalse(citiesCaseInsensitive.isEmpty(), "Cities list should not be empty for a valid country.");
-//        // Print the results of the test
-//        ACIC.printResult(countryName, citiesCaseInsensitive);
-//    }
+    @Test
+    void testReturnCityForCountryWithNullName() {
+        // Fetch the cities for a country with a null name
+        String countryName = null;
+        ArrayList<City> cities = AllCitiesInCountry.returnCity(countryName, con);
+
+        // Check if cities arraylist is null, as the country name is null
+        assertNull(cities);
+    }
+
+    @Test
+    void testReturnCityForCountryWithNoCities() {
+        // Fetch the cities for a country with no cities (e.g., "Antarctica")
+        String countryName = "Antarctica";
+        ArrayList<City> cities = AllCitiesInCountry.returnCity(countryName, con);
+
+        // Check if cities arraylist is null, as there are no cities for Antarctica
+        assertNull(cities);
+    }
 
     @AfterAll
     public static void tearDown() {

@@ -20,8 +20,14 @@ public class App
         SQLConnection Class object is created.
         connect() is used to connect to the database
          */
+
+//
         SQLConnection connection = new SQLConnection();
-        connection.connect();
+        if (args.length <1 ){
+            connection.connect("localhost:33060", 30000);
+        }else{
+            connection.connect(args[0], Integer.parseInt(args[1]));
+        }
         Connection con = connection.getCon();
 
         // Creating the classes to make reports
@@ -49,8 +55,6 @@ public class App
 
         Top10CitiesInDistrict.printResult(DISTRICT, Top10CitiesInDistrict.returnCitiesInDistrict(DISTRICT, con));
         Top10CitiesInCountry.printResult(COUNTRY, Top10CitiesInCountry.returnCitiesInCountry(COUNTRY, con));
-
-
 
 
         // disconnecting the database
