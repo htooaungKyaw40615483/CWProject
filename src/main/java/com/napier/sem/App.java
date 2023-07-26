@@ -42,7 +42,7 @@ public class App
         Top10CountriesInRegion.printResult(REGION, Top10CountriesInRegion.returnCountries(REGION,con));
 
         // REPORT: All Cities in the World/Continent/Region/Country/District
-        AllCitiesInWorld.printResult(AllCitiesInWorld.getAllCities(con));
+        AllCitiesInWorld.printResult(AllCitiesInWorld.returnCity(con));
         AllCitiesInContinent.printResult(CONTINENT, AllCitiesInContinent.returnCity(CONTINENT,con));
         AllCitiesInRegion.printResult(REGION, AllCitiesInRegion.returnCity(REGION,con));
         AllCitiesInCountry.printResult(COUNTRY, AllCitiesInCountry.returnCity(COUNTRY,con));

@@ -1,14 +1,18 @@
 package com.napier.sem;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
+
 /*
  * Purpose: To Retrieve All The Cities In the world
  */
 public class AllCitiesInWorld {
-    public static ArrayList<City> getAllCities(Connection con) {
+    /**
+     * Return a country's cities from the world database
+     * @param con Established Database Connection
+     * @return the City Objects in an ArrayList which is from a single country.
+     */
+    public static ArrayList<City> returnCity(Connection con) {
         try {
             // Creating SQL Statement
             Statement stmt = con.createStatement();
@@ -54,7 +58,10 @@ public class AllCitiesInWorld {
             return null;
         }
     }
-
+    /**
+     * Printing a country's cities from the world database
+     * @param cities arraylist of city objects.
+     */
     public static void printResult(ArrayList<City> cities) {
         // Check if cities arraylist is null. If not, move on to the next condition.
         if (cities == null) {
@@ -62,12 +69,28 @@ public class AllCitiesInWorld {
             return;
         }
 
+        // Checking if the arraylist of cities is initialized but empty.
+        if (cities.isEmpty()){
+            System.out.print("The cities ArrayList is empty.");
+            return;
+        }
+
+        // Checking if the element of arraylist is null
+        for(int i = 0; i<= cities.size()-1; i++){
+            if (cities.get(i) == null){
+                System.out.println("The cities ArrayList contains null value.");
+                return;
+            }
+        }
+
+        // Printing out the headers of the report table.
         System.out.println("-------------------------------------------All Cities in the World by Largest Population to Smallest----------------------------------------------");
         System.out.println("Total number of Cities: " + cities.size());
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-5s | %-35s | %-37s | %-32s | %-21s | %n", "No", "Name", "Country", "District", "Population");
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------");
 
+        // Initializing the variable to be shown as row number.
         int  i = 1;
 
         // For all the objects in cities arraylist, formatting and printing the values (Strings and Digits)
