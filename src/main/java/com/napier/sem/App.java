@@ -50,7 +50,8 @@ public class App
         Top10CitiesInDistrict.printResult(DISTRICT, Top10CitiesInDistrict.returnCitiesInDistrict(DISTRICT, con));
         Top10CitiesInCountry.printResult(COUNTRY, Top10CitiesInCountry.returnCitiesInCountry(COUNTRY, con));
 
-
+        // REPORT: Population percentage of Continent/Region/Country
+        PopulationPercentInContinent.printResult((PopulationPercentInContinent.returnPopulation(con)));
 
 
         // disconnecting the database
