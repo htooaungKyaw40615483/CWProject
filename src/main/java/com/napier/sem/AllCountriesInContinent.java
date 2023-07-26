@@ -17,7 +17,6 @@ public class AllCountriesInContinent {
         // Check if the continent name is null.
         if (continentName == null){
             System.out.println("The Continent name is not defined.");
-            return null;
         }
 
         try{
