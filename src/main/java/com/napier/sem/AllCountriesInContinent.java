@@ -57,6 +57,9 @@ public class AllCountriesInContinent {
                 // adding the country object to the arraylist
                 countries.add(country);
             }
+            if (countries.isEmpty()) {
+                return null;
+            }
             return countries;
         }
         /*

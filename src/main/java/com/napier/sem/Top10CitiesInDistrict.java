@@ -52,7 +52,9 @@ public class Top10CitiesInDistrict {
                 // Adding the City object to the ArrayList
                 cities.add(city);
             }
-
+            if (cities.isEmpty()) {
+                return null;
+            }
             return cities;
         } catch(Exception e) {
             System.out.println(e.getMessage());

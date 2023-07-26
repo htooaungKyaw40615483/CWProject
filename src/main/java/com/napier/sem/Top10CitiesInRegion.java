@@ -53,6 +53,11 @@ public class Top10CitiesInRegion {
                 // adding the city object to the arraylist
                 cities.add(city);
             }
+
+            if (cities.isEmpty()) {
+                return null;
+            }
+
             return cities;
         }
 
