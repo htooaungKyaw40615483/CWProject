@@ -53,6 +53,19 @@ public class AllCitiesInContinentTest {
     }
 
     @Test
+    void printResultCityTestEmpty(){
+        ArrayList<City> cities = new ArrayList<City>();
+        ACIC.printResult("North America", cities);
+    }
+
+    @Test
+    void printResultCityTestContainsNull(){
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
+        ACIC.printResult("North America", cities);
+    }
+
+    @Test
     void returnCityTestNull(){
         ACIC.returnCity(null,null);
     }
