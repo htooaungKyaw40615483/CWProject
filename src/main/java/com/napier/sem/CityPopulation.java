@@ -23,7 +23,7 @@ public class CityPopulation {
              Defining the Query to be executed.
              QUERY: city Population
             */
-            String sqlQueryCityPopulation = "SELECT city.Name, SUM(city.Population) AS Total_Population FROM city WHERE city.Name=" + cityName;
+            String sqlQueryCityPopulation = "SELECT SUM(city.Population) AS Total_Population FROM city WHERE city.Name=" + cityName;
 
             // Storing the results in a ResultSet object, cityPopulationResult
             ResultSet cityPopulation = stmt.executeQuery(sqlQueryCityPopulation);
@@ -38,8 +38,7 @@ public class CityPopulation {
                 Population population = new Population();
 
                 // setting the attributes of population object with Setter
-                population.setName(cityPopulation.getString(1));
-                population.setTotalPopulation(cityPopulation.getLong(2));
+                population.setTotalPopulation(cityPopulation.getLong(1));
 
 
                 // adding the population object to the arraylist
