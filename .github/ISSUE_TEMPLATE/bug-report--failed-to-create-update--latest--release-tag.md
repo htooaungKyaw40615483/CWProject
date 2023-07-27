@@ -1,12 +1,15 @@
 ---
 name: 'Bug Report: Failed to Create/Update "latest" Release Tag'
 about: 'When attempting to create or update a release tag with the name "latest,"
-  the following error occurs:'
+  the following error occurs: '
 title: ''
 labels: ''
 assignees: ''
 
 ---
+
+Could not create new tag "refs/tags/latest" (Resource not accessible by integration) therefore updating existing tag "tags/latest"
+Error: Resource not accessible by integration
 
 ### Steps to Reproduce
 
