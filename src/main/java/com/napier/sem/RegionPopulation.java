@@ -5,15 +5,15 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class ContinentPopulation {
+public class RegionPopulation {
     /**
-     * Return population of continent from the world database
+     * Return population of region from the world database
      * @param con Established Database Connection
      * @return the Population Objects in an ArrayList which is from a world.
      */
-    public static ArrayList<Population> returnPopulation(String continentName, Connection con){
-        if (continentName == null){
-            System.out.println("The Continent name is not defined.");
+    public static ArrayList<Population> returnPopulation(String regionName, Connection con){
+        if (regionName == null){
+            System.out.println("The Region name is not defined.");
         }
         try{
             // Creating Statement Object to execute Query
@@ -23,29 +23,28 @@ public class ContinentPopulation {
              Defining the Query to be executed.
              QUERY: continent Population
             */
-            String sqlQueryContinentPopulation = "SELECT country.Continent, SUM(country.Population) AS Continent_Population,\n" +
-                    "CONCAT(ROUND((SUM(COALESCE(city.Population, 0)) / SUM(country.Population)) * 100, 2), '%') AS percent_people_living_in_cities,\n" +
-                    "CONCAT(ROUND(((SUM(country.Population) - SUM(COALESCE(city.Population, 0))) / SUM(country.Population)) * 100, 2), '%') AS percent_people_not_living_in_cities\n" +
-                    "FROM country LEFT JOIN (SELECT CountryCode, SUM(Population) AS Population FROM city GROUP BY CountryCode) city\n" +
-                    "ON country.Code = city.CountryCode WHERE country.Continent = \"" + continentName +"\" GROUP BY country.Continent;";
+            String sqlQueryRegionPopulation = "SELECT country.Region, SUM(country.Population) AS Region_Population,\n" +
+                    "CONCAT(ROUND((SUM(coalesce(city.Population, 0)) / SUM(country.Population)) * 100, 2), '%') AS people_living_in_cities, CONCAT(ROUND(((SUM(country.Population) - SUM(coalesce(city.Population, 0))) / SUM(country.Population)) * 100, 2), '%') AS people_not_living_in_cities FROM country LEFT JOIN \n" +
+                    "(SELECT CountryCode, SUM(Population) AS Population FROM city GROUP BY CountryCode) city ON \n" +
+                    "country.Code = city.CountryCode WHERE country.Region = \"" + regionName +"\" GROUP BY country.Region";
 
-            // Storing the results in a ResultSet object, continentPopulationResult
-            ResultSet continentPopulation = stmt.executeQuery(sqlQueryContinentPopulation);
+            // Storing the results in a ResultSet object, regionPopulationResult
+            ResultSet regionPopulation = stmt.executeQuery(sqlQueryRegionPopulation);
 
             // Creating an arraylist of population objects to be stored and returned from the method
             ArrayList<Population> populations = new ArrayList<Population>();
 
-            // Retrieving the results from ResultSet object, WorldPopulationResult as long as there is data left
-            while(continentPopulation.next()) {
+            // Retrieving the results from ResultSet object, RegionPopulationResult as long as there is data left
+            while(regionPopulation.next()) {
 
                 // Creating a Population object to be stored in arraylist
                 Population population = new Population();
 
                 // setting the attributes of population object with Setter
-                population.setName(continentPopulation.getString(1));
-                population.setTotalPopulation(continentPopulation.getLong(2));
-                population.setYesCityPercent(continentPopulation.getString(3));
-                population.setNoCityPercent(continentPopulation.getString(4));
+                population.setName(regionPopulation.getString(1));
+                population.setTotalPopulation(regionPopulation.getLong(2));
+                population.setYesCityPercent(regionPopulation.getString(3));
+                population.setNoCityPercent(regionPopulation.getString(4));
 
                 // adding the population object to the arraylist
                 populations.add(population);
@@ -63,10 +62,10 @@ public class ContinentPopulation {
         }
     }
     /**
-     * Printing a continent population from the world database
+     * Printing a region population from the world database
      * @param populations arraylist of population objects.
      */
-    public static void printResult(String continentName, ArrayList<Population> populations){
+    public static void printResult(String regionName, ArrayList<Population> populations){
         // Check if populations arraylist is null. If not, move on to the next condition.
         if (populations == null) {
             System.out.println("There is no population");
@@ -88,8 +87,8 @@ public class ContinentPopulation {
         }
 
         // Printing out the headers of the report table.
-        System.out.println("-----------------------------------------------Continent Population---------------------------------------------------------------------");
-        System.out.println("| Continent: " + continentName + "                                                         ORDER: Largest to Smallest Population");
+        System.out.println("-----------------------------------------------Region Population------------------------------------------------------------------");
+        System.out.println("| Region: " + regionName + "                                                         ORDER: Largest to Smallest Population");
         System.out.printf("| %-5s | %-40s | %-25s | %-25s | %-25s | %n", "No", "Continent Name", "Total Population", "City Percentage", "Not City Percentage");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");
 
