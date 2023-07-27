@@ -99,8 +99,8 @@ public class CapitalCitiesInContinent {
         }
 
         // Printing out the headers of the report table.
-        System.out.println("----------------------------------All Capital Cities in the Continent By Largest Population To Smallest-----------------------------");
-        System.out.println("Total Capital: " + capitals.size() + " --------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("------------------------------All Capital Cities in the Continent By Largest Population To Smallest-----------------------------");
+        System.out.println("| Continent: " + continentName + "                                                                                          Total Cities: " + capitals.size());
         System.out.printf("| %-5s | %-40s | %-40s | %-30s | %n", "No", "Capital Name", "Country Name", "Population");
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------");
 
