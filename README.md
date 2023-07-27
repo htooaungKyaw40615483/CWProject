@@ -13,5 +13,5 @@
 |------------------|---------------|
 | Htet Aung San    | Product Owner |
 | Htoo Aung Kyaw   | SCRUM Master  |
-| Kyi Sin Min Maw  | Developer     |
+| Kyi Sin Min Maw  | Developer     | 
 | Sai Sai Oam Hart | Developer     |
