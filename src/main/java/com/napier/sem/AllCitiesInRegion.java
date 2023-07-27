@@ -14,6 +14,12 @@ public class AllCitiesInRegion {
      * @param con Established Database Connection
      * @return the City Objects in an ArrayList which is from a single region.
      */
+    private Connection con; // Class member variable to store the database connection
+
+    // Constructor to initialize the database connection
+    public AllCitiesInRegion(Connection con) {
+        this.con = con;
+    }
     public static ArrayList<City> returnCity(String regionName, Connection con){
         //Checking if the country name is entered.
         if (regionName == null){

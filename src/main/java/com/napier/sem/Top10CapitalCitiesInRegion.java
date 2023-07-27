@@ -28,7 +28,7 @@ public class Top10CapitalCitiesInRegion {
             */
 
             String sqlQueryTop10CapitalCitiesInRegion = "SELECT city.Name, country.Name , city.Population FROM city\n" +
-                    "JOIN country ON city.ID = country.Capital WHERE country.Region = \"" + regionName + "\"ORDER BY city.Population DESC;";
+                    "JOIN country ON city.ID = country.Capital WHERE country.Region = \"" + regionName + "\"ORDER BY city.Population DESC LIMIT 10;";
 
             // Storing the results in a ResultSet object, Top10CapitalCitiesInRegionResult
             ResultSet Top10CapitalCitiesInRegionResult = stmt.executeQuery(sqlQueryTop10CapitalCitiesInRegion);
@@ -98,7 +98,7 @@ public class Top10CapitalCitiesInRegion {
 
         // Printing out the headers of the report table.
         System.out.println("---------------------------------------Top 10 Populated Capital Cities in The Region--------------------------------------------");
-        System.out.println("| Region: " + regionName + "                                                                    Total Cities: " + capitals.size());
+        System.out.println("| Region: " + regionName + "                                                               ORDER: Largest to Smallest Population");
         System.out.printf("| %-5s | %-40s | %-40s | %-30s | %n", "No", "Capital Name", "Country Name", "Population");
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------");
 

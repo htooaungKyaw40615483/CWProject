@@ -1,5 +1,4 @@
 package com.napier.sem;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -83,8 +82,8 @@ public class Top10CapitalCitiesInWorld {
         }
 
         // Printing out the headers of the report table.
-        System.out.println("-----------------------------------------Top 10 Populated Capital Cities in The World----------------------------------------");
-        System.out.println("Total Capital: " + capitals.size() + " --------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------Top 10 Populated Capital Cities in The World-------------------------------------------");
+        System.out.println( "--------------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-5s | %-40s | %-40s | %-30s | %n", "No", "Capital Name", "Country Name", "Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
 
@@ -96,6 +95,6 @@ public class Top10CapitalCitiesInWorld {
             // Printing the capital object's attributes with Getter.
             System.out.printf("| %,5d | %-40s | %-40s | %,30d | %n", i++, capital.getCapitalName(), capital.getCountry(), capital.getCapitalPopulation());
         }
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------");
     }
 }

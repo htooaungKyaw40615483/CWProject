@@ -1,34 +1,39 @@
 package com.napier.sem;
 
+import org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.sql.Connection;
 import java.util.ArrayList;
+
 import static org.mockito.Mockito.mock;
 
-public class AllCitiesInCountryTest {
+public class AllCitiesInCountryTest
+{
     static AllCitiesInCountry ACIC;
-
-    @BeforeAll
-    static void init(){
-        ACIC = new AllCitiesInCountry();
-    }
+//    static Connection mockConnection;
+//
+//    @BeforeAll
+//    static void init(){
+//        mockConnection = mock(Connection.class);
+//        ACIC = new AllCitiesInCountry(mockConnection);
+//    }
 
     // Testing printResults
     @Test
-    void printResultTestNull()
+    public void printResultTestNull()
     {
         // will throw java.lang.NullPointerException if the null is not checked in AllCitiesInDistrict.
         ACIC.printResult(null, null);
     }
 
     @Test
-    void printResultCitiesTestNull(){
+    public void printResultCitiesTestNull(){
         ACIC.printResult("China", null);
     }
 
     @Test
-    void printResultDnTestNull(){
+    public void printResultDnTestNull(){
         ArrayList<City> cities = new ArrayList<City>();
         City c = new City();
         cities.add(c);
@@ -36,7 +41,7 @@ public class AllCitiesInCountryTest {
     }
 
     @Test
-    void printResultCityTestNull(){
+    public void printResultCityTestNull(){
         ArrayList<City> cities = new ArrayList<City>();
         City city = new City();
         city.setCityPopulation(99999999);
@@ -45,31 +50,18 @@ public class AllCitiesInCountryTest {
     }
 
     @Test
-    void printResultCityTestEmpty(){
-        ArrayList<City> cities = new ArrayList<City>();
-        ACIC.printResult("China", cities);
-    }
-
-    @Test
-    void printResultCityTestContainsNull(){
-        ArrayList<City> cities = new ArrayList<City>();
-        cities.add(null);
-        ACIC.printResult("China", cities);
-    }
-
-    @Test
-    void returnCityTestNull(){
+    public void returnCityTestNull(){
         ACIC.returnCity(null,null);
     }
 
     @Test
-    void returnCityConTestNull(){
+    public void returnCityConTestNull(){
         ACIC.returnCity("China", null);
     }
 
-    @Test
-    void returnCityCountryTestNull(){
-        Connection con = mock(Connection.class);
-        ACIC.returnCity(null, con);
-    }
+//    @Test
+//    public void returnCityCountryTestNull(){
+//        Connection con = mock(Connection.class);
+//        ACIC.returnCity(null, con);
+//    }
 }

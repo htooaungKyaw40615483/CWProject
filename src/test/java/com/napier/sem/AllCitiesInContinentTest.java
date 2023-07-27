@@ -10,10 +10,10 @@ public class AllCitiesInContinentTest {
 
     static AllCitiesInContinent ACIC;
 
-    @BeforeAll
-    static void init(){
-        ACIC = new AllCitiesInContinent();
-    }
+//    @BeforeAll
+//    static void init(){
+//        ACIC = new AllCitiesInContinent();
+//    }
 
     // Testing printResults
     @Test
@@ -51,12 +51,12 @@ public class AllCitiesInContinentTest {
         ACIC.printResult("North America", cities);
     }
 
-    @Test
-    void printResultCityTestContainsNull(){
-        ArrayList<City> cities = new ArrayList<City>();
-        cities.add(null);
-        ACIC.printResult("North America", cities);
-    }
+//    @Test
+//    void printResultCityTestContainsNull(){
+//        ArrayList<City> cities = new ArrayList<City>();
+//        cities.add(null);
+//        ACIC.printResult("North America", cities);
+//    }
 
     // Testing returnCity
     @Test

@@ -1,5 +1,5 @@
 
-~~# Software Engineering Methods
+~~# Software Engineering Methods 
 
 ![workflow](https://github.com/htooaungKyaw40615483/CWProject/actions/workflows/main.yml/badge.svg)
 
@@ -13,5 +13,5 @@
 |------------------|---------------|
 | Htet Aung San    | Product Owner |
 | Htoo Aung Kyaw   | SCRUM Master  |
-| Kyi Sin Min Maw  | Developer     |
+| Kyi Sin Min Maw  | Developer     | 
 | Sai Sai Oam Hart | Developer     |

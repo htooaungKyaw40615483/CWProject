@@ -1,11 +1,17 @@
 version: '3'
 services:
-  # Application Dockerfile is in same folder which is .
+  # Application Dockerfile is in the same folder.
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "30000:30000"
 
-  # db is is db folder
+  # db is in the db folder
   db:
     build: db/.
     command: --default-authentication-plugin=mysql_native_password
     restart: always
+    ports:
+      - "33060:3306"

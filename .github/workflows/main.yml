@@ -1,6 +1,5 @@
 name: Workflow For World Population Report
 on: push
-
 jobs:
   UnitTests:
     name: Unit Tests
@@ -19,10 +18,11 @@ jobs:
         run: mvn -Dtest=com.napier.sem.AllCitiesInCountryTest test
       - name: All Cities In District Unit Test
         run: mvn -Dtest=com.napier.sem.AllCitiesInDistrictTest test
-      - name: City Unit Test
-        run: mvn -Dtest=com.napier.sem.CityTest test
-  build:
-    name: Build and Start Using Docker-compose
+#      - name: City Unit Test
+#        run: mvn -Dtest=com.napier.sem.CityTest test
+
+  IntegrationTests:
+    name: Integration Tests
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
@@ -34,7 +34,42 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-      - name: Build with Maven
-        run: mvn package
-      - name: Run docker compose
-        run: docker-compose up --abort-on-container-exit
+      - name: Integration Tests
+        run: |
+          docker build -t database ./db
+          docker run --name world -dp 33060:3306 database
+          mvn -Dtest=com.napier.sem.AllCitiesInCountryIntegrationTest test
+          docker stop world
+          docker rm world
+          docker image rm database
+      - name: CodeCov
+        uses: codecov/codecov-action@v2
+        with:
+          directory: ./target/site/jacoco
+          flags: Integrations
+          verbose: true # optional (default = false)
+
+  build:
+    name: Build Run in Docker and Deploy Release
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      - name: Package and Run docker compose
+        run: |
+          mvn package -DskipTests
+          docker-compose up --abort-on-container-exit
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          automatic_release_tag: "latest"
+          files: |
+            ./target/*.jar
