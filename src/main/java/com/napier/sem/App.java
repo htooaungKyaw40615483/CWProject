@@ -51,6 +51,8 @@ public class App
 
         // REPORT: Capital Cities in the World/Continent/Region
         CapitalCitiesInWorld.printResult((CapitalCitiesInWorld.returnCapital(con)));
+        CapitalCitiesInContinent.printResult(CONTINENT, CapitalCitiesInContinent.returnCapital(CONTINENT,con));
+        CapitalCitiesInRegion.printResult(REGION, CapitalCitiesInRegion.returnCapital(REGION, con));
 
         // REPORT: Top 10 Capital Cities in the World/Continent/Region
         Top10CapitalCitiesInWorld.printResult(Top10CapitalCitiesInWorld.returnCapital(con));
@@ -60,7 +62,6 @@ public class App
         PopulationPercentInContinent.printResult(PopulationPercentInContinent.returnPopulation(con));
         PopulationPercentInRegion.printResult(PopulationPercentInRegion.returnPopulation(con));
         PopulationPercentInCountry.printResult(PopulationPercentInCountry.returnPopulation(con));
-
 
 
         // disconnecting the database

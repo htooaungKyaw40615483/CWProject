@@ -1,50 +1,53 @@
 package com.napier.sem;
 
-/*
- * Purpose: To Retrieve All The Capital Cities In the world
- */
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class CapitalCitiesInWorld {
+/*
+ * Purpose: To Retrieve All The Capital Cities In the region
+ */
+public class CapitalCitiesInRegion {
     /**
-     * Return a world capital cities from the world database
+     * Return a continent capital cities from the world database
+     * @param regionName Predefined Region Name
      * @param con Established Database Connection
      * @return the capital Objects in an ArrayList which is from the world.
      */
-    public static ArrayList<Capital> returnCapital(Connection con) {
+    public static ArrayList<Capital> returnCapital(String regionName, Connection con) {
+        // Check if the region name is null.
+        if (regionName == null){
+            System.out.println("The Region name is not defined.");
+        }
         try {
             // Creating SQL Statement
             Statement stmt = con.createStatement();
 
             /*
              Defining the Query to be executed.
-             QUERY: To SELECT Capital Name, Country Name, Population after JOINing two tables with City ID ORDERED by population in descending.
+             QUERY: To SELECT Capital Name, Country Name, Population after JOINing two tables with City ID ORDERED by population in descending .
             */
 
-            String sqlQueryWorldCapitalCity = "SELECT city.Name, country.Name , city.Population FROM city\n" +
-                    "JOIN country ON city.ID = country.Capital\n" +
-                    "ORDER BY city.Population DESC;";
+            String sqlQueryRegionCapitalCity = "SELECT city.Name, country.Name , city.Population FROM city\n" +
+                    "JOIN country ON city.ID = country.Capital WHERE country.Region = \"" + regionName + "\"ORDER BY city.Population DESC;";
 
-            // Storing the results in a ResultSet object, WorldCapitalCitiesResult
-            ResultSet worldCapitalCity = stmt.executeQuery(sqlQueryWorldCapitalCity);
+            // Storing the results in a ResultSet object, RegionCapitalCitiesResult
+            ResultSet regionCapitalCity = stmt.executeQuery(sqlQueryRegionCapitalCity);
 
             // Creating an arraylist of capitals objects to be stored and returned from the method
             ArrayList<Capital> capitals = new ArrayList<>();
 
-            // Retrieving the results from ResultSet object, WorldCapitalCitiesResult as long as there is data left
-            while (worldCapitalCity.next()) {
+            // Retrieving the results from ResultSet object, RegionCapitalCitiesResult as long as there is data left
+            while (regionCapitalCity.next()) {
 
                 //Creating a capital object to be stored in arraylist
                 Capital capital = new Capital();
 
                 // setting the attributes of capital object with Setter
-                capital.setCapitalName(worldCapitalCity.getString(1));
-                capital.setCountry(worldCapitalCity.getString(2));
-                capital.setCapitalPopulation(worldCapitalCity.getInt(3));
+                capital.setCapitalName(regionCapitalCity.getString(1));
+                capital.setCountry(regionCapitalCity.getString(2));
+                capital.setCapitalPopulation(regionCapitalCity.getInt(3));
 
                 //adding the capital object to the arraylist
                 capitals.add(capital);
@@ -65,10 +68,19 @@ public class CapitalCitiesInWorld {
      * Printing a capital cities population in the world from the world database
      * @param capitals arraylist of capital objects.
      */
-    public static void printResult(ArrayList<Capital> capitals){
+    public static void printResult(String regionName, ArrayList<Capital> capitals){
         // Check if capitals arraylist is null. If not, move on to the next condition.
+        if(regionName == null && capitals == null){
+            System.out.println("There is no capital or defined region name");
+            return;
+        }
         if (capitals == null) {
-            System.out.println("There is no captial");
+            System.out.println("There is no capital");
+            return;
+        }
+        // Check if district name is null. If not, move on to the next condition.
+        if(regionName == null){
+            System.out.println("The region name is not defined");
             return;
         }
 
@@ -87,8 +99,8 @@ public class CapitalCitiesInWorld {
         }
 
         // Printing out the headers of the report table.
-        System.out.println("----------------------------------All Capital Cities in the World By Largest Population To Smallest-----------------------------");
-        System.out.println("Total Capital: " + capitals.size() + " -------------------------------------------------------------------------------------------------------------");
+        System.out.println("------------------------------All Capital Cities in the Region By Largest Population To Smallest--------------------------------");
+        System.out.println("| Region: " + regionName + "                                                                                          Total Cities: " + capitals.size());
         System.out.printf("| %-5s | %-40s | %-40s | %-30s | %n", "No", "Capital Name", "Country Name", "Population");
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------");
 
