@@ -1,8 +1,5 @@
 name: Workflow For World Population Report
-on:
-  push:
-    branches:
-      - master
+on: push
 jobs:
   UnitTests:
     name: Unit Tests
