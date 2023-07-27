@@ -51,12 +51,12 @@ public class App
 
         // REPORT: Capital Cities in the World/Continent/Region
         CapitalCitiesInWorld.printResult((CapitalCitiesInWorld.returnCapital(con)));
+        CapitalCitiesInContinent.printResult(CONTINENT, CapitalCitiesInContinent.returnCapital(CONTINENT,con));
 
         // REPORT: Population percentage of Continent/Region/Country
         PopulationPercentInContinent.printResult(PopulationPercentInContinent.returnPopulation(con));
         PopulationPercentInRegion.printResult(PopulationPercentInRegion.returnPopulation(con));
         PopulationPercentInCountry.printResult(PopulationPercentInCountry.returnPopulation(con));
-
 
 
         // disconnecting the database
