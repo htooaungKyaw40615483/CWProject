@@ -5,15 +5,15 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class RegionPopulation {
+public class CountryPopulation {
     /**
-     * Return population of region from the world database
+     * Return population of country from the world database
      * @param con Established Database Connection
      * @return the Population Objects in an ArrayList which is from a world.
      */
-    public static ArrayList<Population> returnPopulation(String regionName, Connection con){
-        if (regionName == null){
-            System.out.println("The Region name is not defined.");
+    public static ArrayList<Population> returnPopulation(String countryName, Connection con){
+        if (countryName == null){
+            System.out.println("The Country name is not defined.");
         }
         try{
             // Creating Statement Object to execute Query
@@ -21,30 +21,30 @@ public class RegionPopulation {
 
             /*
              Defining the Query to be executed.
-             QUERY: continent Population
+             QUERY: Country Population
             */
-            String sqlQueryRegionPopulation = "SELECT country.Region, SUM(country.Population) AS Region_Population,\n" +
-                    "CONCAT(ROUND((SUM(coalesce(city.Population, 0)) / SUM(country.Population)) * 100, 2), '%') AS people_living_in_cities, CONCAT(ROUND(((SUM(country.Population) - SUM(coalesce(city.Population, 0))) / SUM(country.Population)) * 100, 2), '%') AS people_not_living_in_cities FROM country LEFT JOIN \n" +
-                    "(SELECT CountryCode, SUM(Population) AS Population FROM city GROUP BY CountryCode) city ON \n" +
-                    "country.Code = city.CountryCode WHERE country.Region = \"" + regionName +"\" GROUP BY country.Region";
+            String sqlQueryCountryPopulation = "SELECT country.Name, SUM(country.Population) AS Total_population ,\n" +
+                    "CONCAT(ROUND((SUM(coalesce(city.Population, 0)) / SUM(country.Population)) * 100, 2), '%') AS people_living_in_cities, CONCAT(ROUND(((SUM(country.Population) - SUM(coalesce(city.Population, 0))) / SUM(country.Population)) * 100, 2), '%') AS people_not_living_in_cities\n" +
+                    "FROM country LEFT JOIN (SELECT CountryCode, SUM(Population) AS Population FROM city GROUP BY CountryCode) city\n" +
+                    "ON country.Code = city.CountryCode WHERE country.Name = \"" + countryName +"\" GROUP BY country.Name";
 
-            // Storing the results in a ResultSet object, regionPopulationResult
-            ResultSet regionPopulation = stmt.executeQuery(sqlQueryRegionPopulation);
+            // Storing the results in a ResultSet object, countryPopulationResult
+            ResultSet countryPopulation = stmt.executeQuery(sqlQueryCountryPopulation);
 
             // Creating an arraylist of population objects to be stored and returned from the method
             ArrayList<Population> populations = new ArrayList<Population>();
 
-            // Retrieving the results from ResultSet object, RegionPopulationResult as long as there is data left
-            while(regionPopulation.next()) {
+            // Retrieving the results from ResultSet object, CountryPopulationResult as long as there is data left
+            while(countryPopulation.next()) {
 
                 // Creating a Population object to be stored in arraylist
                 Population population = new Population();
 
                 // setting the attributes of population object with Setter
-                population.setName(regionPopulation.getString(1));
-                population.setTotalPopulation(regionPopulation.getLong(2));
-                population.setYesCityPercent(regionPopulation.getString(3));
-                population.setNoCityPercent(regionPopulation.getString(4));
+                population.setName(countryPopulation.getString(1));
+                population.setTotalPopulation(countryPopulation.getLong(2));
+                population.setYesCityPercent(countryPopulation.getString(3));
+                population.setNoCityPercent(countryPopulation.getString(4));
 
                 // adding the population object to the arraylist
                 populations.add(population);
@@ -65,7 +65,7 @@ public class RegionPopulation {
      * Printing a region population from the world database
      * @param populations arraylist of population objects.
      */
-    public static void printResult(String regionName, ArrayList<Population> populations){
+    public static void printResult(String countryName, ArrayList<Population> populations){
         // Check if populations arraylist is null. If not, move on to the next condition.
         if (populations == null) {
             System.out.println("There is no population");
@@ -87,9 +87,9 @@ public class RegionPopulation {
         }
 
         // Printing out the headers of the report table.
-        System.out.println("-----------------------------------------------Region Population------------------------------------------------------------------------");
-        System.out.println("| Region: " + regionName + "                                                         ORDER: Largest to Smallest Population");
-        System.out.printf("| %-5s | %-40s | %-25s | %-25s | %-25s | %n", "No", "Region Name", "Total Population", "City Percentage", "Not City Percentage");
+        System.out.println("-----------------------------------------------Country Population-----------------------------------------------------------------------");
+        System.out.println("| Country: " + countryName + "                                                         ORDER: Largest to Smallest Population");
+        System.out.printf("| %-5s | %-40s | %-25s | %-25s | %-25s | %n", "No", "Country Name", "Total Population", "City Percentage", "Not City Percentage");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");
 
         // Initializing the variable to be shown as row number.
