@@ -84,11 +84,11 @@ public class AllCitiesInWorld {
         }
 
         // Printing out the headers of the report table.
-        System.out.println("-------------------------------------------All Cities in the World by Largest Population to Smallest--------------------------------------------");
+        System.out.println("-----------------------------------------All Cities in the World by Largest Population to Smallest---------------------");
         System.out.println("Total number of Cities: " + cities.size());
-        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-5s | %-35s | %-37s | %-32s | %-19s | %n", "No", "Name", "Country", "District", "Population");
-        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------");
 
         // Initializing the variable to be shown as row number.
         int  i = 1;
@@ -98,6 +98,6 @@ public class AllCitiesInWorld {
             // Printing the city object's attributes with Getter.
             System.out.printf("| %,5d | %-35s | %-37s | %-31s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         }
-        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------");
     }
 }
