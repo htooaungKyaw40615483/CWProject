@@ -5,7 +5,7 @@
 
   <groupId>com.napier.sem</groupId>
   <artifactId>CWProject</artifactId>
-  <version>0.1.0.3</version>
+  <version>0.1.0.4</version>
 
   <!-- Dependencies -->
   <dependencies>

@@ -52,6 +52,9 @@ public class CapitalCitiesInContinent {
                 //adding the capital object to the arraylist
                 capitals.add(capital);
             }
+            if (capitals.isEmpty()) {
+                return null;
+            }
             return capitals;
         /*
          Catching the error if there is
