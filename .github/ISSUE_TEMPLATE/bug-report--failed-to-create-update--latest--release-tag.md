@@ -33,7 +33,7 @@ Instead of creating a new tag, the error message mentioned above is displayed, a
 
 - **Integration:** The issue is likely related to a third-party integration or automation script responsible for managing releases on the repository.
 
-- **Screenshots:** 
+- **Screenshots:** - ![Release Tag Creation Error](https://github.com/htooaungKyaw40615483/CWProject/blob/master/Documents/Bug%20Screenshot/release_tag_creation_error.PNG)
 
 ### Reproducibility
 

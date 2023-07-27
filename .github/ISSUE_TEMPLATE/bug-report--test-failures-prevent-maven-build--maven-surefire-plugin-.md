@@ -51,7 +51,7 @@ The Maven build fails due to test failures in the project.
 
 - **Dump Files:** If available, dump files related to the test failures can be found with names like `[date].dump`, `[date]-jvmRun[N].dump`, and `[date].dumpstream`.
 
-- **Screenshots:** 
+- **Screenshots:** ![Maven Surefire Plugin Failure](https://github.com/htooaungKyaw40615483/CWProject/blob/master/Documents/Bug%20Screenshot/Maven%20Surefire%20Plugin%20Test%20Failures.PNG)
 
 ### Reproducibility
 

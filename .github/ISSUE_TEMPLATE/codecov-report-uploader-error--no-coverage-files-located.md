@@ -38,7 +38,7 @@ The uploader encountered an error indicating that no coverage files were located
 
 - **Repository:** https://github.com/username/CWProject
 
--**Screenshot** 
+-**Screenshot** ![Error Encountered during Codecov Report Upload](https://github.com/htooaungKyaw40615483/CWProject/blob/master/Documents/Bug%20Screenshot/Error%20Encountered%20during%20Codecov%20Report%20Upload.PNG)
 
 ### Possible Solutions
 
