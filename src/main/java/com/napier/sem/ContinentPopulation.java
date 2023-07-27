@@ -88,7 +88,7 @@ public class ContinentPopulation {
         }
 
         // Printing out the headers of the report table.
-        System.out.println("-------------------------------Continent Population-----------------------------------");
+        System.out.println("-----------------------------------------------Continent Population----------------------------------------------------------------");
         System.out.println("| Continent: " + continentName + "                                                         ORDER: Largest to Smallest Population");
         System.out.printf("| %-5s | %-40s | %-25s | %-25s | %-25s | %n", "No", "Continent Name", "Total Population", "City Percentage", "Not City Percentage");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------------------");

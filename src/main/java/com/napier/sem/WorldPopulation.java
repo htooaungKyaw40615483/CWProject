@@ -82,9 +82,9 @@ public class WorldPopulation {
         }
 
         // Printing out the headers of the report table.
-        System.out.println("----------------World Population----------------");
+        System.out.println("------------------World Population------------------");
         System.out.printf("| %-5s | %-40s | %n", "No", "World Population");
-        System.out.println("-------------------------------------------------");
+        System.out.println("----------------------------------------------------");
 
         // Initializing the variable to be shown as row number.
         int  i = 1;
