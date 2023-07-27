@@ -68,7 +68,7 @@ public class App
         PopulationPercentInContinent.printResult(PopulationPercentInContinent.returnPopulation(con));
         PopulationPercentInRegion.printResult(PopulationPercentInRegion.returnPopulation(con));
         PopulationPercentInCountry.printResult(PopulationPercentInCountry.returnPopulation(con));
-
+        WorldPopulation.printResult(WorldPopulation.returnPopulation(con));
 
         // disconnecting the database
         connection.disconnect();
