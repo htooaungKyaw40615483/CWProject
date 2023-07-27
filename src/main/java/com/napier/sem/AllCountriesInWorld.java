@@ -86,10 +86,10 @@ public class AllCountriesInWorld {
         }
 
         // Printing out the headers of the report table.
-        System.out.println("---------------------------------------------------All Countries in the World By Largest Population To Smallest--------------------------------------------------------------------");
-        System.out.println("Total Countries: " + countries.size() + " --------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------All Countries in the World By Largest Population To Smallest------------------------------------------------");
+        System.out.println("Total Countries: " + countries.size() + " ---------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-5s | %-7s | %-40s | %-25s | %-30s | %-15s | %-35s | %n", "No", "Code", "Name", "Continent", "Region", "Population", "Capital");
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
         // Initializing the variable to be shown as row number.
         int  i = 1;
@@ -99,6 +99,6 @@ public class AllCountriesInWorld {
             // Printing the country object's attributes with Getter.
             System.out.printf("| %,5d | %-7s | %-40s | %-25s | %-30s | %,15d | %-35s | %n", i++, country.getCountryNo(), country.getCountryName(), country.getContinentName(), country.getRegionName(), country.getPopulation(), country.getCapitalName());
         }
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------");
     }
 }
