@@ -52,7 +52,7 @@ public class WorldPopulation {
         */
         catch(Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get population percent in the continent");
+            System.out.println("Failed to get World Population");
             return null;
         }
     }

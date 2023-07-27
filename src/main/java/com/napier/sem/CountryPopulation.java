@@ -57,7 +57,7 @@ public class CountryPopulation {
         */
         catch(Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get population percent in the continent");
+            System.out.println("Failed to get Country population");
             return null;
         }
     }

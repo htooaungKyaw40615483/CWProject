@@ -23,7 +23,7 @@ public class DistrictPopulation {
              Defining the Query to be executed.
              QUERY: district Population
             */
-            String sqlQueryDistrictPopulation = "SELECT SUM(city.Population) AS Total_Population FROM city WHERE city.District= \"" + districtName +"\"";
+            String sqlQueryDistrictPopulation = "SELECT SUM(city.Population) AS Total_Population FROM city WHERE city.District=" + districtName ;
 
             // Storing the results in a ResultSet object, districtPopulationResult
             ResultSet districtPopulation = stmt.executeQuery(sqlQueryDistrictPopulation);
@@ -52,7 +52,7 @@ public class DistrictPopulation {
         */
         catch(Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get population percent in the continent");
+            System.out.println("Failed to get District Population");
             return null;
         }
     }
