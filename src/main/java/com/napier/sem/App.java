@@ -7,22 +7,31 @@ Purpose: Main App to call classes to make reports
  */
 public class App
 {
+    static String DISTRICT;
+    static String COUNTRY;
+    static String REGION;
+    static String CONTINENT;
+    static Connection con;
+
+    // Method to initialize the variables
+    public static void initializeVariables() {
+        DISTRICT = "Saitama";
+        COUNTRY = "China";
+        REGION = "Caribbean";
+        CONTINENT = "North America";
+    }
+
     public static void main(String[] args)
     {
-        // Initialize the variables.
-        String DISTRICT = "Saitama";
-        String COUNTRY = "China";
-        String REGION = "Caribbean";
-        String CONTINENT="North America";
+        // Variable Initialization for District, Region, Country, Continent.
+        initializeVariables();
 
-        /*
-        Establishing the sql connection for the first time
-        SQLConnection Class object is created.
-        connect() is used to connect to the database
-         */
         SQLConnection connection = new SQLConnection();
         connection.connect();
-        Connection con = connection.getCon();
+        con = connection.getCon();
+
+        // Establishing the connection.
+        connection.connect();
 
         // Creating the classes to make reports
         // REPORT: All Countries in the World/Continent/Region
@@ -46,12 +55,8 @@ public class App
         Top10CitiesInWorld.printResult(Top10CitiesInWorld.returnCity(con));
         Top10CitiesInContinent.printResult(CONTINENT, Top10CitiesInContinent.returnCity(CONTINENT,con));
         Top10CitiesInRegion.printResult(REGION, Top10CitiesInRegion.returnCity(REGION,con));
-
         Top10CitiesInDistrict.printResult(DISTRICT, Top10CitiesInDistrict.returnCitiesInDistrict(DISTRICT, con));
         Top10CitiesInCountry.printResult(COUNTRY, Top10CitiesInCountry.returnCitiesInCountry(COUNTRY, con));
-
-
-
 
         // disconnecting the database
         connection.disconnect();
