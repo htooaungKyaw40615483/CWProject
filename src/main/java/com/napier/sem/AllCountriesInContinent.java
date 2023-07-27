@@ -75,9 +75,9 @@ public class AllCountriesInContinent {
      * Printing a countries' population by continent from the world database
      * @param countries arraylist of country objects.
      */
-    public static void printResult(String continentName, ArrayList<Country> countries){
+    public static void printResult(String continentName, ArrayList<Country> countries) {
         // Check if both continent name and countries arraylist is null
-        if(continentName == null && countries == null){
+        if (continentName == null && countries == null) {
             System.out.println("There is no countries or defined district name");
             return;
         }
@@ -89,40 +89,40 @@ public class AllCountriesInContinent {
         }
 
         // Check if district name is null. If not, move on to the next condition.
-        if(continentName == null){
+        if (continentName == null) {
             System.out.println("The continent name is not defined");
             return;
         }
 
         // Checking if the arraylist of countries is initialized but empty.
-        if (countries.isEmpty()){
+        if (countries.isEmpty()) {
             System.out.print("The countries ArrayList is empty.");
             return;
         }
 
         // Checking if the element of arraylist is null
-        for(int i = 0; i<= countries.size()-1; i++){
-            if (countries.get(i) == null){
+        for (int i = 0; i <= countries.size() - 1; i++) {
+            if (countries.get(i) == null) {
                 System.out.println("The countries ArrayList contains null value.");
                 return;
             }
         }
 
         // Printing out the headers of the report table.
-        System.out.println("---------------------------------------------------All Countries in the Continent By Largest Population To Smallest----------------------------------------------------------------");
-        System.out.println("| Continent: " + continentName + "                                                                                                                  Total Countries: " + countries.size());
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-5s | %-7s | %-40s | %-25s | %-30s | %-15s | %-35s | %n", "No", "Code", "Name", "Continent", "Region", "Population", "Capital");
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------All Countries in the Continent By Largest Population To Smallest-------------------------------------");
+        System.out.println("| Continent: " + continentName + "                                                                          Total Countries: " + countries.size());
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-3s | %-3s | %-38s | %-14s | %-26s | %-15s | %-35s | %n", "No", "Code", "Name", "Continent", "Region", "Population", "Capital");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------");
 
         // Initializing the variable to be shown as row number.
-        int  i = 1;
+        int i = 1;
 
         // For all the objects in countries arraylist, formatting and printing the values (Strings and Digits)
-        for (Country country :countries){
+        for (Country country : countries) {
             // Printing the country object's attributes with Getter.
-            System.out.printf("| %,5d | %-7s | %-40s | %-25s | %-30s | %,15d | %-35s | %n", i++, country.getCountryNo(), country.getCountryName(), country.getContinentName(), country.getRegionName(), country.getPopulation(), country.getCapitalName());
+            System.out.printf("| %,3d | %-3s | %-38s | %-14s | %-26s | %,15d | %-35s | %n", i++, country.getCountryNo(), country.getCountryName(), country.getContinentName(), country.getRegionName(), country.getPopulation(), country.getCapitalName());
         }
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------");
     }
 }
