@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import static org.mockito.Mockito.mock;
 
 public class AllCitiesInContinentTest {
+
     static AllCitiesInContinent ACIC;
 
 //    @BeforeAll
@@ -57,6 +58,7 @@ public class AllCitiesInContinentTest {
 //        ACIC.printResult("North America", cities);
 //    }
 
+    // Testing returnCity
     @Test
     void returnCityTestNull(){
         ACIC.returnCity(null,null);

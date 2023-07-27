@@ -21,9 +21,6 @@ public class AllCitiesInWorldTest {
     }
 
     @Test
-    void printResultCitiesTestNull() { ACIW.printResult( null);}
-
-    @Test
     void printResultCityTestNull(){
         ArrayList<City> cities = new ArrayList<City>();
         City city = new City();
@@ -45,6 +42,7 @@ public class AllCitiesInWorldTest {
         ACIW.printResult(cities);
     }
 
+    // Testing returnCity
     @Test
     void returnCityTestNull() { ACIW.returnCity(null);}
 

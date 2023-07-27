@@ -71,41 +71,77 @@ public class Country
          * @param countryNo Country Code
          */
         public void setCountryNo(String countryNo) {
-                this.countryNo = countryNo;
+                if (countryNo == null){
+                        System.out.println("The country number is null");
+                        this.countryNo = "-";
+                }
+                else {
+                        this.countryNo = countryNo;
+                }
         }
         /**
          * Setting the Country Name of the Class
          * @param countryName Country Name
          */
         public void setCountryName(String countryName) {
-                this.countryName = countryName;
+                if (countryName == null){
+                        System.out.println("The country name is null");
+                        this.countryName = "-";
+                }
+                else {
+                        this.countryName = countryName;
+                }
         }
         /**
          * Setting the Continent Name of the Class
          * @param continentName Continent Name of the country
          */
         public void setContinentName(String continentName) {
-                this.continentName = continentName;
+                if (continentName == null){
+                        System.out.println("The continent name is null");
+                        this.continentName = "-";
+                }
+                else {
+                        this.continentName = continentName;
+                }
         }
         /**
          * Setting the Region Name of the Class
          * @param regionName Region Name of the country
          */
         public void setRegionName(String regionName) {
-                this.regionName = regionName;
+                if (regionName == null){
+                        System.out.println("The region name is null");
+                        this.regionName = "-";
+                }
+                else {
+                        this.regionName = regionName;
+                }
         }
         /**
          * Setting the Country's Population of the Class
          * @param population Country Population
          */
         public void setPopulation(int population) {
-                this.population = population;
+                if (population < 0){
+                        System.out.println("The population is less than zero. Value is set to zero");
+                        this.population = 0;
+                }
+                else {
+                        this.population = population;
+                }
         }
         /**
          * Setting the Country's Capital City Name of the Class
          * @param capitalName Country's Capital City Name
          */
         public void setCapitalName(String capitalName) {
-                this.capitalName = capitalName;
+                if (capitalName == null){
+                        System.out.println("The capital name is null");
+                        this.capitalName = "-";
+                }
+                else {
+                        this.capitalName = capitalName;
+                }
         }
 }

@@ -2,33 +2,31 @@ package com.napier.sem;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.mock;
 
 public class AllCountriesInRegionTest {
+
     static AllCountriesInRegion ACIR;
 
     @BeforeAll
-    static void init() { ACIR = new AllCountriesInRegion();}
+    static void init() {
+        ACIR = new AllCountriesInRegion();
+    }
 
     //Testing printResults
     @Test
-    void printResultTestNull(){
+    void printResultTestNull()
+    {
         // will throw java.lang.NullPointerException if the null is not checked in AllCountriesInRegion.
         ACIR.printResult(null,null);
     }
 
     @Test
-    void printResultCountriesTestNull() { ACIR.printResult("Caribbean", null);}
+    void printResultCountriesTestNull() {
+        ACIR.printResult("Caribbean", null);
+    }
 
     @Test
     void printResultRnTestNull(){
@@ -37,6 +35,7 @@ public class AllCountriesInRegionTest {
         countries.add(c);
         ACIR.printResult(null,countries);
     }
+
     @Test
     void printResultCountryTestNull(){
         ArrayList<Country> countries = new ArrayList<Country>();
@@ -48,27 +47,37 @@ public class AllCountriesInRegionTest {
     }
 
     @Test
-    void returnCountryTestNull() { ACIR.returnCountries(null,null);}
+    void returnCountryTestNull() {
+        ACIR.returnCountries(null,null);
+    }
 
     @Test
-    public void statementQueryTesting() throws SQLException {
-        // Creating the mock connection, statement, and result set.
-        Connection mockCon = mock(Connection.class);
-        Statement mockStatement = mock(Statement.class);
-        ResultSet mockResultSet = mock(ResultSet.class);
+    void printResultCityTestEmpty(){
+        ArrayList<Country> countries = new ArrayList<Country>();
+        ACIR.printResult("North America", countries);
+    }
 
-        // Return mock statement when the createStatement() is called.
-        when(mockCon.createStatement()).thenReturn(mockStatement);
+    @Test
+    void printResultCityTestContainsNull(){
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        ACIR.printResult("North America", countries);
+    }
 
-        // Return mock result set when the executeQuery() is called.
-        when(mockStatement.executeQuery(anyString())).thenReturn(mockResultSet);
+    // Testing returnCity
+    @Test
+    void returnCountriesTestNull(){
+        ACIR.returnCountries(null,null);
+    }
 
-        Statement stmt = mockCon.createStatement();
+    @Test
+    void returnCountryConTestNull(){
+        ACIR.returnCountries("North America", null);
+    }
 
-        // assert a statement that is not null
-        assertNotNull(stmt);
-
-        // creating the mock statement with the mock connection, with the
-        verify(mockCon, times(1)).createStatement();
+    @Test
+    void returnCountryRegionTestNull(){
+        Connection con = mock(Connection.class);
+        ACIR.returnCountries(null, con);
     }
 }

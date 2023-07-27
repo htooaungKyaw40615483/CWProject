@@ -97,18 +97,18 @@ public class AllCitiesInRegion {
             return;
         }
 
+        // Checking if the arraylist is empty
+        if (cities.isEmpty()){
+            System.out.print("The cities ArrayList is empty.");
+            return;
+        }
+
         // Checking if the element of arraylist is null
         for(int i = 0; i<= cities.size()-1; i++){
-            if (cities.get(i) == null){
+            if (cities.get(i) == null) {
                 System.out.println("The cities ArrayList contains null value.");
                 return;
             }
-        }
-
-        // Check if region name is null. If not, move on to the next condition.
-        if(regionName == null){
-            System.out.println("The region name is not defined");
-            return;
         }
 
         // Printing out the headers of the report table.

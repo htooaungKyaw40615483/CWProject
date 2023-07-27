@@ -20,8 +20,6 @@ public class App
         SQLConnection Class object is created.
         connect() is used to connect to the database
          */
-
-//
         SQLConnection connection = new SQLConnection();
         if (args.length <1 ){
             connection.connect("localhost:33060", 30000);
@@ -55,6 +53,21 @@ public class App
 
         Top10CitiesInDistrict.printResult(DISTRICT, Top10CitiesInDistrict.returnCitiesInDistrict(DISTRICT, con));
         Top10CitiesInCountry.printResult(COUNTRY, Top10CitiesInCountry.returnCitiesInCountry(COUNTRY, con));
+
+        // REPORT: Capital Cities in the World/Continent/Region
+        CapitalCitiesInWorld.printResult((CapitalCitiesInWorld.returnCapital(con)));
+        CapitalCitiesInContinent.printResult(CONTINENT, CapitalCitiesInContinent.returnCapital(CONTINENT,con));
+        CapitalCitiesInRegion.printResult(REGION, CapitalCitiesInRegion.returnCapital(REGION, con));
+
+        // REPORT: Top 10 Capital Cities in the World/Continent/Region
+        Top10CapitalCitiesInWorld.printResult(Top10CapitalCitiesInWorld.returnCapital(con));
+        Top10CapitalCitiesInContinent.printResult(CONTINENT,Top10CapitalCitiesInContinent.returnCapital(CONTINENT,con));
+        Top10CapitalCitiesInRegion.printResult(REGION,Top10CapitalCitiesInRegion.returnCapital(REGION,con));
+
+        // REPORT: Population percentage of Continent/Region/Country
+        PopulationPercentInContinent.printResult(PopulationPercentInContinent.returnPopulation(con));
+        PopulationPercentInRegion.printResult(PopulationPercentInRegion.returnPopulation(con));
+        PopulationPercentInCountry.printResult(PopulationPercentInCountry.returnPopulation(con));
 
 
         // disconnecting the database
