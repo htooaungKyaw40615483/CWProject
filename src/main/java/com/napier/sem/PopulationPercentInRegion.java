@@ -30,7 +30,7 @@ public class PopulationPercentInRegion {
                     "CONCAT(ROUND(((comp.total_population - city_population) / comp.total_population) * 100, 2), '%') AS not_city_percent\n" +
                     "FROM (SELECT Region, SUM(population) AS total_population FROM country GROUP BY Region) comp\n" +
                     "JOIN (SELECT country.Region, SUM(city.population) AS city_population FROM city JOIN country \n" +
-                    "ON country.code = city.countrycode GROUP BY country.Region) cip ON comp.Region = cip.Region;";
+                    "ON country.code = city.countrycode GROUP BY country.Region) cip ON comp.Region = cip.Region ORDER BY comp.total_population DESC;";
 
             // Storing the results in a ResultSet object, PopulationPercentRegionResult
             ResultSet populationInRegion = stmt.executeQuery(sqlQueryPopulationPercentRegion);
