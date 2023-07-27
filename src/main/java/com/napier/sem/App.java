@@ -46,14 +46,18 @@ public class App
         Top10CitiesInWorld.printResult(Top10CitiesInWorld.returnCity(con));
         Top10CitiesInContinent.printResult(CONTINENT, Top10CitiesInContinent.returnCity(CONTINENT,con));
         Top10CitiesInRegion.printResult(REGION, Top10CitiesInRegion.returnCity(REGION,con));
-
         Top10CitiesInDistrict.printResult(DISTRICT, Top10CitiesInDistrict.returnCitiesInDistrict(DISTRICT, con));
         Top10CitiesInCountry.printResult(COUNTRY, Top10CitiesInCountry.returnCitiesInCountry(COUNTRY, con));
+
+        // REPORT: Capital Cities in the World/Continent/Region
+        CapitalCitiesInWorld.printResult((CapitalCitiesInWorld.returnCapital(con)));
 
         // REPORT: Population percentage of Continent/Region/Country
         PopulationPercentInContinent.printResult(PopulationPercentInContinent.returnPopulation(con));
         PopulationPercentInRegion.printResult(PopulationPercentInRegion.returnPopulation(con));
         PopulationPercentInCountry.printResult(PopulationPercentInCountry.returnPopulation(con));
+
+
 
         // disconnecting the database
         connection.disconnect();
