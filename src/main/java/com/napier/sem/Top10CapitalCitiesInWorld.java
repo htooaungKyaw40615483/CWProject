@@ -31,7 +31,7 @@ public class Top10CapitalCitiesInWorld {
             // Creating an arraylist of capitals objects to be stored and returned from the method
             ArrayList<Capital> capitals = new ArrayList<>();
 
-            // Retrieving the results from ResultSet object, WorldCapitalCitiesResult as long as there is data left
+            // Retrieving the results from ResultSet object, top10capitalCityInWorldResult as long as there is data left
             while (top10capitalCityInWorldResult.next()) {
 
                 //Creating a capital object to be stored in arraylist
