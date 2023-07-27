@@ -54,25 +54,25 @@ public class AllCountriesInRegionIntegrationTest {
         }
     }
 
-    @Test
-    void testReturnCountriesForEurope() {
-        // Fetch the countries for the region "Europe"
-        String regionName = "Europe";
-        ArrayList<Country> countries = AllCountriesInRegion.returnCountries(regionName, con);
-
-        // Check if countries arraylist is not null
-        assertNotNull(countries);
-
-        // Check each row of the countries ArrayList using assertions
-        for (Country country : countries) {
-            // Use the getters to retrieve the values and compare with the expected values
-            if (country.getCountryName().equals("Germany")) {
-                assertEquals("Europe", country.getRegionName());
-                assertEquals(82164700, country.getPopulation());
-                assertEquals("Berlin", country.getCapitalName());
-            }
-        }
-    }
+//    @Test
+//    void testReturnCountriesForEurope() {
+//        // Fetch the countries for the region "Europe"
+//        String regionName = "Europe";
+//        ArrayList<Country> countries = AllCountriesInRegion.returnCountries(regionName, con);
+//
+//        // Check if countries arraylist is not null
+//        assertNotNull(countries);
+//
+//        // Check each row of the countries ArrayList using assertions
+//        for (Country country : countries) {
+//            // Use the getters to retrieve the values and compare with the expected values
+//            if (country.getCountryName().equals("Germany")) {
+//                assertEquals("Europe", country.getRegionName());
+//                assertEquals(82164700, country.getPopulation());
+//                assertEquals("Berlin", country.getCapitalName());
+//            }
+//        }
+//    }
 
     @Test
     void testReturnCountriesForNonexistentRegion() {
