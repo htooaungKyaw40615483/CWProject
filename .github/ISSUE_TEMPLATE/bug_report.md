@@ -1,5 +1,5 @@
 ---
-name: Bug report
+name: Bug Report: Error when Creating/Updating "latest" Release Tag
 about: 'When attempting to create or update a release tag with the name "latest,"
   the following error occurs:'
 title: ''
