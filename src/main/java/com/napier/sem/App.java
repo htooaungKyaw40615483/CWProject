@@ -14,6 +14,7 @@ public class App
         String COUNTRY = "China";
         String REGION = "Caribbean";
         String CONTINENT="North America";
+        String CITY = "Blackpool";
 
         /*
         Establishing the sql connection for the first time
@@ -74,6 +75,7 @@ public class App
         RegionPopulation.printResult(REGION, RegionPopulation.returnPopulation(REGION, con));
         CountryPopulation.printResult(COUNTRY, CountryPopulation.returnPopulation(COUNTRY, con));
         DistrictPopulation.printResult(DISTRICT, DistrictPopulation.returnPopulation(DISTRICT,con));
+        CityPopulation.printResult(CITY, CityPopulation.returnPopulation(CITY, con));
         // disconnecting the database
         connection.disconnect();
     }

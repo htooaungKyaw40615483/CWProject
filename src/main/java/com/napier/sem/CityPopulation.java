@@ -5,15 +5,15 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class DistrictPopulation {
+public class CityPopulation {
     /**
-     * Return population of region from the world database
+     * Return population of city from the world database
      * @param con Established Database Connection
      * @return the Population Objects in an ArrayList which is from a world.
      */
-    public static ArrayList<Population> returnPopulation(String districtName, Connection con){
-        if (districtName == null){
-            System.out.println("The District name is not defined.");
+    public static ArrayList<Population> returnPopulation(String cityName, Connection con){
+        if (cityName == null){
+            System.out.println("The City name is not defined.");
         }
         try{
             // Creating Statement Object to execute Query
@@ -21,25 +21,26 @@ public class DistrictPopulation {
 
             /*
              Defining the Query to be executed.
-             QUERY: district Population
+             QUERY: city Population
             */
-            String sqlQueryDistrictPopulation = "SELECT SUM(city.Population) AS Total_Population FROM city WHERE city.District= \"" + districtName +"\"";
+            String sqlQueryCityPopulation = "SELECT SUM(city.Population) AS Total_Population FROM city WHERE city.Name= \"" + cityName +"\" ";
 
-            // Storing the results in a ResultSet object, districtPopulationResult
-            ResultSet districtPopulation = stmt.executeQuery(sqlQueryDistrictPopulation);
+            // Storing the results in a ResultSet object, cityPopulationResult
+            ResultSet cityPopulation = stmt.executeQuery(sqlQueryCityPopulation);
 
             // Creating an arraylist of population objects to be stored and returned from the method
             ArrayList<Population> populations = new ArrayList<Population>();
 
-            // Retrieving the results from ResultSet object, DistrictPopulationResult as long as there is data left
-            while(districtPopulation.next()) {
+            // Retrieving the results from ResultSet object, RegionPopulationResult as long as there is data left
+            while(cityPopulation.next()) {
 
                 // Creating a Population object to be stored in arraylist
                 Population population = new Population();
 
                 // setting the attributes of population object with Setter
-                population.setName(districtPopulation.getString(1));
-                population.setTotalPopulation(districtPopulation.getLong(2));
+                population.setName(cityPopulation.getString(1));
+                population.setTotalPopulation(cityPopulation.getLong(2));
+
 
                 // adding the population object to the arraylist
                 populations.add(population);
@@ -57,10 +58,10 @@ public class DistrictPopulation {
         }
     }
     /**
-     * Printing a district population from the world database
+     * Printing a city population from the world database
      * @param populations arraylist of population objects.
      */
-    public static void printResult(String districtName, ArrayList<Population> populations){
+    public static void printResult(String cityName, ArrayList<Population> populations){
         // Check if populations arraylist is null. If not, move on to the next condition.
         if (populations == null) {
             System.out.println("There is no population");
@@ -82,9 +83,9 @@ public class DistrictPopulation {
         }
 
         // Printing out the headers of the report table.
-        System.out.println("-------------------------District Population-----------------------------------");
-        System.out.println("| District: " + districtName + "                                               ");
-        System.out.printf("| %-5s | %-40s | %-25s | %n", "No", "District Name", "Total Population");
+        System.out.println("-------------------------City Population-----------------------------------");
+        System.out.println("| City: " + cityName + "                                               ");
+        System.out.printf("| %-5s | %-40s | %-25s | %n", "No", "City Name", "Total Population");
         System.out.println("-------------------------------------------------------------------------------");
 
         // Initializing the variable to be shown as row number.
@@ -97,4 +98,5 @@ public class DistrictPopulation {
         }
         System.out.println("--------------------------------------------------------------------------------");
     }
+
 }
