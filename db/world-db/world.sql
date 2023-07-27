@@ -3861,7 +3861,7 @@ INSERT INTO `city` VALUES (3807,'Columbus','USA','Ohio',711470);
 INSERT INTO `city` VALUES (3808,'Austin','USA','Texas',656562);
 INSERT INTO `city` VALUES (3809,'Baltimore','USA','Maryland',651154);
 INSERT INTO `city` VALUES (3810,'Memphis','USA','Tennessee',650100);
-INSERT INTO `city` VALUES (3811,'Milwaukee','USA','Wisconsin',596974);
+INSERT INTO `city` VALUES (3811,'Milwaukee','UA','Wisconsin',596974);
 INSERT INTO `city` VALUES (3812,'Boston','USA','Massachusetts',589141);
 INSERT INTO `city` VALUES (3813,'Washington','USA','District of Columbia',572059);
 INSERT INTO `city` VALUES (3814,'Nashville-Davidson','USA','Tennessee',569891);
