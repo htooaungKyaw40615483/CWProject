@@ -89,11 +89,11 @@ public class Top10CitiesInContinent {
             System.out.println("The continent name is not defined");
             return;
         }
-        System.out.println("--------------------------------------Top 10 most populated Cities in A Continent by Largest Population to Smallest----------------------------");
-        System.out.println("| Continent: " + continentName + "                                                                               ORDER: Largest to Smallest Population");
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-35s | %-35s | %-35s | %-21s | %n", "Name", "Country", "District", "Population");
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("--------------------------------------Top 10 most populated Cities in A Continent by Largest Population to Smallest------------------------");
+        System.out.println("| Continent: " + continentName + "                                                                           ORDER: Largest to Smallest Population");
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-2s | %-30s | %-35s | %-34s | %-20s | %n", "No", "Name", "Country", "District", "Population");
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
 
 
         int  i = 1;
@@ -102,9 +102,9 @@ public class Top10CitiesInContinent {
         for (City city :cities){
 
             // Printing the city object's attributes with Getter.
-            System.out.printf("| %,2d | %-30s | %-35s | %-34s  | %,20d  |  %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
+            System.out.printf("| %,2d | %-30s | %-35s | %-34s  | %,20d  | %n", i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());
         }
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
 
     }
 }

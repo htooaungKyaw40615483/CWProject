@@ -14,25 +14,25 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 
-public class Top10CitiesInContinentTest {
-    static Top10CitiesInContinent TCC;
+public class Top10CitiesInDistrictTest {
+    static Top10CitiesInDistrict TCD;
 
     @BeforeAll
     static void init(){
-        TCC = new Top10CitiesInContinent();
+        TCD = new Top10CitiesInDistrict();
     }
 
     // Testing printResults
     @Test
     void printResultTestNull()
     {
-        // will throw java.lang.NullPointerException if the null is not checked in Top10CitiesInContinent.
-        TCC.printResult(null, null);
+        // will throw java.lang.NullPointerException if the null is not checked in AllCitiesInDistrict.
+        TCD.printResult(null, null);
     }
 
     @Test
     void printResultCitiesTestNull(){
-        TCC.printResult("North America", null);
+        TCD.printResult("Bíobío", null);
     }
 
     @Test
@@ -40,7 +40,7 @@ public class Top10CitiesInContinentTest {
         ArrayList<City> cities = new ArrayList<City>();
         City c = new City();
         cities.add(c);
-        TCC.printResult(null, cities);
+        TCD.printResult(null, cities);
     }
 
     @Test
@@ -49,12 +49,12 @@ public class Top10CitiesInContinentTest {
         City city = new City();
         city.setCityPopulation(99999999);
         cities.add(city);
-        TCC.printResult("North America", cities);
+        TCD.printResult("Bíobío", cities);
     }
 
     @Test
     void returnCityTestNull(){
-        TCC.returnCity(null,null);
+        TCD.returnCitiesInDistrict(null,null);
     }
     @Test
     public void statementQueryTesting() throws SQLException {

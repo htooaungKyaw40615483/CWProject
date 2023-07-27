@@ -1,17 +1,12 @@
 package com.napier.sem;
 
-import org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-
 import java.sql.Connection;
 import java.util.ArrayList;
-
 import static org.mockito.Mockito.mock;
 
-public class AllCitiesInCountryTest
-{
+public class AllCitiesInCountryTest {
     static AllCitiesInCountry ACIC;
 
     @BeforeAll
@@ -46,6 +41,19 @@ public class AllCitiesInCountryTest
         City city = new City();
         city.setCityPopulation(99999999);
         cities.add(city);
+        ACIC.printResult("China", cities);
+    }
+
+    @Test
+    void printResultCityTestEmpty(){
+        ArrayList<City> cities = new ArrayList<City>();
+        ACIC.printResult("China", cities);
+    }
+
+    @Test
+    void printResultCityTestContainsNull(){
+        ArrayList<City> cities = new ArrayList<City>();
+        cities.add(null);
         ACIC.printResult("China", cities);
     }
 

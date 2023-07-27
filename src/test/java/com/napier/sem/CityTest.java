@@ -19,8 +19,18 @@ class CityTest {
     }
 
     @Test
+    void setCityNameTestNotNull() {
+        city.setCityName("Texas");
+    }
+
+    @Test
     void setCountryNameTestNull() {
         city.setCountryName(null);
+    }
+
+    @Test
+    void setCountryNameTestNotNull() {
+        city.setCountryName("TestingCountry");
     }
 
     @Test
@@ -29,7 +39,15 @@ class CityTest {
     }
 
     @Test
-    void setCityPopulationTestNull() {
+    void setDistrictNameTestNotNull() { city.setDistrictName("TestingDistrict");}
+
+    @Test
+    void setCityPopulationTestLessThanZero() {
         city.setCityPopulation(-1);
+    }
+
+    @Test
+    void setCityPopulationTestMoreThanZero() {
+        city.setCityPopulation(1000);
     }
 }

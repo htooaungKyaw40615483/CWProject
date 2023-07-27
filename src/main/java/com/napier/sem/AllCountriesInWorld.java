@@ -6,9 +6,7 @@ import java.util.ArrayList;
 /*
  * Purpose: To Retrieve All The Countries in World
  */
-
 public class AllCountriesInWorld {
-
     /**
      * Return a countries population in world from the world database
      * @param con Established Database Connection
@@ -18,6 +16,7 @@ public class AllCountriesInWorld {
         try{
             // Creating Statement Object to execute Query
             Statement stmt = con.createStatement();
+
             /*
              Defining the Query to be executed.
              QUERY: To SELECT CountryCode, CountryName, ContinentName, RegionName, Population of a Country
@@ -25,14 +24,19 @@ public class AllCountriesInWorld {
             */
             String sqlQueryCountryInWorld = "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name " +
                                             "FROM country, city WHERE city.ID = country.Capital ORDER BY country.Population DESC;";
+
             // Storing the results in a ResultSet object, ALlCountriesInWorldResult
             ResultSet countriesInWorld = stmt.executeQuery(sqlQueryCountryInWorld);
+
             // Creating an arraylist of country objects to be stored and returned from the method
             ArrayList<Country> countries = new ArrayList<Country>();
+
             // Retrieving the results from ResultSet object, CountriesInWorldResult as long as there is data left
             while(countriesInWorld.next()) {
+
                 // Creating a Country object to be stored in arraylist
                 Country country = new Country();
+
                 // setting the attributes of country object with Setter
                 country.setCountryNo(countriesInWorld.getString(1));
                 country.setCountryName(countriesInWorld.getString(2));
@@ -40,6 +44,7 @@ public class AllCountriesInWorld {
                 country.setRegionName(countriesInWorld.getString(4));
                 country.setPopulation(countriesInWorld.getInt(5));
                 country.setCapitalName(countriesInWorld.getString(6));
+
                 // adding the country object to the arraylist
                 countries.add(country);
             }
@@ -55,32 +60,45 @@ public class AllCountriesInWorld {
             return null;
         }
     }
-
     /**
      * Printing a countries population in the world from the world database
      * @param countries arraylist of country objects.
      */
     public static void printResult(ArrayList<Country> countries){
-
         // Check if countries arraylist is null. If not, move on to the next condition.
         if (countries == null) {
             System.out.println("There is no countries");
             return;
         }
 
-        System.out.println("---------------------------------------------------All Countries in the World By Largest Population To Smallest-------------------------------------------------------------------");
-        System.out.println("Total Countries: " + countries.size() + " ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-10s | %-40s | %-30s | %-30s | %-20s | %-35s | %n", "Code", "Name", "Continent", "Region", "Population", "Capital");
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        // Checking if the arraylist of cities is initialized but empty.
+        if (countries.isEmpty()){
+            System.out.print("The cities ArrayList is empty.");
+            return;
+        }
 
+        // Checking if the element of arraylist is null
+        for(int i = 0; i<= countries.size()-1; i++){
+            if (countries.get(i) == null){
+                System.out.println("The cities ArrayList contains null value.");
+                return;
+            }
+        }
+
+        // Printing out the headers of the report table.
+        System.out.println("---------------------------------------------------All Countries in the World By Largest Population To Smallest--------------------------------------------------------------------");
+        System.out.println("Total Countries: " + countries.size() + " --------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.printf("| %-5s | %-7s | %-40s | %-25s | %-30s | %-15s | %-35s | %n", "No", "Code", "Name", "Continent", "Region", "Population", "Capital");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
+        // Initializing the variable to be shown as row number.
         int  i = 1;
 
         // For all the objects in countries arraylist, formatting and printing the values (Strings and Digits)
         for (Country country :countries){
             // Printing the country object's attributes with Getter.
-            System.out.printf("| %,5d | %-4s | %-40s | %-30s | %-30s | %,20d | %-35s | %n", i++, country.getCountryNo(), country.getCountryName(), country.getContinentName(), country.getRegionName(), country.getPopulation(), country.getCapitalName());
+            System.out.printf("| %,5d | %-7s | %-40s | %-25s | %-30s | %,15d | %-35s | %n", i++, country.getCountryNo(), country.getCountryName(), country.getContinentName(), country.getRegionName(), country.getPopulation(), country.getCapitalName());
         }
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
     }
 }

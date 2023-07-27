@@ -14,12 +14,12 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 
-public class Top10CitiesInContinentTest {
-    static Top10CitiesInContinent TCC;
+public class Top10CitiesInCountryTest {
+    static Top10CitiesInCountry TCC;
 
     @BeforeAll
     static void init(){
-        TCC = new Top10CitiesInContinent();
+        TCC = new Top10CitiesInCountry();
     }
 
     // Testing printResults
@@ -54,7 +54,7 @@ public class Top10CitiesInContinentTest {
 
     @Test
     void returnCityTestNull(){
-        TCC.returnCity(null,null);
+        TCC.returnCitiesInCountry(null,null);
     }
     @Test
     public void statementQueryTesting() throws SQLException {
