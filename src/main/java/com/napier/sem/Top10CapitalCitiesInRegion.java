@@ -98,7 +98,7 @@ public class Top10CapitalCitiesInRegion {
 
         // Printing out the headers of the report table.
         System.out.println("---------------------------------------Top 10 Populated Capital Cities in The Region--------------------------------------------");
-        System.out.println("| Region: " + regionName + "                                                                    Total Cities: " + capitals.size());
+        System.out.println("| Region: " + regionName + "                                                               ORDER: Largest to Smallest Population");
         System.out.printf("| %-5s | %-40s | %-40s | %-30s | %n", "No", "Capital Name", "Country Name", "Population");
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------");
 

@@ -83,7 +83,7 @@ public class Top10CapitalCitiesInWorld {
 
         // Printing out the headers of the report table.
         System.out.println("-----------------------------------------Top 10 Populated Capital Cities in The World----------------------------------------");
-        System.out.println("Total Capital: " + capitals.size() + " --------------------------------------------------------------------------------------");
+        System.out.println( " ---------------------------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-5s | %-40s | %-40s | %-30s | %n", "No", "Capital Name", "Country Name", "Population");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
 

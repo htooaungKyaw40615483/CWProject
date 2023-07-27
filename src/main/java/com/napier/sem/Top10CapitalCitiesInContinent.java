@@ -96,7 +96,7 @@ public class Top10CapitalCitiesInContinent {
 
         // Printing out the headers of the report table.
         System.out.println("-----------------------------------------Top 10 Populated Capital Cities in The Continent---------------------------------------");
-        System.out.println("| Region: " + continentName + "                                                                 Total Cities: " + capitals.size());
+        System.out.println("| Continent: " + continentName + "                                                         ORDER: Largest to Smallest Population");
         System.out.printf("| %-5s | %-40s | %-40s | %-30s | %n", "No", "Capital Name", "Country Name", "Population");
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------");
 
