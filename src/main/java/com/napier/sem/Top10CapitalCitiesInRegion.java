@@ -84,7 +84,7 @@ public class Top10CapitalCitiesInRegion {
 
         // Checking if the arraylist of capitals is initialized but empty.
         if (capitals.isEmpty()){
-            System.out.print("The capital ArrayList is empty.");
+            System.out.print("The capital ArrayList is very empty.");
             return;
         }
 
