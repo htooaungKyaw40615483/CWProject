@@ -99,7 +99,7 @@ public class CapitalCitiesInRegion {
         }
 
         // Printing out the headers of the report table.
-        System.out.println("------------------------------All Capital Cities in the Region By Largest Population To Smallest-----------------------------");
+        System.out.println("------------------------------All Capital Cities in the Region By Largest Population To Smallest--------------------------------");
         System.out.println("| Region: " + regionName + "                                                                                          Total Cities: " + capitals.size());
         System.out.printf("| %-5s | %-40s | %-40s | %-30s | %n", "No", "Capital Name", "Country Name", "Population");
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------");
