@@ -18,8 +18,18 @@ jobs:
         run: mvn -Dtest=com.napier.sem.AllCitiesInCountryTest test
       - name: All Cities In District Unit Test
         run: mvn -Dtest=com.napier.sem.AllCitiesInDistrictTest test
-#      - name: City Unit Test
-#        run: mvn -Dtest=com.napier.sem.CityTest test
+      - name: All Cities In Continent Unit Test
+        run: mvn -Dtest=com.napier.sem.AllCitiesInContinentTest test
+      - name: All Cities In Region Unit Test
+        run: mvn -Dtest=com.napier.sem.AllCitiesInRegionTest test
+      - name: All Cities In World Unit Test
+        run: mvn -Dtest=com.napier.sem.AllCitiesInWorldTest test
+      - name: All Countries In World Unit Test
+        run: mvn -Dtest=com.napier.sem.AllCountriesInWorldTest test
+      - name: All Countries In Continent Unit Test
+        run: mvn -Dtest=com.napier.sem.AllCountriesInContinentTest test
+      - name: All Countries In Region Unit Test
+        run: mvn -Dtest=com.napier.sem.AllCountriesInRegionTest test
 
   IntegrationTests:
     name: Integration Tests
