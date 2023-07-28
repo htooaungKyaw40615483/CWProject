@@ -1,9 +1,9 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: ''
-labels: ''
-assignees: ''
+title: 'About the Bug'
+labels: 'bug'
+assignees: 'Htet Aung San, Htoo Aung Kyaw, Sai Sai Oam Hart, Kyi Sin Min Maw'
 
 ---
 
