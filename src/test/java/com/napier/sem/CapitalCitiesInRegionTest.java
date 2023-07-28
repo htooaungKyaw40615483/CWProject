@@ -1,4 +1,3 @@
-
 package com.napier.sem;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -14,26 +13,47 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
-
-public class Top10CapitalCitiesInWorldTest {
-    static Top10CapitalCitiesInWorld TCCW;
+public class CapitalCitiesInRegionTest {
+    static CapitalCitiesInRegion CCR;
 
     @BeforeAll
     static void init(){
-        TCCW = new Top10CapitalCitiesInWorld();
+        CCR = new CapitalCitiesInRegion();
     }
 
     // Testing printResults
     @Test
     void printResultTestNull()
     {
-        // will throw java.lang.NullPointerException if the null is not checked in Top10CapitalCitiesInWorld.
-        TCCW.printResult(null);
+        // will throw java.lang.NullPointerException if the null is not checked in CapitalCitiesInRegion.
+        CCR.printResult(null, null);
+    }
+
+    @Test
+    void printResultCapitalCitiesTestNull(){
+        CCR.printResult("Caribbean", null);
+    }
+
+    @Test
+    void printResultDnTestNull(){
+        ArrayList<Capital> capitals = new ArrayList<>();
+        Capital c = new Capital();
+        capitals.add(c);
+        CCR.printResult(null, capitals);
+    }
+
+    @Test
+    void printResultCapitalCityTestNull(){
+        ArrayList<Capital> capitals = new ArrayList<>();
+        Capital capital = new Capital();
+        capital.setCapitalPopulation(99999999);
+        capitals.add(capital);
+        CCR.printResult("Caribbean", capitals);
     }
 
     @Test
     void returnCapitalCityTestNull(){
-        TCCW.returnCapital(null);
+        CCR.returnCapital(null,null);
     }
     @Test
     public void statementQueryTesting() throws SQLException {
