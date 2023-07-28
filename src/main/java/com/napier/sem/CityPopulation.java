@@ -83,7 +83,7 @@ public class CityPopulation {
         }
 
         // Printing out the headers of the report table.
-        System.out.println("-------------------------City Population-----------------------------------");
+        System.out.println("-------------------------City Population----------------------------------------");
         System.out.println("| City: " + cityName + "                                               ");
         System.out.printf("| %-5s | %-40s | %-25s | %n", "No", "City Name", "Total Population");
         System.out.println("-------------------------------------------------------------------------------");
