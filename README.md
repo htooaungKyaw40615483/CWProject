@@ -9,12 +9,12 @@
 
 ![workflow](https://img.shields.io/github/actions/workflow/status/htooaungKyaw40615483/CWProject/main.yml)
 
-| Name             | Role          |
-|------------------|---------------|
-| Htet Aung San    | Product Owner |
-| Htoo Aung Kyaw   | SCRUM Master  |
-| Kyi Sin Min Maw  | Developer     | 
-| Sai Sai Oam Hart | Developer     |
+| Name             | Role          | Code Review 1  | Code Review 2 | Code Review 3 | Code Review 4 | Code Review 5 |
+|------------------|---------------|----------------|---------------|---------------|---------------|---------------|
+| Htet Aung San    | Product Owner | 0.25           | 0.25          | 0.25          | 0.25          |               |
+| Htoo Aung Kyaw   | SCRUM Master  | 0.25           | 0.25          | 0.25          | 0.25          |               |
+| Kyi Sin Min Maw  | Developer     | 0.25           | 0.25          | 0.25          | 0.25          |               |
+| Sai Sai Oam Hart | Developer     | 0.25           | 0.25          | 0.25          | 0.25          |               |
 
 > 20 Requirements of 32 Requirements are met
 
