@@ -4,35 +4,35 @@ about: Create a report to help us improve
 title: 'About the Bug'
 labels: 'bug'
 assignees: 'Htet Aung San, Htoo Aung Kyaw, Sai Sai Oam Hart, Kyi Sin Min Maw'
-
 ---
 
-**Describe the bug**
+## Describe the bug
 A clear and concise description of what the bug is.
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+## Error Details
 
-**Expected behavior**
+### Steps to Reproduce
+1. Describe the steps to reproduce the bug.
+2. Be as detailed as possible, so we can try to recreate the issue.
+
+### Expected Behavior
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+### Actual Behavior
+A clear and concise description of what actually happened.
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+### Additional Information
+Please provide any additional information that might be relevant to the bug:
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+- **Repository:** [username/repository-name](https://github.com/username/repository-name)
+- **Screenshot:** (insert screenshot URL or delete this line if not applicable)
 
-**Additional context**
-Add any other context about the problem here.
+## Possible Solutions
+If you have any ideas on how to solve the bug, please share them here.
+
+## Additional Context
+Any additional context about the bug that could be helpful in understanding and resolving it.
+
+## Related Issues
+If this bug is related to any other issues, please mention them here.
+
