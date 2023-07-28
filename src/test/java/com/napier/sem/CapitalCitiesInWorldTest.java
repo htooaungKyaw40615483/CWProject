@@ -1,4 +1,3 @@
-
 package com.napier.sem;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -8,32 +7,32 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 
-public class Top10CapitalCitiesInWorldTest {
-    static Top10CapitalCitiesInWorld TCCW;
+
+public class CapitalCitiesInWorldTest {
+    static CapitalCitiesInWorld CCW;
 
     @BeforeAll
     static void init(){
-        TCCW = new Top10CapitalCitiesInWorld();
+        CCW = new CapitalCitiesInWorld();
     }
 
     // Testing printResults
     @Test
     void printResultTestNull()
     {
-        // will throw java.lang.NullPointerException if the null is not checked in Top10CapitalCitiesInWorld.
-        TCCW.printResult(null);
+        // will throw java.lang.NullPointerException if the null is not checked in CapitalCitiesInWorld.
+        CCW.printResult(null);
     }
 
     @Test
     void returnCapitalCityTestNull(){
-        TCCW.returnCapital(null);
+        CCW.returnCapital(null);
     }
     @Test
     public void statementQueryTesting() throws SQLException {
@@ -56,5 +55,4 @@ public class Top10CapitalCitiesInWorldTest {
         // creating the mock statement with the mock connection, with the
         verify(mockCon, times(1)).createStatement();
     }
-
 }
