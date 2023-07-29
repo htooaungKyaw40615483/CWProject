@@ -99,7 +99,7 @@ public class LanguagePopulation {
         // For all the objects in populations arraylist, formatting and printing the values (Strings and Digits)
         for (Population population :populations){
             // Printing the population object's attributes with Getter.
-            System.out.printf("| %,5d | %-40s | %-40s | %,30d | %n", i++, population.getName(), population.getTotalPopulation(), population.getYesCityPercent());
+            System.out.printf("| %,5d | %-40s | %-40s | %30s | %n", i++, population.getName(), population.getTotalPopulation(), population.getYesCityPercent());
         }
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------");
     }
