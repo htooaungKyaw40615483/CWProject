@@ -75,8 +75,8 @@ public class App
         RegionPopulation.printResult(REGION, RegionPopulation.returnPopulation(REGION, con));
         CountryPopulation.printResult(COUNTRY, CountryPopulation.returnPopulation(COUNTRY, con));
         DistrictPopulation.printResult(DISTRICT, DistrictPopulation.returnPopulation(DISTRICT,con));
-
         CityPopulation.printResult(CITY, CityPopulation.returnPopulation(CITY, con));
+        LanguagePopulation.printResult(LanguagePopulation.returnPopulation(con));
         // disconnecting the database
         connection.disconnect();
     }

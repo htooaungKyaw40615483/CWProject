@@ -5,10 +5,10 @@ package com.napier.sem;
 public class Population {
 
     private String name;
-    // name of continent or region or country
+    // name of continent or region or country or language
 
     private long totalPopulation;
-    // total populaton of continent or region or country
+    // total populaton of continent or region or country or language
 
     private String yesCityPercent;
     // people living in city
