@@ -69,7 +69,7 @@ public class CapitalCitiesInContinentIntegrationTest {
     @Test
     void testReturnCapitalForContinentWithNullName() {
         // Fetch the cities for a continent with a null name
-        String continentName = "";
+        String continentName = null;
         ArrayList<Capital> capitals = CapitalCitiesInContinent.returnCapital(continentName, con);
 
         // Check if capitals arraylist is null, as the continent name is null
