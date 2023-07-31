@@ -45,6 +45,9 @@ public class CityPopulation {
                 // adding the population object to the arraylist
                 populations.add(population);
             }
+            if (populations.isEmpty()) {
+                return null;
+            }
             return populations;
         }
          /*
