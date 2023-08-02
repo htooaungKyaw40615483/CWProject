@@ -30,6 +30,63 @@ jobs:
         run: mvn -Dtest=com.napier.sem.AllCountriesInContinentTest test
       - name: All Countries In Region Unit Test
         run: mvn -Dtest=com.napier.sem.AllCountriesInRegionTest test
+      - name: All Countries In Region Unit Test
+        run: mvn -Dtest=com.napier.sem.AllCountriesInRegionTest test
+      - name: Capital Cities In Continent Unit Test
+        run: mvn -Dtest=com.napier.sem.CapitalCitiesInContinentTest test
+      - name: Capital Cities In Region Unit Test
+        run: mvn -Dtest=com.napier.sem.CapitalCitiesInRegionTest test
+      - name: Capital Cities In World Unit Test
+        run: mvn -Dtest=com.napier.sem.CapitalCitiesInWorldTest test
+      - name: City Population Unit Test
+        run: mvn -Dtest=com.napier.sem.CityPopulationTest test
+      - name: Continent Population Unit Test
+        run: mvn -Dtest=com.napier.sem.ContinentPopulationTest test
+      - name: Country Population Unit Test
+        run: mvn -Dtest=com.napier.sem.CountryPopulationTest test
+      - name: District Population Unit Test
+        run: mvn -Dtest=com.napier.sem.DistrictPopulationTest test
+      - name: Language Population Unit Test
+        run: mvn -Dtest=com.napier.sem.LanguagePopulationTest test
+      - name: Population Percent In Continent Unit Test
+        run: mvn -Dtest=com.napier.sem.PopulationPercentInContinentTest test
+      - name: Population Percent In Country Unit Test
+        run: mvn -Dtest=com.napier.sem.PopulationPercentInCountryTest test
+      - name: Population Percent In Region Unit Test
+        run: mvn -Dtest=com.napier.sem.PopulationPercentInRegionTest test
+      - name: Region Population Unit Test
+        run: mvn -Dtest=com.napier.sem.RegionPopulationTest test
+      - name: Top 10 Capital Cities In Continent Unit Test
+        run: mvn -Dtest=com.napier.sem.Top10CapitalCitiesInContinentTest test
+      - name: Top 10 Capital Cities In Region Unit Test
+        run: mvn -Dtest=com.napier.sem.Top10CapitalCitiesInRegionTest test
+      - name: Top 10 Capital Cities In World Unit Test
+        run: mvn -Dtest=com.napier.sem.Top10CapitalCitiesInWorldTest test
+      - name: Top 10 Cities In Continent Unit Test
+        run: mvn -Dtest=com.napier.sem.Top10CitiesInContinentTest test
+      - name: Top 10 Cities In Country Unit Test
+        run: mvn -Dtest=com.napier.sem.Top10CitiesInCountryTest test
+      - name: Top 10 Cities In District Unit Test
+        run: mvn -Dtest=com.napier.sem.Top10CitiesInDistrictTest test
+      - name: Top 10 Cities In Region Unit Test
+        run: mvn -Dtest=com.napier.sem.Top10CitiesInRegionTest test
+      - name: Top 10 Cities In World Unit Test
+        run: mvn -Dtest=com.napier.sem.Top10CitiesInWorldTest test
+      - name: Top 10 Countries In Continent Unit Test
+        run: mvn -Dtest=com.napier.sem.Top10CountriesInContinentTest test
+      - name: Top 10 Countries In Region Unit Test
+        run: mvn -Dtest=com.napier.sem.Top10CountriesInRegionTest test
+      - name: Top 10 Countries In World Unit Test
+        run: mvn -Dtest=com.napier.sem.Top10CountriesInWorldTest test
+      - name: World Population Unit Test
+        run: mvn -Dtest=com.napier.sem.WorldPopulationTest test
+      - name: CodeCov For Unit Tests
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./target/site/jacoco
+          flags: Integrations
+          verbose: true
 
   IntegrationTests:
     name: Integration Tests
@@ -48,11 +105,42 @@ jobs:
         run: |
           docker build -t database ./db
           docker run --name world -dp 33060:3306 database
+          mvn -Dtest=com.napier.sem.AllCitiesInContinentIntegrationTest test
           mvn -Dtest=com.napier.sem.AllCitiesInCountryIntegrationTest test
+          mvn -Dtest=com.napier.sem.AllCitiesInDistrictIntegrationTest test
+          mvn -Dtest=com.napier.sem.AllCitiesInRegionIntegrationTest test
+          mvn -Dtest=com.napier.sem.AllCitiesInWorldIntegrationTest test
+          mvn -Dtest=com.napier.sem.AllCountriesInContinentIntegrationTest test
+          mvn -Dtest=com.napier.sem.AllCountriesInRegionIntegrationTest test
+          mvn -Dtest=com.napier.sem.AllCountriesInWorldIntegrationTest test
+          mvn -Dtest=com.napier.sem.CapitalCitiesInContinentIntegrationTest test
+          mvn -Dtest=com.napier.sem.CapitalCitiesInRegionIntegrationTest test
+          mvn -Dtest=com.napier.sem.CapitalCitiesInWorldIntegrationTest test
+          mvn -Dtest=com.napier.sem.CityPopulationIntegrationTest test
+          mvn -Dtest=com.napier.sem.ContinentPopulationIntegrationTest test
+          mvn -Dtest=com.napier.sem.CountryPopulationIntegrationTest test
+          mvn -Dtest=com.napier.sem.DistrictPopulationIntegrationTest test
+          mvn -Dtest=com.napier.sem.LanguagePopulationIntegrationTest test
+          mvn -Dtest=com.napier.sem.PopulationPercentInContinentIntegrationTest test
+          mvn -Dtest=com.napier.sem.PopulationPercentInCountryIntegrationTest test
+          mvn -Dtest=com.napier.sem.PopulationPercentInRegionIntegrationTest test
+          mvn -Dtest=com.napier.sem.RegionPopulationIntegrationTest test
+          mvn -Dtest=com.napier.sem.Top10CapitalCitiesInContinentIntegrationTest test
+          mvn -Dtest=com.napier.sem.Top10CapitalCitiesInRegionIntegrationTest test
+          mvn -Dtest=com.napier.sem.Top10CapitalCitiesInWorldIntegrationTest test
+          mvn -Dtest=com.napier.sem.Top10CitiesInContinentIntegrationTest test
+          mvn -Dtest=com.napier.sem.Top10CitiesInCountryIntegrationTest test
+          mvn -Dtest=com.napier.sem.Top10CitiesInDistrictIntegrationTest test
+          mvn -Dtest=com.napier.sem.Top10CitiesInRegionIntegrationTest test
+          mvn -Dtest=com.napier.sem.Top10CitiesInWorldIntegrationTest test
+          mvn -Dtest=com.napier.sem.Top10CountriesInContinentIntegrationTest test
+          mvn -Dtest=com.napier.sem.Top10CountriesInRegionIntegrationTest test
+          mvn -Dtest=com.napier.sem.Top10CountriesInWorldIntegrationTest test
+          mvn -Dtest=com.napier.sem.WorldPopulationIntegrationTest test          
           docker stop world
           docker rm world
           docker image rm database
-      - name: CodeCov
+      - name: CodeCov For Integration Tests
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
