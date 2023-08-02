@@ -34,12 +34,13 @@ public class CapitalCitiesInWorld {
 
             // Creating an arraylist of capitals objects to be stored and returned from the method
             ArrayList<Capital> capitals = new ArrayList<>();
-
+            //Creating a capital object to be stored in arraylist
+            Capital capital = new Capital();
             // Retrieving the results from ResultSet object, WorldCapitalCitiesResult as long as there is data left
             while (worldCapitalCity.next()) {
 
-                //Creating a capital object to be stored in arraylist
-                Capital capital = new Capital();
+
+
 
                 // setting the attributes of capital object with Setter
                 capital.setCapitalName(worldCapitalCity.getString(1));
@@ -79,12 +80,13 @@ public class CapitalCitiesInWorld {
         }
 
         // Checking if the element of arraylist is null
-        for(int i = 0; i<= capitals.size()-1; i++){
-            if (capitals.get(i) == null){
+        for (Capital capital : capitals) {
+            if (capital == null) {
                 System.out.println("The capitals ArrayList contains null value.");
                 return;
             }
         }
+
 
         // Printing out the headers of the report table.
         System.out.println("----------------------------------All Capital Cities in the World By Largest Population To Smallest-----------------------------");

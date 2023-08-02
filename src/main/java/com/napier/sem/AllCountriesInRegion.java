@@ -36,11 +36,12 @@ public class AllCountriesInRegion {
 
             // Creating an arraylist of country objects to be stored and returned from the method
             ArrayList<Country> countries = new ArrayList<Country>();
-
+            // Creating a Country object to be stored in arraylist
+            Country country = new Country();
             // Retrieving the results from ResultSet object, CountriesInRegionResult as long as there is data left
             while(countriesInRegion.next()) {
-                // Creating a Country object to be stored in arraylist
-                Country country = new Country();
+
+
 
                 // setting the attributes of country object with Setter
                 country.setCountryNo(countriesInRegion.getString(1));
@@ -101,12 +102,13 @@ public class AllCountriesInRegion {
         }
 
         // Checking if the element of arraylist is null
-        for(int i = 0; i<= countries.size()-1; i++){
-            if (countries.get(i) == null){
+        for (Country country : countries) {
+            if (country == null) {
                 System.out.println("The countries ArrayList contains null value.");
                 return;
             }
         }
+
 
         // Printing out the headers of the report table.
         System.out.println("-------------------------------------------All Countries in the Region By Largest Population To Smallest----------------------------------------");

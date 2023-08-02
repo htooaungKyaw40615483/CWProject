@@ -31,12 +31,13 @@ public class Top10CitiesInWorld {
 
             // Creating an arraylist of city objects to be stored and returned from the method
             ArrayList<City> cities = new ArrayList<City>();
-
+            // Creating a City object to be stored in arraylist
+            City city = new City();
             // Retrieving the results from ResultSet object, top10CityInWorldResult as long as there is data left
             while(top10CityInWorldResult.next()) {
 
-                // Creating a City object to be stored in arraylist
-                City city = new City();
+
+
 
                 // setting the attributes of city object with Setter
                 city.setCityName(top10CityInWorldResult.getString(1));

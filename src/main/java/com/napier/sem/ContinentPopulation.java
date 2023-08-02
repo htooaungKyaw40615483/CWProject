@@ -34,12 +34,13 @@ public class ContinentPopulation {
 
             // Creating an arraylist of population objects to be stored and returned from the method
             ArrayList<Population> populations = new ArrayList<Population>();
-
+            // Creating a Population object to be stored in arraylist
+            Population population = new Population();
             // Retrieving the results from ResultSet object, WorldPopulationResult as long as there is data left
             while(continentPopulation.next()) {
 
-                // Creating a Population object to be stored in arraylist
-                Population population = new Population();
+
+
 
                 // setting the attributes of population object with Setter
                 population.setName(continentPopulation.getString(1));

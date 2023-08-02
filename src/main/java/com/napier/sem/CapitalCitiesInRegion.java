@@ -37,12 +37,13 @@ public class CapitalCitiesInRegion {
 
             // Creating an arraylist of capitals objects to be stored and returned from the method
             ArrayList<Capital> capitals = new ArrayList<>();
-
+            //Creating a capital object to be stored in arraylist
+            Capital capital = new Capital();
             // Retrieving the results from ResultSet object, RegionCapitalCitiesResult as long as there is data left
             while (regionCapitalCity.next()) {
 
-                //Creating a capital object to be stored in arraylist
-                Capital capital = new Capital();
+
+
 
                 // setting the attributes of capital object with Setter
                 capital.setCapitalName(regionCapitalCity.getString(1));
@@ -95,12 +96,13 @@ public class CapitalCitiesInRegion {
         }
 
         // Checking if the element of arraylist is null
-        for(int i = 0; i<= capitals.size()-1; i++){
-            if (capitals.get(i) == null){
+        for (Capital capital : capitals) {
+            if (capital == null) {
                 System.out.println("The capitals ArrayList contains null value.");
                 return;
             }
         }
+
 
         // Printing out the headers of the report table.
         System.out.println("------------------------------All Capital Cities in the Region By Largest Population To Smallest--------------------------------");

@@ -15,6 +15,7 @@ public class AllCitiesInCountryIntegrationTest {
     private static AllCitiesInCountry ACIC;
     private static Connection con;
 
+    String nullMessage = "The 'cities' ArrayList should be null.";
     @BeforeAll
     public static void setUp() {
         // Set up the database connection
@@ -38,15 +39,15 @@ public class AllCitiesInCountryIntegrationTest {
         ArrayList<City> cities = AllCitiesInCountry.returnCity(countryName, con);
 
         // Check if cities arraylist is not null
-        assertNotNull(cities);
+        assertNotNull(cities, "The cities ArrayList is null.");
 
         // Check each row of the cities ArrayList using assertions
         for (City city : cities) {
             // Use the getters to retrieve the values and compare with the expected values
             if (city.getCityName().equals("New York")) {
-                assertEquals("United States", city.getCountryName());
-                assertEquals("New York", city.getDistrictName());
-                assertEquals(8008278, city.getCityPopulation());
+                assertEquals("United States", city.getCountryName(), "Country name should be 'United States'.");
+                assertEquals("New York", city.getDistrictName(), "District name should be 'New York'.");
+                assertEquals(8008278, city.getCityPopulation(), "City population should be 8008278.");
             }
 
         }
@@ -60,15 +61,16 @@ public class AllCitiesInCountryIntegrationTest {
         ArrayList<City> cities = AllCitiesInCountry.returnCity(countryName, con);
 
         // Check if cities arraylist is not null
-        assertNotNull(cities);
+        assertNotNull(cities, "The cities ArrayList is null.");
 
         // Check each row of the cities ArrayList using assertions
         for (City city : cities) {
             // Use the getters to retrieve the values and compare with the expected values
             if (city.getCityName().equals("Shanghai")) {
-                assertEquals("China", city.getCountryName());
-                assertEquals("Shanghai", city.getDistrictName());
-                assertEquals(9696300, city.getCityPopulation());
+                assertEquals("China", city.getCountryName(), "Country name should be 'China'.");
+                assertEquals("Shanghai", city.getDistrictName(), "District name should be 'Shanghai'.");
+                assertEquals(9696300, city.getCityPopulation(), "City population should be 9696300.");
+
             }
 
         }
@@ -81,7 +83,7 @@ public class AllCitiesInCountryIntegrationTest {
         ArrayList<City> cities = AllCitiesInCountry.returnCity(countryName, con);
 
         // Check if cities arraylist is null, as there are no cities for the non-existing country
-        assertNull(cities);
+        assertNull(cities, nullMessage);
     }
 
     @Test
@@ -91,7 +93,7 @@ public class AllCitiesInCountryIntegrationTest {
         ArrayList<City> cities = AllCitiesInCountry.returnCity(countryName, con);
 
         // Check if cities arraylist is null, as the country name is empty
-        assertNull(cities);
+        assertNull(cities, nullMessage);
     }
 
     @Test
@@ -101,7 +103,7 @@ public class AllCitiesInCountryIntegrationTest {
         ArrayList<City> cities = AllCitiesInCountry.returnCity(countryName, con);
 
         // Check if cities arraylist is null, as the country name is null
-        assertNull(cities);
+        assertNull(cities, nullMessage);
     }
 
     @Test
@@ -111,7 +113,7 @@ public class AllCitiesInCountryIntegrationTest {
         ArrayList<City> cities = AllCitiesInCountry.returnCity(countryName, con);
 
         // Check if cities arraylist is null, as there are no cities for Antarctica
-        assertNull(cities);
+        assertNull(cities, nullMessage);
     }
 
     @AfterAll

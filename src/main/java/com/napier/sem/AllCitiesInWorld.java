@@ -30,12 +30,13 @@ public class AllCitiesInWorld {
 
             // Creating an arraylist of city objects to be stored and returned from the method
             ArrayList<City> cities = new ArrayList<>();
-
+            //Creating a city object to be stored in arraylist
+            City city = new City();
             // Retrieving the results from ResultSet object, allCitiesResult as long as there is data left
             while (allCitiesResult.next()) {
 
-                //Creating a city object to be stored in arraylist
-                City city = new City();
+
+
 
                 // setting the attributes of city object with Setter
                 city.setCityName(allCitiesResult.getString(1));
@@ -76,12 +77,13 @@ public class AllCitiesInWorld {
         }
 
         // Checking if the element of arraylist is null
-        for(int i = 0; i<= cities.size()-1; i++){
-            if (cities.get(i) == null){
+        for (City city : cities) {
+            if (city == null) {
                 System.out.println("The cities ArrayList contains null value.");
                 return;
             }
         }
+
 
         // Printing out the headers of the report table.
         System.out.println("-------------------------------------------All Cities in the World by Largest Population to Smallest--------------------------------------------");

@@ -46,12 +46,10 @@ public class AllCitiesInContinent {
 
             // Creating an arraylist of city objects to be stored and returned from the method
             ArrayList<City> cities = new ArrayList<City>();
-
+            // Creating a City object to be stored in arraylist
+            City city = new City();
             // Retrieving the results from ResultSet object, cityInCountryResult as long as there is data left
             while(cityInContinentResult.next()) {
-
-                // Creating a City object to be stored in arraylist
-                City city = new City();
 
                 // setting the attributes of city object with Setter
                 city.setCityName(cityInContinentResult.getString(1));
@@ -102,8 +100,8 @@ public class AllCitiesInContinent {
         }
 
         // Checking if the element of arraylist is null
-        for(int i = 0; i<= cities.size()-1; i++){
-            if (cities.get(i) == null){
+        for (City city : cities) {
+            if (city == null) {
                 System.out.println("The cities ArrayList contains null value.");
                 return;
             }

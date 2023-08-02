@@ -31,10 +31,11 @@ public class Top10CountriesInRegion {
             ResultSet top10CountriesInRegion = stmt.executeQuery(sqlQueryTop10CountryInRegion);
             // Creating an arraylist of country objects to be stored and returned from the method
             ArrayList<Country> countries = new ArrayList<Country>();
+            // Creating a Country object to be stored in arraylist
+            Country country = new Country();
             // Retrieving the results from ResultSet object, Top10CountriesInRegionResult as long as there is data left
             while(top10CountriesInRegion.next()) {
-                // Creating a Country object to be stored in arraylist
-                Country country = new Country();
+
                 // setting the attributes of country object with Setter
                 country.setCountryNo(top10CountriesInRegion.getString(1));
                 country.setCountryName(top10CountriesInRegion.getString(2));

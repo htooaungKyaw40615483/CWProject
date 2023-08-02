@@ -49,11 +49,12 @@ public class AllCitiesInCountry {
 
             // Creating an arraylist of city objects to be stored and returned from the method
             ArrayList<City> cities = new ArrayList<>();
-
+            // Creating a City object to be stored in the arraylist
+            City city = new City();
             // Retrieving the results from ResultSet object, cityInCountryResult as long as there is data left
             while (cityInCountryResult.next()) {
-                // Creating a City object to be stored in the arraylist
-                City city = new City();
+
+
                 // setting the attributes of the city object with Setter
                 city.setCityName(cityInCountryResult.getString(1));
                 city.setCountryName(cityInCountryResult.getString(2));
