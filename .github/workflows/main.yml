@@ -4,6 +4,7 @@ on:
     branches:
       - master
       - develop
+      - release
 jobs:
   UnitTests:
     name: Unit Tests

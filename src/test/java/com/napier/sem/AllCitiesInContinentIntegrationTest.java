@@ -49,7 +49,7 @@ public class AllCitiesInContinentIntegrationTest {
                 assertEquals("Shanghai", city.getDistrictName());
                 assertEquals(9696300, city.getCityPopulation());
             }
-            // You can add more assertions for other cities in Asia if needed
+
         }
     }
 
@@ -70,7 +70,7 @@ public class AllCitiesInContinentIntegrationTest {
                 assertEquals("England", city.getDistrictName());
                 assertEquals(7285000, city.getCityPopulation());
             }
-            // You can add more assertions for other cities in Europe if needed
+
         }
     }
 

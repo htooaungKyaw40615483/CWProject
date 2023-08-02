@@ -18,13 +18,13 @@ public class AllCitiesInContinent {
 
     // Constructor to initialize the database connection
     public AllCitiesInContinent(Connection con) {
-        this.con = con;
+        this.con = con; // Initialize the database connection in the class constructor
     }
     public static ArrayList<City> returnCity(String continentName, Connection con){
         //Checking if the country name is entered.
         if (continentName == null){
             System.out.println("The continent name is not defined.");
-            return null;
+            return null; // Return null if the continent name is not defined
         }
 
         try{
@@ -65,7 +65,7 @@ public class AllCitiesInContinent {
             if (cities.isEmpty()) {
                 return null;
             }
-            return cities;
+            return cities; // Return the arraylist of city objects
         }
         /*
          Catching the error if there is
@@ -74,7 +74,7 @@ public class AllCitiesInContinent {
         catch(Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city populations");
-            return null;
+            return null; // Return null if there is an exception
         }
     }
 

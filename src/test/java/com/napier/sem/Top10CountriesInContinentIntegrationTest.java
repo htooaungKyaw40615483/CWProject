@@ -44,7 +44,7 @@ public class Top10CountriesInContinentIntegrationTest {
         // Check if the number of countries returned is 10 or less
         assertTrue(countries.size() <= 10);
 
-        // You can add more assertions to check specific properties of the countries if needed
+
     }
 
     @Test
