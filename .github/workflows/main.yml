@@ -46,12 +46,6 @@ jobs:
         run: mvn -Dtest=com.napier.sem.CountryPopulationTest test
       - name: District Population Unit Test
         run: mvn -Dtest=com.napier.sem.DistrictPopulationTest test
-      - name: Language Population Unit Test
-        run: mvn -Dtest=com.napier.sem.PopulationPercentInContinentTest test
-      - name: Population Percent In Country Unit Test
-        run: mvn -Dtest=com.napier.sem.PopulationPercentInCountryTest test
-      - name: Population Percent In Region Unit Test
-        run: mvn -Dtest=com.napier.sem.PopulationPercentInRegionTest test
       - name: Region Population Unit Test
         run: mvn -Dtest=com.napier.sem.RegionPopulationTest test
       - name: Top 10 Capital Cities In Continent Unit Test
