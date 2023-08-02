@@ -8,7 +8,7 @@ public class AllCitiesInCountry {
 
     // Constructor to initialize the database connection
     public AllCitiesInCountry(Connection con) {
-        this.con = con;
+        this.con = con; // Initialize the database connection in the class constructor
     }
 
     /**
@@ -22,13 +22,13 @@ public class AllCitiesInCountry {
         // Checking if the country name is entered.
         if (countryName == null) {
             System.out.println("The Country name is not defined.");
-            return null;
+            return null; // Return null if the country name is not defined
         }
 
         // Checking if the connection has been established.
         if (con == null) {
             System.out.println("The connection has not been established");
-            return null;
+            return null; // Return null if the database connection is not established
         }
 
         try {
@@ -68,11 +68,11 @@ public class AllCitiesInCountry {
                 return null;
             }
 
-            return cities;
+            return cities; // Return the arraylist of city objects
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city populations");
-            return null;
+            return null; // Return null if there is an exception
         }
     }
     /**
@@ -98,6 +98,7 @@ public class AllCitiesInCountry {
             return;
         }
 
+        // Printing out the headers of the report table.
         System.out.println("-------------------------------------------All Cities in A Country by Largest Population to Smallest-------------------------------------------");
         System.out.println("| Country: " + countryName + "                                                                                         Total Cities: " + cities.size());
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");

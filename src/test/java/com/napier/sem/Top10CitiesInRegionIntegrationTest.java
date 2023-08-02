@@ -45,7 +45,6 @@ public class Top10CitiesInRegionIntegrationTest {
         // Check if the number of cities returned is 10 or less
         assertTrue(cities.size() <= 10);
 
-        // You can add more assertions to check specific properties of the cities if needed
     }
 
     @Test

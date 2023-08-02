@@ -51,7 +51,7 @@ public class AllCountriesInContinentIntegrationTest {
                 assertEquals(1277558000, country.getPopulation());
                 assertEquals("Peking", country.getCapitalName());
             }
-            // You can add more assertions for other countries in Asia if needed
+
         }
     }
 
