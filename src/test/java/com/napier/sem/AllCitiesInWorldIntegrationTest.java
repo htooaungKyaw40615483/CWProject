@@ -16,6 +16,7 @@ public class AllCitiesInWorldIntegrationTest {
     private static AllCitiesInWorld ACIW;
     private static Connection con;
 
+    // This method is executed once before all the test methods in this class.
     @BeforeAll
     public static void setUp() {
         // Set up the database connection
@@ -33,6 +34,7 @@ public class AllCitiesInWorldIntegrationTest {
         }
     }
 
+    // This test method tests the getAllCities() method of AllCitiesInWorld class.
     @Test
     void testGetAllCities() {
         // Fetch all cities from the database
@@ -51,6 +53,7 @@ public class AllCitiesInWorldIntegrationTest {
         }
     }
 
+    // This test method tests the printResult() method of AllCitiesInWorld class.
     @Test
     void testPrintResult() {
         // Fetch all cities from the database
@@ -60,6 +63,7 @@ public class AllCitiesInWorldIntegrationTest {
         AllCitiesInWorld.printResult(cities);
     }
 
+    // This method is executed once after all the test methods in this class.
     @AfterAll
     public static void tearDown() {
         // Close the database connection after all tests

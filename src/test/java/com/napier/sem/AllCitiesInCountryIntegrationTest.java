@@ -48,11 +48,10 @@ public class AllCitiesInCountryIntegrationTest {
                 assertEquals("New York", city.getDistrictName());
                 assertEquals(8008278, city.getCityPopulation());
             }
-            // You can add more assertions for other cities if needed
+
         }
     }
 
-    // Add test methods for other countries or scenarios here
 
     @Test
     void testReturnCityForChina() {
@@ -71,7 +70,7 @@ public class AllCitiesInCountryIntegrationTest {
                 assertEquals("Shanghai", city.getDistrictName());
                 assertEquals(9696300, city.getCityPopulation());
             }
-            // You can add more assertions for other cities if needed
+
         }
     }
 

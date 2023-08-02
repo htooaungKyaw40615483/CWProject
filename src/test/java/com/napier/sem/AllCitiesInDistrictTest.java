@@ -17,10 +17,6 @@ public class AllCitiesInDistrictTest
 {
     static AllCitiesInDistrict ACID;
 
-//    @BeforeAll
-//    public static void init(){
-//        ACID = new AllCitiesInDistrict();
-//    }
 
     // Testing printResults
     @Test

@@ -45,7 +45,6 @@ public class Top10CitiesInDistrictIntegrationTest {
         // Check if the number of cities returned is 10 or less
         assertTrue(cities.size() <= 10);
 
-        // You can add more assertions to check specific properties of the cities if needed
     }
 
     @Test
@@ -58,15 +57,6 @@ public class Top10CitiesInDistrictIntegrationTest {
         assertNull(cities);
     }
 
-//    @Test
-//    void testReturnCitiesInDistrictWithEmptyName() {
-//        // Fetch the top 10 populated cities in a district with an empty name
-//        String districtName = "";
-//        ArrayList<City> cities = Top10CitiesInDistrict.returnCitiesInDistrict(districtName, con);
-//
-//        // Check if cities arraylist is null, as the district name is empty
-//        assertNull(cities);
-//    }
 
     @Test
     void testReturnCitiesInDistrictWithNullName() {

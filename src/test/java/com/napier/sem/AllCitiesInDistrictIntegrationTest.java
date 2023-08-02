@@ -50,19 +50,10 @@ public class AllCitiesInDistrictIntegrationTest {
                 assertEquals("New York", city.getDistrictName());
                 assertEquals(8008278, city.getCityPopulation());
             }
-            // You can add more assertions for other cities if needed
+
         }
     }
 
-//    @Test
-//    void testReturnCityForDistrictWithEmptyName() {
-//        // Fetch the cities for a district with an empty name
-//        String districtName = "";
-//        ArrayList<City> cities = AllCitiesInDistrict.returnCity(districtName, con);
-//
-//        // Check if cities arraylist is empty, as the district name is empty
-//        assertNull(cities);
-//    }
 
     @Test
     void testReturnCityForDistrictWithNullName() {
@@ -74,15 +65,6 @@ public class AllCitiesInDistrictIntegrationTest {
         assertTrue(cities.isEmpty());
     }
 
-//    @Test
-//    void testReturnCityForDistrictWithNoCities() {
-//        // Fetch the cities for a district with no cities (e.g., "Antarctica")
-//        String districtName = "Antarctica";
-//        ArrayList<City> cities = AllCitiesInDistrict.returnCity(districtName, con);
-//
-//        // Check if cities arraylist is empty, as there are no cities for the district
-//        assertTrue(cities.isEmpty());
-//    }
 
     @Test
     void testPrintResultForDistrict() {
