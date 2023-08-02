@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -5,25 +6,25 @@
 
   <groupId>com.napier.sem</groupId>
   <artifactId>CWProject</artifactId>
-  <version>0.1.0.4</version>
+  <version>0.1.0.3</version>
 
-  <!-- Dependencies -->
+  <properties>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+  </properties>
+
   <dependencies>
-    <!-- MySQL Connector -->
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.18</version>
     </dependency>
-
-    <!-- JUnit Jupiter API -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>5.8.0</version> <!-- Updated version to ensure compatibility -->
+      <version>5.1.0</version>
       <scope>test</scope>
     </dependency>
-
     <!-- Mockito Core -->
     <dependency>
       <groupId>org.mockito</groupId>
@@ -33,60 +34,21 @@
     </dependency>
   </dependencies>
 
-  <!-- Build Configuration -->
-  <properties>
-    <!-- Set Java version to 11 -->
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
-    <!-- Add JVM memory settings for Maven -->
-    <argLine>-Xmx2g -XX:MaxPermSize=512m</argLine>
-    <!-- Add JVM memory settings for Surefire Plugin -->
-    <surefireArgLine>-Xmx2g</surefireArgLine>
-  </properties>
-
   <build>
     <plugins>
-      <!-- JaCoCo Maven Plugin for Code Coverage -->
+
       <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.8</version>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.2.0</version>
         <executions>
           <execution>
-            <goals>
-              <goal>prepare-agent</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>report</id>
-            <phase>test</phase>
-            <goals>
-              <goal>report</goal>
-            </goals>
+            <id>default-jar</id>
+            <!-- skip building the default-jar-->
+            <phase>none</phase>
           </execution>
         </executions>
       </plugin>
 
-      <!-- Maven Surefire Plugin for Running Tests -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0</version> <!-- Updated version to ensure compatibility -->
-        <configuration>
-          <forkCount>0</forkCount>
-          <argLine>${surefireArgLine}</argLine>
-        </configuration>
-        <dependencies>
-          <!-- JUnit Jupiter Engine -->
-          <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.8.0</version>
-          </dependency>
-        </dependencies>
-      </plugin>
-
-      <!-- Maven Assembly Plugin for Creating an Executable JAR -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
@@ -114,45 +76,44 @@
         </executions>
       </plugin>
 
-      <!-- Maven JAR Plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.2.2</version>
-        <configuration>
-          <archive>
-            <manifest>
-              <mainClass>com.napier.sem.App</mainClass>
-            </manifest>
-          </archive>
-        </configuration>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.19.1</version>
+        <dependencies>
+          <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-surefire-provider</artifactId>
+            <version>1.1.0</version>
+          </dependency>
+          <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.1.0</version>
+          </dependency>
+        </dependencies>
       </plugin>
 
-      <!-- Maven Dependency Plugin for Copying Test Dependencies -->
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.1.2</version>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.8</version>
         <executions>
           <execution>
-            <id>copy-dependencies</id>
-            <phase>package</phase>
             <goals>
-              <goal>copy-dependencies</goal>
+              <goal>prepare-agent</goal>
             </goals>
-            <configuration>
-              <includeScope>test</includeScope>
-              <outputDirectory>${project.build.directory}/lib</outputDirectory>
-            </configuration>
+          </execution>
+          <execution>
+            <id>report</id>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
           </execution>
         </executions>
       </plugin>
 
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>3.4.5</version>
-      </plugin>
     </plugins>
   </build>
 </project>
