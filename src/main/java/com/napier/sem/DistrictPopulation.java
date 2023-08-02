@@ -23,7 +23,7 @@ public class DistrictPopulation {
              Defining the Query to be executed.
              QUERY: district Population
             */
-            String sqlQueryDistrictPopulation = "SELECT SUM(city.Population) AS Total_Population FROM city WHERE city.District=" + districtName ;
+            String sqlQueryDistrictPopulation = "SELECT city.District, SUM(city.Population) AS Total_Population FROM city WHERE city.District='" + districtName + "'";
 
             // Storing the results in a ResultSet object, districtPopulationResult
             ResultSet districtPopulation = stmt.executeQuery(sqlQueryDistrictPopulation);
@@ -38,7 +38,8 @@ public class DistrictPopulation {
                 Population population = new Population();
 
                 // setting the attributes of population object with Setter
-                population.setTotalPopulation(districtPopulation.getLong(1));
+                population.setName(districtPopulation.getString(1));
+                population.setTotalPopulation(districtPopulation.getLong(2));
 
                 // adding the population object to the arraylist
                 populations.add(population);
@@ -82,8 +83,8 @@ public class DistrictPopulation {
 
         // Printing out the headers of the report table.
         System.out.println("-------------------------District Population-----------------------------------");
-        System.out.println("| District: " + districtName + "                                               ");
-        System.out.printf("| %-5s | %-25s | %n", "No", "Total Population");
+
+        System.out.printf("| %-5s | %-40s | %-25s | %n", "No", "District Name", "Total Population");
         System.out.println("-------------------------------------------------------------------------------");
 
         // Initializing the variable to be shown as row number.
@@ -92,7 +93,7 @@ public class DistrictPopulation {
         // For all the objects in populations arraylist, formatting and printing the values (Strings and Digits)
         for (Population population :populations){
             // Printing the population object's attributes with Getter.
-            System.out.printf("| %-5s| %,25d | %n", i++, population.getTotalPopulation());
+            System.out.printf("| %-5s| %-40s | %,25d | %n", i++, population.getName(), population.getTotalPopulation());
         }
         System.out.println("--------------------------------------------------------------------------------");
     }

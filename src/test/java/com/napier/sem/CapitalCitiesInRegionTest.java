@@ -13,26 +13,25 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
-
-public class Top10CapitalCitiesInRegionTest {
-    static Top10CapitalCitiesInRegion TCCR;
+public class CapitalCitiesInRegionTest {
+    static CapitalCitiesInRegion CCR;
 
     @BeforeAll
     static void init(){
-        TCCR = new Top10CapitalCitiesInRegion();
+        CCR = new CapitalCitiesInRegion();
     }
 
     // Testing printResults
     @Test
     void printResultTestNull()
     {
-        // will throw java.lang.NullPointerException if the null is not checked in Top10CapitalCitiesInRegion.
-        TCCR.printResult(null, null);
+        // will throw java.lang.NullPointerException if the null is not checked in CapitalCitiesInRegion.
+        CCR.printResult(null, null);
     }
 
     @Test
     void printResultCapitalCitiesTestNull(){
-        TCCR.printResult("Caribbean", null);
+        CCR.printResult("Caribbean", null);
     }
 
     @Test
@@ -40,7 +39,7 @@ public class Top10CapitalCitiesInRegionTest {
         ArrayList<Capital> capitals = new ArrayList<>();
         Capital c = new Capital();
         capitals.add(c);
-        TCCR.printResult(null, capitals);
+        CCR.printResult(null, capitals);
     }
 
     @Test
@@ -49,12 +48,12 @@ public class Top10CapitalCitiesInRegionTest {
         Capital capital = new Capital();
         capital.setCapitalPopulation(99999999);
         capitals.add(capital);
-        TCCR.printResult("Caribbean", capitals);
+        CCR.printResult("Caribbean", capitals);
     }
 
     @Test
     void returnCapitalCityTestNull(){
-        TCCR.returnCapital(null,null);
+        CCR.returnCapital(null,null);
     }
     @Test
     public void statementQueryTesting() throws SQLException {
@@ -77,4 +76,5 @@ public class Top10CapitalCitiesInRegionTest {
         // creating the mock statement with the mock connection, with the
         verify(mockCon, times(1)).createStatement();
     }
+
 }

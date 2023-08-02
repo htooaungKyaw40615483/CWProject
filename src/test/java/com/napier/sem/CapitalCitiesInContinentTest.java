@@ -14,25 +14,25 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 
-public class Top10CapitalCitiesInRegionTest {
-    static Top10CapitalCitiesInRegion TCCR;
+public class CapitalCitiesInContinentTest {
+    static CapitalCitiesInContinent CCC;
 
     @BeforeAll
     static void init(){
-        TCCR = new Top10CapitalCitiesInRegion();
+        CCC = new CapitalCitiesInContinent();
     }
 
     // Testing printResults
     @Test
     void printResultTestNull()
     {
-        // will throw java.lang.NullPointerException if the null is not checked in Top10CapitalCitiesInRegion.
-        TCCR.printResult(null, null);
+        // will throw java.lang.NullPointerException if the null is not checked in CapitalCitiesInContinent.
+        CCC.printResult(null, null);
     }
 
     @Test
     void printResultCapitalCitiesTestNull(){
-        TCCR.printResult("Caribbean", null);
+        CCC.printResult("North America", null);
     }
 
     @Test
@@ -40,7 +40,7 @@ public class Top10CapitalCitiesInRegionTest {
         ArrayList<Capital> capitals = new ArrayList<>();
         Capital c = new Capital();
         capitals.add(c);
-        TCCR.printResult(null, capitals);
+        CCC.printResult(null, capitals);
     }
 
     @Test
@@ -49,12 +49,12 @@ public class Top10CapitalCitiesInRegionTest {
         Capital capital = new Capital();
         capital.setCapitalPopulation(99999999);
         capitals.add(capital);
-        TCCR.printResult("Caribbean", capitals);
+        CCC.printResult("North America", capitals);
     }
 
     @Test
     void returnCapitalCityTestNull(){
-        TCCR.returnCapital(null,null);
+        CCC.returnCapital(null,null);
     }
     @Test
     public void statementQueryTesting() throws SQLException {

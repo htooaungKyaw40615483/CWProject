@@ -7,54 +7,32 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 
-public class Top10CapitalCitiesInRegionTest {
-    static Top10CapitalCitiesInRegion TCCR;
+
+public class CapitalCitiesInWorldTest {
+    static CapitalCitiesInWorld CCW;
 
     @BeforeAll
     static void init(){
-        TCCR = new Top10CapitalCitiesInRegion();
+        CCW = new CapitalCitiesInWorld();
     }
 
     // Testing printResults
     @Test
     void printResultTestNull()
     {
-        // will throw java.lang.NullPointerException if the null is not checked in Top10CapitalCitiesInRegion.
-        TCCR.printResult(null, null);
-    }
-
-    @Test
-    void printResultCapitalCitiesTestNull(){
-        TCCR.printResult("Caribbean", null);
-    }
-
-    @Test
-    void printResultDnTestNull(){
-        ArrayList<Capital> capitals = new ArrayList<>();
-        Capital c = new Capital();
-        capitals.add(c);
-        TCCR.printResult(null, capitals);
-    }
-
-    @Test
-    void printResultCapitalCityTestNull(){
-        ArrayList<Capital> capitals = new ArrayList<>();
-        Capital capital = new Capital();
-        capital.setCapitalPopulation(99999999);
-        capitals.add(capital);
-        TCCR.printResult("Caribbean", capitals);
+        // will throw java.lang.NullPointerException if the null is not checked in CapitalCitiesInWorld.
+        CCW.printResult(null);
     }
 
     @Test
     void returnCapitalCityTestNull(){
-        TCCR.returnCapital(null,null);
+        CCW.returnCapital(null);
     }
     @Test
     public void statementQueryTesting() throws SQLException {

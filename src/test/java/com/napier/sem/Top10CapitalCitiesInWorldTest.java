@@ -27,7 +27,7 @@ public class Top10CapitalCitiesInWorldTest {
     @Test
     void printResultTestNull()
     {
-        // will throw java.lang.NullPointerException if the null is not checked in Top10CapitalCitiesInRegion.
+        // will throw java.lang.NullPointerException if the null is not checked in Top10CapitalCitiesInWorld.
         TCCW.printResult(null);
     }
 

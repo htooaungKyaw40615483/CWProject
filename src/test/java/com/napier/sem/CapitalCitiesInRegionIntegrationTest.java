@@ -70,7 +70,7 @@ public class CapitalCitiesInRegionIntegrationTest {
     @Test
     void testReturnCapitalForRegionWithNullName() {
         // Fetch the capitals for a region with a null name
-        String regionName = "";
+        String regionName = null;
         ArrayList<Capital> capitals = CapitalCitiesInRegion.returnCapital(regionName, con);
 
         // Check if capitals arraylist is null, as the region name is null
