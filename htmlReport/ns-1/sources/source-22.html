@@ -1,0 +1,191 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Top10CitiesInWorld</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.napier.sem</a>
+</div>
+
+<h1>Coverage Summary for Class: Top10CitiesInWorld (com.napier.sem)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Top10CitiesInWorld</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    69%
+  </span>
+  <span class="absValue">
+    (20/29)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.napier.sem;
+&nbsp;import java.sql.*;
+&nbsp;import java.util.ArrayList;
+&nbsp;
+&nbsp;/*
+&nbsp; * Purpose: To Retrieve Top 10 Cities In The World
+&nbsp; */
+<b class="fc">&nbsp;public class Top10CitiesInWorld {</b>
+&nbsp;    /**
+&nbsp;     * Return top 10 populated cities from the world database
+&nbsp;     * @param con Established Database Connection
+&nbsp;     * @return the City Objects in an ArrayList
+&nbsp;     */
+&nbsp;    public static ArrayList&lt;City&gt; returnCity(Connection con){
+&nbsp;        try{
+&nbsp;            // Creating Statement Object to execute Query
+<b class="fc">&nbsp;            Statement stmt = con.createStatement();</b>
+&nbsp;
+&nbsp;            /*
+&nbsp;             Defining the Query to be executed.
+&nbsp;             QUERY: To SELECT CityName, CountryName, DistrictName, Population of a City
+&nbsp;             after JOINing two tables with country code ORDERED by population in descending.
+&nbsp;            */
+<b class="fc">&nbsp;            String sqlQueryTop10CityInWorld =</b>
+&nbsp;                    &quot;SELECT world.city.Name, world.country.Name, world.city.District, world.city.Population &quot; +
+&nbsp;                            &quot;FROM world.city INNER JOIN world.country ON world.city.CountryCode = world.country.Code &quot; +
+&nbsp;                            &quot;ORDER BY world.city.Population DESC LIMIT 10;&quot;;
+&nbsp;
+&nbsp;            // Storing the results in a ResultSet object, top10CityInWorldResult
+<b class="fc">&nbsp;            ResultSet top10CityInWorldResult = stmt.executeQuery(sqlQueryTop10CityInWorld);</b>
+&nbsp;
+&nbsp;            // Creating an arraylist of city objects to be stored and returned from the method
+<b class="fc">&nbsp;            ArrayList&lt;City&gt; cities = new ArrayList&lt;City&gt;();</b>
+&nbsp;
+&nbsp;            // Retrieving the results from ResultSet object, top10CityInWorldResult as long as there is data left
+<b class="fc">&nbsp;            while(top10CityInWorldResult.next()) {</b>
+&nbsp;
+&nbsp;                // Creating a City object to be stored in arraylist
+<b class="fc">&nbsp;                City city = new City();</b>
+&nbsp;
+&nbsp;                // setting the attributes of city object with Setter
+<b class="fc">&nbsp;                city.setCityName(top10CityInWorldResult.getString(1));</b>
+<b class="fc">&nbsp;                city.setCountryName(top10CityInWorldResult.getString(2));</b>
+<b class="fc">&nbsp;                city.setDistrictName(top10CityInWorldResult.getString(3));</b>
+<b class="fc">&nbsp;                city.setCityPopulation(top10CityInWorldResult.getInt(4));</b>
+&nbsp;
+&nbsp;                // adding the city object to the arraylist
+<b class="fc">&nbsp;                cities.add(city);</b>
+<b class="fc">&nbsp;            }</b>
+<b class="fc">&nbsp;            return cities;</b>
+&nbsp;        }
+&nbsp;        /*
+&nbsp;         Catching the error if there is
+&nbsp;         Printing the error and returning null
+&nbsp;        */
+<b class="fc">&nbsp;        catch(Exception e) {</b>
+<b class="fc">&nbsp;            System.out.println(e.getMessage());</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Failed to get city populations&quot;);</b>
+<b class="fc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Printing Top 10 populated cities from the world database
+&nbsp;     * @param cities arraylist of city objects.
+&nbsp;     */
+&nbsp;    public static void printResult(ArrayList&lt;City&gt; cities){
+<b class="fc">&nbsp;        if(cities == null){</b>
+<b class="fc">&nbsp;            System.out.println(&quot;There is no results&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+<b class="nc">&nbsp;        System.out.println(&quot;------------------------------------------------------Top 10 Populated Cities in The World-------------------------------------------------&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;-------------------------------------------------------------------------------------------------------------------------------------------&quot;);</b>
+<b class="nc">&nbsp;        System.out.printf(&quot;| %-2s | %-30s | %-35s | %-34s | %-20s | %n&quot;, &quot;No&quot;, &quot;Name&quot;, &quot;Country&quot;, &quot;District&quot;, &quot;Population&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;-------------------------------------------------------------------------------------------------------------------------------------------&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        int  i = 1;</b>
+&nbsp;
+&nbsp;        // For all the objects in cities arraylist, formatting and printing the values (Strings and Digits)
+<b class="nc">&nbsp;        for (City city :cities){</b>
+&nbsp;
+&nbsp;            // Printing the city object&#39;s attributes with Getter.
+<b class="nc">&nbsp;            System.out.printf(&quot;| %,2d | %-30s | %-35s | %-34s  | %,20d  | %n&quot;, i++,  city.getCityName(), city.getCountryName(), city.getDistrictName(), city.getCityPopulation());</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        System.out.println(&quot;-------------------------------------------------------------------------------------------------------------------------------------------&quot;);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-08-02 17:09</div>
+</div>
+</body>
+</html>

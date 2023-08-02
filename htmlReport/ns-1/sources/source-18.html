@@ -1,0 +1,213 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > PopulationPercentInRegion</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.napier.sem</a>
+</div>
+
+<h1>Coverage Summary for Class: PopulationPercentInRegion (com.napier.sem)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PopulationPercentInRegion</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    78.8%
+  </span>
+  <span class="absValue">
+    (26/33)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.napier.sem;
+&nbsp;
+&nbsp;/*
+&nbsp; * Purpose: To Retrieve population percentage of the region
+&nbsp; */
+&nbsp;
+&nbsp;import java.sql.Connection;
+&nbsp;import java.sql.ResultSet;
+&nbsp;import java.sql.Statement;
+&nbsp;import java.util.ArrayList;
+&nbsp;
+<b class="fc">&nbsp;public class PopulationPercentInRegion {</b>
+&nbsp;    /**
+&nbsp;     * Return population percent in the region from the world database
+&nbsp;     * @param con Established Database Connection
+&nbsp;     * @return the population Objects in an ArrayList which is from a world.
+&nbsp;     */
+&nbsp;    public static ArrayList&lt;Population&gt; returnPopulation(Connection con){
+&nbsp;        try{
+&nbsp;            // Creating Statement Object to execute Query
+<b class="fc">&nbsp;            Statement stmt = con.createStatement();</b>
+&nbsp;
+&nbsp;            /*
+&nbsp;             Defining the Query to be executed.
+&nbsp;             QUERY: To SELECT region name, total population , people living in city percent and no city percent
+&nbsp;             after JOINing two tables with City and group by region.
+&nbsp;            */
+<b class="fc">&nbsp;            String sqlQueryPopulationPercentRegion = &quot;SELECT comp.Region, comp.total_population,\n&quot; +</b>
+&nbsp;                    &quot;CONCAT(ROUND((city_population / comp.total_population) * 100, 2), &#39;%&#39;) AS in_city_percent,\n&quot; +
+&nbsp;                    &quot;CONCAT(ROUND(((comp.total_population - city_population) / comp.total_population) * 100, 2), &#39;%&#39;) AS not_city_percent\n&quot; +
+&nbsp;                    &quot;FROM (SELECT Region, SUM(population) AS total_population FROM country GROUP BY Region) comp\n&quot; +
+&nbsp;                    &quot;JOIN (SELECT country.Region, SUM(city.population) AS city_population FROM city JOIN country \n&quot; +
+&nbsp;                    &quot;ON country.code = city.countrycode GROUP BY country.Region) cip ON comp.Region = cip.Region ORDER BY comp.total_population DESC;&quot;;
+&nbsp;
+&nbsp;            // Storing the results in a ResultSet object, PopulationPercentRegionResult
+<b class="fc">&nbsp;            ResultSet populationInRegion = stmt.executeQuery(sqlQueryPopulationPercentRegion);</b>
+&nbsp;
+&nbsp;            // Creating an arraylist of population objects to be stored and returned from the method
+<b class="fc">&nbsp;            ArrayList&lt;Population&gt; populations = new ArrayList&lt;Population&gt;();</b>
+&nbsp;
+&nbsp;            // Retrieving the results from ResultSet object, PopulationPercentRegionResult as long as there is data left
+<b class="fc">&nbsp;            while(populationInRegion.next()) {</b>
+&nbsp;
+&nbsp;                // Creating a Population object to be stored in arraylist
+<b class="fc">&nbsp;                Population population = new Population();</b>
+&nbsp;
+&nbsp;                // setting the attributes of population object with Setter
+<b class="fc">&nbsp;                population.setName(populationInRegion.getString(1));</b>
+<b class="fc">&nbsp;                population.setTotalPopulation(populationInRegion.getLong(2));</b>
+<b class="fc">&nbsp;                population.setYesCityPercent(populationInRegion.getString(3));</b>
+<b class="fc">&nbsp;                population.setNoCityPercent(populationInRegion.getString(4));</b>
+&nbsp;
+&nbsp;
+&nbsp;                // adding the population object to the arraylist
+<b class="fc">&nbsp;                populations.add(population);</b>
+<b class="fc">&nbsp;            }</b>
+<b class="fc">&nbsp;            return populations;</b>
+&nbsp;        }
+&nbsp;         /*
+&nbsp;         Catching the error if there is
+&nbsp;         Printing the error and returning null
+&nbsp;        */
+<b class="nc">&nbsp;        catch(Exception e) {</b>
+<b class="nc">&nbsp;            System.out.println(e.getMessage());</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Failed to get population percent in the continent&quot;);</b>
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * Printing a population percent in the region from the world database
+&nbsp;     * @param populations arraylist of population objects.
+&nbsp;     */
+&nbsp;
+&nbsp;    public static void printResult(ArrayList&lt;Population&gt; populations){
+&nbsp;        // Check if populations arraylist is null. If not, move on to the next condition.
+<b class="fc">&nbsp;        if (populations == null) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;There is no region population&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+&nbsp;        // Checking if the arraylist of populations is initialized but empty.
+<b class="fc">&nbsp;        if (populations.isEmpty()){</b>
+<b class="nc">&nbsp;            System.out.print(&quot;The populations ArrayList is empty.&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+&nbsp;        // Checking if the element of arraylist is null
+<b class="fc">&nbsp;        for(int i = 0; i&lt;= populations.size()-1; i++){</b>
+<b class="fc">&nbsp;            if (populations.get(i) == null){</b>
+<b class="nc">&nbsp;                System.out.println(&quot;The populations ArrayList contains null value.&quot;);</b>
+&nbsp;                return;
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+&nbsp;        // Printing out the headers of the report table.
+<b class="fc">&nbsp;        System.out.println(&quot;--------------------------------------------------Population Report For All Regions-----------------------------------------------------&quot;);</b>
+<b class="fc">&nbsp;        System.out.printf(&quot;| %-5s | %-40s | %-25s | %-25s | %-25s | %n&quot;, &quot;No&quot;, &quot;Region Name&quot;, &quot;Total Population&quot;, &quot;City Percentage&quot;, &quot;Not City Percentage&quot;);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;----------------------------------------------------------------------------------------------------------------------------------------&quot;);</b>
+&nbsp;
+&nbsp;        // Initializing the variable to be shown as row number.
+<b class="fc">&nbsp;        int  i = 1;</b>
+&nbsp;
+&nbsp;        // For all the objects in populations arraylist, formatting and printing the values (Strings and Digits)
+<b class="fc">&nbsp;        for (Population population :populations){</b>
+&nbsp;            // Printing the population object&#39;s attributes with Getter.
+<b class="fc">&nbsp;            System.out.printf(&quot;| %-5s | %-40s | %,25d | %-25s | %-25s | %n&quot;, i++, population.getName(), population.getTotalPopulation(), population.getYesCityPercent(), population.getNoCityPercent());</b>
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        System.out.println(&quot;----------------------------------------------------------------------------------------------------------------------------------------&quot;);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-08-02 17:09</div>
+</div>
+</body>
+</html>

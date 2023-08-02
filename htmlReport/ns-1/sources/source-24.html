@@ -1,0 +1,203 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Top10CountriesInRegion</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.napier.sem</a>
+</div>
+
+<h1>Coverage Summary for Class: Top10CountriesInRegion (com.napier.sem)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Top10CountriesInRegion</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (38/38)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.napier.sem;
+&nbsp;
+&nbsp;import java.sql.Connection;
+&nbsp;import java.sql.ResultSet;
+&nbsp;import java.sql.Statement;
+&nbsp;import java.util.ArrayList;
+&nbsp;
+<b class="fc">&nbsp;public class Top10CountriesInRegion {</b>
+&nbsp;    /**
+&nbsp;     * Return a top 10 populated countries in region from the world database
+&nbsp;     * @param regionName Predefined Region Name
+&nbsp;     * @param con Established Database Connection
+&nbsp;     * @return the Country Objects in an ArrayList which is from a single region.
+&nbsp;     */
+&nbsp;    public static ArrayList&lt;Country&gt; returnCountries(String regionName, Connection con){
+<b class="fc">&nbsp;        if (regionName == null){</b>
+<b class="fc">&nbsp;            System.out.println(&quot;The Region name is not defined.&quot;);</b>
+&nbsp;        }
+&nbsp;        try{
+&nbsp;            // Creating Statement Object to execute Query
+<b class="fc">&nbsp;            Statement stmt = con.createStatement();</b>
+&nbsp;            /*
+&nbsp;             Defining the Query to be executed.
+&nbsp;             QUERY: To SELECT CountryCode, CountryName, ContinentName, RegionName, Population of a Country
+&nbsp;             and capital name after JOINing two tables with City ID ORDERED by population in descending limit 10.
+&nbsp;            */
+<b class="fc">&nbsp;            String sqlQueryTop10CountryInRegion = &quot;SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name &quot; +</b>
+&nbsp;                    &quot;FROM `country` INNER JOIN city ON country.Capital = city.ID &quot; +
+&nbsp;                    &quot;WHERE country.Region = \&quot;&quot; + regionName + &quot;\&quot; ORDER BY country.Population DESC LIMIT 10;;&quot;;
+&nbsp;            // Storing the results in a ResultSet object, Top10CountriesInRegionResult
+<b class="fc">&nbsp;            ResultSet top10CountriesInRegion = stmt.executeQuery(sqlQueryTop10CountryInRegion);</b>
+&nbsp;            // Creating an arraylist of country objects to be stored and returned from the method
+<b class="fc">&nbsp;            ArrayList&lt;Country&gt; countries = new ArrayList&lt;Country&gt;();</b>
+&nbsp;            // Retrieving the results from ResultSet object, Top10CountriesInRegionResult as long as there is data left
+<b class="fc">&nbsp;            while(top10CountriesInRegion.next()) {</b>
+&nbsp;                // Creating a Country object to be stored in arraylist
+<b class="fc">&nbsp;                Country country = new Country();</b>
+&nbsp;                // setting the attributes of country object with Setter
+<b class="fc">&nbsp;                country.setCountryNo(top10CountriesInRegion.getString(1));</b>
+<b class="fc">&nbsp;                country.setCountryName(top10CountriesInRegion.getString(2));</b>
+<b class="fc">&nbsp;                country.setContinentName(top10CountriesInRegion.getString(3));</b>
+<b class="fc">&nbsp;                country.setRegionName(top10CountriesInRegion.getString(4));</b>
+<b class="fc">&nbsp;                country.setPopulation(top10CountriesInRegion.getInt(5));</b>
+<b class="fc">&nbsp;                country.setCapitalName(top10CountriesInRegion.getString(6));</b>
+&nbsp;                // adding the country object to the arraylist
+<b class="fc">&nbsp;                countries.add(country);</b>
+<b class="fc">&nbsp;            }</b>
+<b class="fc">&nbsp;            return countries;</b>
+&nbsp;        }
+&nbsp;        /*
+&nbsp;         Catching the error if there is
+&nbsp;         Printing the error and returning null
+&nbsp;        */
+<b class="fc">&nbsp;        catch(Exception e) {</b>
+<b class="fc">&nbsp;            System.out.println(e.getMessage());</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Failed to get Top 10 countries population by region name in the world&quot;);</b>
+<b class="fc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Printing a top 10 populated countries in a region from the world database
+&nbsp;     * @param countries arraylist of country objects.
+&nbsp;     */
+&nbsp;
+&nbsp;    public static void printResult(String regionName, ArrayList&lt;Country&gt; countries){
+<b class="fc">&nbsp;        if(regionName == null &amp;&amp; countries == null){</b>
+<b class="fc">&nbsp;            System.out.println(&quot;There is no country or defined region name&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+&nbsp;        // Check if countries arraylist is null. If not, move on to the next condition.
+<b class="fc">&nbsp;        if (countries == null) {</b>
+<b class="fc">&nbsp;            System.out.println(&quot;There is no countries&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+&nbsp;        // Check if region name is null. If not, move on to the next condition.
+<b class="fc">&nbsp;        if(regionName == null){</b>
+<b class="fc">&nbsp;            System.out.println(&quot;The district name is not defined&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        System.out.println(&quot;---------------------------------------------------Top 10 Countries in the Region By Largest Population To Smallest----------------------------------------------------------------&quot;);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;| Region: &quot; + regionName + &quot;                                                                                                                         ORDER: Largest to Smallest Population|&quot;);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------&quot;);</b>
+<b class="fc">&nbsp;        System.out.printf(&quot;| %-5s | %-7s | %-40s | %-25s | %-30s | %-15s | %-35s | %n&quot;, &quot;No&quot;, &quot;Code&quot;, &quot;Name&quot;, &quot;Continent&quot;, &quot;Region&quot;, &quot;Population&quot;, &quot;Capital&quot;);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        int  i = 1;</b>
+&nbsp;
+&nbsp;        // For all the objects in countries arraylist, formatting and printing the values (Strings and Digits)
+<b class="fc">&nbsp;        for (Country country :countries){</b>
+&nbsp;            // Printing the country object&#39;s attributes with Getter.
+<b class="fc">&nbsp;            System.out.printf(&quot;| %,5d | %-7s | %-40s | %-25s | %-30s | %,15d | %-35s | %n&quot;, i++, country.getCountryNo(), country.getCountryName(), country.getContinentName(), country.getRegionName(), country.getPopulation(), country.getCapitalName());</b>
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        System.out.println(&quot;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------&quot;);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-08-02 17:09</div>
+</div>
+</body>
+</html>

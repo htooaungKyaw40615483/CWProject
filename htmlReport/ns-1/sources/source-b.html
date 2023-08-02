@@ -1,0 +1,223 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > CapitalCitiesInContinent</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.napier.sem</a>
+</div>
+
+<h1>Coverage Summary for Class: CapitalCitiesInContinent (com.napier.sem)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CapitalCitiesInContinent</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    95.1%
+  </span>
+  <span class="absValue">
+    (39/41)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.napier.sem;
+&nbsp;
+&nbsp;import java.sql.Connection;
+&nbsp;import java.sql.ResultSet;
+&nbsp;import java.sql.Statement;
+&nbsp;import java.util.ArrayList;
+&nbsp;
+&nbsp;/*
+&nbsp; * Purpose: To Retrieve All The Capital Cities In the continent
+&nbsp; */
+<b class="fc">&nbsp;public class CapitalCitiesInContinent {</b>
+&nbsp;    /**
+&nbsp;     * Return a continent capital cities from the world database
+&nbsp;      * @param continentName Predefined Continent Name
+&nbsp;     * @param con Established Database Connection
+&nbsp;     * @return the capital Objects in an ArrayList which is from the world.
+&nbsp;     */
+&nbsp;    public static ArrayList&lt;Capital&gt; returnCapital(String continentName, Connection con) {
+&nbsp;        // Check if the continent name is null.
+<b class="fc">&nbsp;        if (continentName == null){</b>
+<b class="fc">&nbsp;            System.out.println(&quot;The Continent name is not defined.&quot;);</b>
+&nbsp;        }
+&nbsp;        try {
+&nbsp;            // Creating SQL Statement
+<b class="fc">&nbsp;            Statement stmt = con.createStatement();</b>
+&nbsp;
+&nbsp;            /*
+&nbsp;             Defining the Query to be executed.
+&nbsp;             QUERY: To SELECT Capital Name, Country Name, Population after JOINing two tables with City ID ORDERED by population in descending .
+&nbsp;            */
+&nbsp;
+<b class="fc">&nbsp;            String sqlQueryContinentCapitalCity = &quot;SELECT city.Name, country.Name , city.Population FROM city\n&quot; +</b>
+&nbsp;                    &quot;JOIN country ON city.ID = country.Capital WHERE country.Continent = \&quot;&quot; + continentName + &quot;\&quot;ORDER BY city.Population DESC;&quot;;
+&nbsp;
+&nbsp;            // Storing the results in a ResultSet object, ContinentCapitalCitiesResult
+<b class="fc">&nbsp;            ResultSet continentCapitalCity = stmt.executeQuery(sqlQueryContinentCapitalCity);</b>
+&nbsp;
+&nbsp;            // Creating an arraylist of capitals objects to be stored and returned from the method
+<b class="fc">&nbsp;            ArrayList&lt;Capital&gt; capitals = new ArrayList&lt;&gt;();</b>
+&nbsp;
+&nbsp;            // Retrieving the results from ResultSet object, ContinentCapitalCitiesResult as long as there is data left
+<b class="fc">&nbsp;            while (continentCapitalCity.next()) {</b>
+&nbsp;
+&nbsp;                //Creating a capital object to be stored in arraylist
+<b class="fc">&nbsp;                Capital capital = new Capital();</b>
+&nbsp;
+&nbsp;                // setting the attributes of capital object with Setter
+<b class="fc">&nbsp;                capital.setCapitalName(continentCapitalCity.getString(1));</b>
+<b class="fc">&nbsp;                capital.setCountry(continentCapitalCity.getString(2));</b>
+<b class="fc">&nbsp;                capital.setCapitalPopulation(continentCapitalCity.getInt(3));</b>
+&nbsp;
+&nbsp;                //adding the capital object to the arraylist
+<b class="fc">&nbsp;                capitals.add(capital);</b>
+<b class="fc">&nbsp;            }</b>
+<b class="fc">&nbsp;            if (capitals.isEmpty()) {</b>
+<b class="fc">&nbsp;                return null;</b>
+&nbsp;            }
+<b class="fc">&nbsp;            return capitals;</b>
+&nbsp;        /*
+&nbsp;         Catching the error if there is
+&nbsp;         Printing the error and returning null
+&nbsp;        */
+&nbsp;
+<b class="fc">&nbsp;        } catch (Exception e) {</b>
+<b class="fc">&nbsp;            System.out.println(e.getMessage());</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Failed to get capital cities population&quot;);</b>
+<b class="fc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * Printing a capital cities population in the world from the world database
+&nbsp;     * @param capitals arraylist of capital objects.
+&nbsp;     */
+&nbsp;    public static void printResult(String continentName, ArrayList&lt;Capital&gt; capitals){
+&nbsp;        // Check if capitals arraylist is null. If not, move on to the next condition.
+<b class="fc">&nbsp;        if(continentName == null &amp;&amp; capitals == null){</b>
+<b class="fc">&nbsp;            System.out.println(&quot;There is no capital or defined continent name&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+<b class="fc">&nbsp;        if (capitals == null) {</b>
+<b class="fc">&nbsp;            System.out.println(&quot;There is no captial&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;        // Check if district name is null. If not, move on to the next condition.
+<b class="fc">&nbsp;        if(continentName == null){</b>
+<b class="fc">&nbsp;            System.out.println(&quot;The continent name is not defined&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+&nbsp;        // Checking if the arraylist of capitals is initialized but empty.
+<b class="fc">&nbsp;        if (capitals.isEmpty()){</b>
+<b class="nc">&nbsp;            System.out.print(&quot;The capital ArrayList is empty.&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+&nbsp;        // Checking if the element of arraylist is null
+<b class="fc">&nbsp;        for(int i = 0; i&lt;= capitals.size()-1; i++){</b>
+<b class="fc">&nbsp;            if (capitals.get(i) == null){</b>
+<b class="nc">&nbsp;                System.out.println(&quot;The capitals ArrayList contains null value.&quot;);</b>
+&nbsp;                return;
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+&nbsp;        // Printing out the headers of the report table.
+<b class="fc">&nbsp;        System.out.println(&quot;------------------------------All Capital Cities in the Continent By Largest Population To Smallest-----------------------------&quot;);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;| Continent: &quot; + continentName + &quot;                                                                                   Total Cities: &quot; + capitals.size());</b>
+<b class="fc">&nbsp;        System.out.printf(&quot;| %-5s | %-40s | %-40s | %-30s | %n&quot;, &quot;No&quot;, &quot;Capital Name&quot;, &quot;Country Name&quot;, &quot;Population&quot;);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;--------------------------------------------------------------------------------------------------------------------------------&quot;);</b>
+&nbsp;
+&nbsp;        // Initializing the variable to be shown as row number.
+<b class="fc">&nbsp;        int  i = 1;</b>
+&nbsp;
+&nbsp;        // For all the objects in capitals arraylist, formatting and printing the values (Strings and Digits)
+<b class="fc">&nbsp;        for (Capital capital :capitals){</b>
+&nbsp;            // Printing the capital object&#39;s attributes with Getter.
+<b class="fc">&nbsp;            System.out.printf(&quot;| %,5d | %-40s | %-40s | %,30d | %n&quot;, i++, capital.getCapitalName(), capital.getCountry(), capital.getCapitalPopulation());</b>
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        System.out.println(&quot;--------------------------------------------------------------------------------------------------------------------------------&quot;);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-08-02 17:09</div>
+</div>
+</body>
+</html>

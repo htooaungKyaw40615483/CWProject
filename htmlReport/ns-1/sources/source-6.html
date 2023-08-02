@@ -1,0 +1,231 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > AllCountriesInContinent</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.napier.sem</a>
+</div>
+
+<h1>Coverage Summary for Class: AllCountriesInContinent (com.napier.sem)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AllCountriesInContinent</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (45/45)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.napier.sem;
+&nbsp;
+&nbsp;import java.sql.*;
+&nbsp;import java.util.ArrayList;
+&nbsp;
+&nbsp;/*
+&nbsp; * Purpose: To Retrieve All The Countries in Continent
+&nbsp; */
+<b class="fc">&nbsp;public class AllCountriesInContinent {</b>
+&nbsp;    /**
+&nbsp;     * Return a countries population in continent from the world database
+&nbsp;     * @param continentName Predefined Continent Name
+&nbsp;     * @param con Established Database Connection
+&nbsp;     * @return the Country Objects in an ArrayList which is from a single continent.
+&nbsp;     */
+&nbsp;    public static ArrayList&lt;Country&gt; returnCountries(String continentName, Connection con){
+&nbsp;        // Check if the continent name is null.
+<b class="fc">&nbsp;        if (continentName == null){</b>
+<b class="fc">&nbsp;            System.out.println(&quot;The Continent name is not defined.&quot;);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        try{
+&nbsp;            // Creating Statement Object to execute Query
+<b class="fc">&nbsp;            Statement stmt = con.createStatement();</b>
+&nbsp;
+&nbsp;            /*
+&nbsp;             Defining the Query to be executed.
+&nbsp;             QUERY: To SELECT CountryCode, CountryName, ContinentName, RegionName, Population of a Country
+&nbsp;             and capital name after JOINing two tables with City ID ORDERED by population in descending.
+&nbsp;            */
+<b class="fc">&nbsp;            String sqlQueryCountryInContinent = &quot;SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name FROM `country` &quot; +</b>
+&nbsp;                                            &quot;INNER JOIN city ON country.Capital = city.ID &quot; +
+&nbsp;                                            &quot;WHERE country.Continent = \&quot;&quot; + continentName +
+&nbsp;                                            &quot;\&quot; ORDER BY country.Population DESC;&quot;;
+&nbsp;
+&nbsp;            // Storing the results in a ResultSet object, ALlCountriesInContinentResult
+<b class="fc">&nbsp;            ResultSet countriesInContinent = stmt.executeQuery(sqlQueryCountryInContinent);</b>
+&nbsp;
+&nbsp;            // Creating an arraylist of country objects to be stored and returned from the method
+<b class="fc">&nbsp;            ArrayList&lt;Country&gt; countries = new ArrayList&lt;Country&gt;();</b>
+&nbsp;
+&nbsp;            // Retrieving the results from ResultSet object, CountriesInContinentResult as long as there is data left
+<b class="fc">&nbsp;            while(countriesInContinent.next()) {</b>
+&nbsp;
+&nbsp;                // Creating a Country object to be stored in arraylist
+<b class="fc">&nbsp;                Country country = new Country();</b>
+&nbsp;
+&nbsp;                // setting the attributes of country object with Setter
+<b class="fc">&nbsp;                country.setCountryNo(countriesInContinent.getString(1));</b>
+<b class="fc">&nbsp;                country.setCountryName(countriesInContinent.getString(2));</b>
+<b class="fc">&nbsp;                country.setContinentName(countriesInContinent.getString(3));</b>
+<b class="fc">&nbsp;                country.setRegionName(countriesInContinent.getString(4));</b>
+<b class="fc">&nbsp;                country.setPopulation(countriesInContinent.getInt(5));</b>
+<b class="fc">&nbsp;                country.setCapitalName(countriesInContinent.getString(6));</b>
+&nbsp;
+&nbsp;                // adding the country object to the arraylist
+<b class="fc">&nbsp;                countries.add(country);</b>
+<b class="fc">&nbsp;            }</b>
+<b class="fc">&nbsp;            if (countries.isEmpty()) {</b>
+<b class="fc">&nbsp;                return null;</b>
+&nbsp;            }
+<b class="fc">&nbsp;            return countries;</b>
+&nbsp;        }
+&nbsp;        /*
+&nbsp;         Catching the error if there is
+&nbsp;         Printing the error and returning null
+&nbsp;        */
+<b class="fc">&nbsp;        catch(Exception e) {</b>
+<b class="fc">&nbsp;            System.out.println(e.getMessage());</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Failed to get countries population by continent name in the world&quot;);</b>
+<b class="fc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * Printing a countries&#39; population by continent from the world database
+&nbsp;     * @param countries arraylist of country objects.
+&nbsp;     */
+&nbsp;    public static void printResult(String continentName, ArrayList&lt;Country&gt; countries) {
+&nbsp;        // Check if both continent name and countries arraylist is null
+<b class="fc">&nbsp;        if (continentName == null &amp;&amp; countries == null) {</b>
+<b class="fc">&nbsp;            System.out.println(&quot;There is no countries or defined district name&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+&nbsp;        // Check if cities arraylist is null. If not, move on to the next condition.
+<b class="fc">&nbsp;        if (countries == null) {</b>
+<b class="fc">&nbsp;            System.out.println(&quot;There is no countries&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+&nbsp;        // Check if district name is null. If not, move on to the next condition.
+<b class="fc">&nbsp;        if (continentName == null) {</b>
+<b class="fc">&nbsp;            System.out.println(&quot;The continent name is not defined&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+&nbsp;        // Checking if the arraylist of countries is initialized but empty.
+<b class="fc">&nbsp;        if (countries.isEmpty()) {</b>
+<b class="fc">&nbsp;            System.out.print(&quot;The countries ArrayList is empty.&quot;);</b>
+&nbsp;            return;
+&nbsp;        }
+&nbsp;
+&nbsp;        // Checking if the element of arraylist is null
+<b class="fc">&nbsp;        for (int i = 0; i &lt;= countries.size() - 1; i++) {</b>
+<b class="fc">&nbsp;            if (countries.get(i) == null) {</b>
+<b class="fc">&nbsp;                System.out.println(&quot;The countries ArrayList contains null value.&quot;);</b>
+&nbsp;                return;
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+&nbsp;        // Printing out the headers of the report table.
+<b class="fc">&nbsp;        System.out.println(&quot;-------------------------------------------All Countries in the Continent By Largest Population To Smallest-------------------------------------&quot;);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;| Continent: &quot; + continentName + &quot;                                                                          Total Countries: &quot; + countries.size());</b>
+<b class="fc">&nbsp;        System.out.println(&quot;------------------------------------------------------------------------------------------------------------------------------------------------&quot;);</b>
+<b class="fc">&nbsp;        System.out.printf(&quot;| %-3s | %-3s | %-38s | %-14s | %-26s | %-15s | %-35s | %n&quot;, &quot;No&quot;, &quot;Code&quot;, &quot;Name&quot;, &quot;Continent&quot;, &quot;Region&quot;, &quot;Population&quot;, &quot;Capital&quot;);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;------------------------------------------------------------------------------------------------------------------------------------------------&quot;);</b>
+&nbsp;
+&nbsp;        // Initializing the variable to be shown as row number.
+<b class="fc">&nbsp;        int i = 1;</b>
+&nbsp;
+&nbsp;        // For all the objects in countries arraylist, formatting and printing the values (Strings and Digits)
+<b class="fc">&nbsp;        for (Country country : countries) {</b>
+&nbsp;            // Printing the country object&#39;s attributes with Getter.
+<b class="fc">&nbsp;            System.out.printf(&quot;| %,3d | %-3s | %-38s | %-14s | %-26s | %,15d | %-35s | %n&quot;, i++, country.getCountryNo(), country.getCountryName(), country.getContinentName(), country.getRegionName(), country.getPopulation(), country.getCapitalName());</b>
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        System.out.println(&quot;------------------------------------------------------------------------------------------------------------------------------------------------&quot;);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-08-02 17:09</div>
+</div>
+</body>
+</html>

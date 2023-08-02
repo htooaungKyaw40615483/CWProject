@@ -1,0 +1,250 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Country</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.napier.sem</a>
+</div>
+
+<h1>Coverage Summary for Class: Country (com.napier.sem)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Country</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (13/13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (31/31)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.napier.sem;
+&nbsp;
+&nbsp;// Encapsulation Applied: Used Getters, Setters, and Private variables.
+&nbsp;// Class Attributes used only with getMethod (read-only) or setMethod(write-only).
+<b class="fc">&nbsp;public class Country</b>
+&nbsp;{
+&nbsp;        // Country Code
+&nbsp;        private String countryNo;
+&nbsp;        // Country Name
+&nbsp;        private String countryName;
+&nbsp;        // Continent Name
+&nbsp;        private String continentName;
+&nbsp;        // Region Name
+&nbsp;        private String regionName;
+&nbsp;        // Country&#39;s Population
+&nbsp;        private int population;
+&nbsp;        // Capital City of Country
+&nbsp;        private String capitalName;
+&nbsp;
+&nbsp;
+&nbsp;        // Getters for accessing the class attributes only for reading values.
+&nbsp;
+&nbsp;        /**
+&nbsp;         * Getting the Country Code of the Class
+&nbsp;         * @return Country Code
+&nbsp;         */
+&nbsp;        public String getCountryNo() {
+<b class="fc">&nbsp;                return countryNo;</b>
+&nbsp;        }
+&nbsp;        /**
+&nbsp;         * Getting the Country Name of the Class
+&nbsp;         * @return Country Name
+&nbsp;         */
+&nbsp;        public String getCountryName() {
+<b class="fc">&nbsp;                return countryName;</b>
+&nbsp;        }
+&nbsp;        /**
+&nbsp;         * Getting the Continent Name of the Class
+&nbsp;         * @return Continent Name of the Country
+&nbsp;         */
+&nbsp;        public String getContinentName() {
+<b class="fc">&nbsp;                return continentName;</b>
+&nbsp;        }
+&nbsp;        /**
+&nbsp;         * Getting the Region Name of the Class
+&nbsp;         * @return Region Name of the Country
+&nbsp;         */
+&nbsp;        public String getRegionName() {
+<b class="fc">&nbsp;                return regionName;</b>
+&nbsp;        }
+&nbsp;        /**
+&nbsp;         * Getting the Country Population of the Class
+&nbsp;         * @return Country&#39;s Population
+&nbsp;         */
+&nbsp;        public int getPopulation() {
+<b class="fc">&nbsp;                return population;</b>
+&nbsp;        }
+&nbsp;        /**
+&nbsp;         * Getting the Country Capital City Name of the Class
+&nbsp;         * @return Country&#39;s Capital City Name
+&nbsp;         */
+&nbsp;        public String getCapitalName() {
+<b class="fc">&nbsp;                return capitalName;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;
+&nbsp;        // Setters for accessing the class attributes only for changing/inserting values.
+&nbsp;
+&nbsp;        /**
+&nbsp;         * Setting the Country Code of the Class
+&nbsp;         * @param countryNo Country Code
+&nbsp;         */
+&nbsp;        public void setCountryNo(String countryNo) {
+<b class="fc">&nbsp;                if (countryNo == null){</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;The country number is null&quot;);</b>
+<b class="fc">&nbsp;                        this.countryNo = &quot;-&quot;;</b>
+&nbsp;                }
+&nbsp;                else {
+<b class="fc">&nbsp;                        this.countryNo = countryNo;</b>
+&nbsp;                }
+&nbsp;        }
+&nbsp;        /**
+&nbsp;         * Setting the Country Name of the Class
+&nbsp;         * @param countryName Country Name
+&nbsp;         */
+&nbsp;        public void setCountryName(String countryName) {
+<b class="fc">&nbsp;                if (countryName == null){</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;The country name is null&quot;);</b>
+<b class="fc">&nbsp;                        this.countryName = &quot;-&quot;;</b>
+&nbsp;                }
+&nbsp;                else {
+<b class="fc">&nbsp;                        this.countryName = countryName;</b>
+&nbsp;                }
+&nbsp;        }
+&nbsp;        /**
+&nbsp;         * Setting the Continent Name of the Class
+&nbsp;         * @param continentName Continent Name of the country
+&nbsp;         */
+&nbsp;        public void setContinentName(String continentName) {
+<b class="fc">&nbsp;                if (continentName == null){</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;The continent name is null&quot;);</b>
+<b class="fc">&nbsp;                        this.continentName = &quot;-&quot;;</b>
+&nbsp;                }
+&nbsp;                else {
+<b class="fc">&nbsp;                        this.continentName = continentName;</b>
+&nbsp;                }
+&nbsp;        }
+&nbsp;        /**
+&nbsp;         * Setting the Region Name of the Class
+&nbsp;         * @param regionName Region Name of the country
+&nbsp;         */
+&nbsp;        public void setRegionName(String regionName) {
+<b class="fc">&nbsp;                if (regionName == null){</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;The region name is null&quot;);</b>
+<b class="fc">&nbsp;                        this.regionName = &quot;-&quot;;</b>
+&nbsp;                }
+&nbsp;                else {
+<b class="fc">&nbsp;                        this.regionName = regionName;</b>
+&nbsp;                }
+&nbsp;        }
+&nbsp;        /**
+&nbsp;         * Setting the Country&#39;s Population of the Class
+&nbsp;         * @param population Country Population
+&nbsp;         */
+&nbsp;        public void setPopulation(int population) {
+<b class="fc">&nbsp;                if (population &lt; 0){</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;The population is less than zero. Value is set to zero&quot;);</b>
+<b class="fc">&nbsp;                        this.population = 0;</b>
+&nbsp;                }
+&nbsp;                else {
+<b class="fc">&nbsp;                        this.population = population;</b>
+&nbsp;                }
+&nbsp;        }
+&nbsp;        /**
+&nbsp;         * Setting the Country&#39;s Capital City Name of the Class
+&nbsp;         * @param capitalName Country&#39;s Capital City Name
+&nbsp;         */
+&nbsp;        public void setCapitalName(String capitalName) {
+<b class="fc">&nbsp;                if (capitalName == null){</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;The capital name is null&quot;);</b>
+<b class="fc">&nbsp;                        this.capitalName = &quot;-&quot;;</b>
+&nbsp;                }
+&nbsp;                else {
+<b class="fc">&nbsp;                        this.capitalName = capitalName;</b>
+&nbsp;                }
+&nbsp;        }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-08-02 17:09</div>
+</div>
+</body>
+</html>
