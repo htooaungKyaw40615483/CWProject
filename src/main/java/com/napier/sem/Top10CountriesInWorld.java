@@ -26,10 +26,11 @@ public class Top10CountriesInWorld {
             ResultSet top10CountriesInWorld = stmt.executeQuery(sqlQueryTop10CountryInWorld);
             // Creating an arraylist of country objects to be stored and returned from the method
             ArrayList<Country> countries = new ArrayList<Country>();
+            // Creating a Country object to be stored in arraylist
+            Country country = new Country();
             // Retrieving the results from ResultSet object, Top10CountriesInWorldResult as long as there is data left
             while(top10CountriesInWorld.next()) {
-                // Creating a Country object to be stored in arraylist
-                Country country = new Country();
+
                 // setting the attributes of country object with Setter
                 country.setCountryNo(top10CountriesInWorld.getString(1));
                 country.setCountryName(top10CountriesInWorld.getString(2));

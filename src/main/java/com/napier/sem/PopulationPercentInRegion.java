@@ -37,12 +37,13 @@ public class PopulationPercentInRegion {
 
             // Creating an arraylist of population objects to be stored and returned from the method
             ArrayList<Population> populations = new ArrayList<Population>();
-
+            // Creating a Population object to be stored in arraylist
+            Population population = new Population();
             // Retrieving the results from ResultSet object, PopulationPercentRegionResult as long as there is data left
             while(populationInRegion.next()) {
 
-                // Creating a Population object to be stored in arraylist
-                Population population = new Population();
+
+
 
                 // setting the attributes of population object with Setter
                 population.setName(populationInRegion.getString(1));
@@ -85,8 +86,8 @@ public class PopulationPercentInRegion {
         }
 
         // Checking if the element of arraylist is null
-        for(int i = 0; i<= populations.size()-1; i++){
-            if (populations.get(i) == null){
+        for (Population population : populations) {
+            if (population == null) {
                 System.out.println("The populations ArrayList contains null value.");
                 return;
             }

@@ -50,11 +50,12 @@ public class Top10CitiesInCountry {
 
             // Creating an ArrayList of City objects to store and return the results
             ArrayList<City> cities = new ArrayList<>();
-
+            // Creating a City object to be stored in the ArrayList
+            City city = new City();
             // Retrieving the results from the ResultSet object as long as there is data left
             while (top10CitiesInCountryResult.next()) {
-                // Creating a City object to be stored in the ArrayList
-                City city = new City();
+
+
 
                 // Setting the attributes of the City object
                 city.setCityName(top10CitiesInCountryResult.getString(1));

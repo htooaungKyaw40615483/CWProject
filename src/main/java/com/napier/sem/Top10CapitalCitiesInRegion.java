@@ -35,12 +35,10 @@ public class Top10CapitalCitiesInRegion {
 
             // Creating an arraylist of capitals objects to be stored and returned from the method
             ArrayList<Capital> capitals = new ArrayList<>();
-
+            //Creating a capital object to be stored in arraylist
+            Capital capital = new Capital();
             // Retrieving the results from ResultSet object, Top10CapitalCitiesInRegionResult as long as there is data left
             while (Top10CapitalCitiesInRegionResult.next()) {
-
-                //Creating a capital object to be stored in arraylist
-                Capital capital = new Capital();
 
                 // setting the attributes of capital object with Setter
                 capital.setCapitalName(Top10CapitalCitiesInRegionResult.getString(1));
@@ -89,8 +87,8 @@ public class Top10CapitalCitiesInRegion {
         }
 
         // Checking if the element of arraylist is null
-        for(int i = 0; i<= capitals.size()-1; i++){
-            if (capitals.get(i) == null){
+        for (Capital capital : capitals) {
+            if (capital == null) {
                 System.out.println("The capitals ArrayList contains null value.");
                 return;
             }

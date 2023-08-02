@@ -68,7 +68,7 @@ public class AllCitiesInDistrictTest
         Statement stmt = mockCon.createStatement();
 
         // assert a statement that is not null
-        assertNotNull(stmt);
+        assertNotNull(stmt, "The statement is null.");
 
         // creating the mock statement with the mock connection, with the
         verify(mockCon, times(1)).createStatement();

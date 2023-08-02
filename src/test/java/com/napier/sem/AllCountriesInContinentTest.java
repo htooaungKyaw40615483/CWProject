@@ -9,7 +9,7 @@ import static org.mockito.Mockito.mock;
 public class AllCountriesInContinentTest {
 
     static AllCountriesInContinent ACIC;
-
+    String continentName = "North America";
     // This method is executed once before all the test methods in this class.
     @BeforeAll
     static void init() {
@@ -27,7 +27,7 @@ public class AllCountriesInContinentTest {
     @Test
     void printResultCountriesTestNull() {
         // This test method checks the behavior of the printResult method when the countries ArrayList parameter is null.
-        ACIC.printResult("North America", null);
+        ACIC.printResult(continentName, null);
     }
 
     @Test
@@ -48,14 +48,14 @@ public class AllCountriesInContinentTest {
         Country country = new Country();
         country.setPopulation(99999999);
         countries.add(country);
-        ACIC.printResult("North America", countries);
+        ACIC.printResult(continentName, countries);
     }
 
     @Test
     void printResultCityTestEmpty() {
         // This test method checks the behavior of the printResult method when the countries ArrayList parameter is empty.
         ArrayList<Country> countries = new ArrayList<Country>();
-        ACIC.printResult("North America", countries);
+        ACIC.printResult(continentName, countries);
     }
 
     @Test
@@ -63,7 +63,7 @@ public class AllCountriesInContinentTest {
         // This test method checks the behavior of the printResult method when the countries ArrayList parameter contains null values.
         ArrayList<Country> countries = new ArrayList<Country>();
         countries.add(null);
-        ACIC.printResult("North America", countries);
+        ACIC.printResult(continentName, countries);
     }
 
     // Testing returnCity
