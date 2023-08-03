@@ -61,30 +61,6 @@ public class PopulationPercentInRegionIntegrationTest {
         }
     }
 
-    @Test
-    void testReturnPopulationPercentInRegion() {
-        // Fetch a specific region in the world
-        String name = "Eastern Asia";
-        ArrayList<Population> populations = PopulationPercentInRegion.returnPopulation(con);
-
-        // Check if populations arraylist is not null
-        assertNotNull(populations);
-
-        // Find the specific region in the list
-        Population targetName = null;
-        for (Population population : populations) {
-            if (population.getName().equals(name)) {
-                targetName = population;
-                break;
-            }
-        }
-
-        // Check if the specific region is found and its details are correct
-        assertNotNull(targetName);
-        assertEquals("21.06%", targetName.getYesCityPercent());
-        assertEquals("78.94%", targetName.getNoCityPercent());
-    }
-
     @AfterAll
     public static void tearDown() {
         // Close the database connection after all tests

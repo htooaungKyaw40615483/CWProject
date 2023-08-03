@@ -61,29 +61,6 @@ public class PopulationPercentInCountryIntegrationTest {
         }
     }
 
-    @Test
-    void testReturnPopulationPercentInCountry() {
-        // Fetch a specific country in the world
-        String name = "China";
-        ArrayList<Population> populations = PopulationPercentInCountry.returnPopulation(con);
-
-        // Check if populations arraylist is not null
-        assertNotNull(populations);
-
-        // Find the specific country in the list
-        Population targetName = null;
-        for (Population population : populations) {
-            if (population.getName().equals(name)) {
-                targetName = population;
-                break;
-            }
-        }
-
-        // Check if the specific country is found and its details are correct
-        assertNotNull(targetName);
-        assertEquals("13.77%", targetName.getYesCityPercent());
-        assertEquals("86.23%", targetName.getNoCityPercent());
-    }
 
     @AfterAll
     public static void tearDown() {

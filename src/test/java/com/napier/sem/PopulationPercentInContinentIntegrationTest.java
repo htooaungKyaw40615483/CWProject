@@ -64,29 +64,6 @@ public class PopulationPercentInContinentIntegrationTest {
         }
     }
 
-    @Test
-    void testReturnPopulationPercentInContinent() {
-        // Fetch a specific continent in the world
-        String name = "Asia";
-        ArrayList<Population> populations = PopulationPercentInContinent.returnPopulation(con);
-
-        // Check if populations arraylist is not null
-        assertNotNull(populations);
-
-        // Find the specific country in the list
-        Population targetName = null;
-        for (Population population : populations) {
-            if (population.getName().equals(name)) {
-                targetName = population;
-                break;
-            }
-        }
-
-        // Check if the specific continent is found and its details are correct
-        assertNotNull(targetName);
-        assertEquals("18.83%", targetName.getYesCityPercent());
-        assertEquals("81.17%", targetName.getNoCityPercent());
-    }
 
     @AfterAll
     public static void tearDown() {

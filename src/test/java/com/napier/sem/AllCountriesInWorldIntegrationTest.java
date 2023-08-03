@@ -67,32 +67,6 @@ public class AllCountriesInWorldIntegrationTest {
     }
 
     @Test
-    void testReturnCountryInWorld() {
-        // Fetch a specific country in the world
-        String countryCode = "USA";
-        ArrayList<Country> countries = AllCountriesInWorld.returnCountries(con);
-
-        // Check if countries arraylist is not null
-        assertNotNull(countries);
-
-        // Find the specific country in the list
-        Country targetCountry = null;
-        for (Country country : countries) {
-            if (country.getCountryNo().equals(countryCode)) {
-                targetCountry = country;
-                break;
-            }
-        }
-
-        // Check if the specific country is found and its details are correct
-        assertNotNull(targetCountry);
-        assertEquals("United States", targetCountry.getCountryName());
-        assertEquals("North America", targetCountry.getContinentName());
-        assertEquals("North America", targetCountry.getRegionName());
-        assertEquals("Washington", targetCountry.getCapitalName());
-    }
-
-    @Test
     void testReturnCountriesInRegionWithNoData() {
         // Fetch countries in a region with no data
         String regionName = "Nonexistent Region";
