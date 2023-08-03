@@ -5,7 +5,9 @@
 
 ![Releases](https://img.shields.io/github/release/htooaungKyaw40615483/CWProject/all.svg?style=flat-square)
 
-![workflow](https://img.shields.io/github/actions/workflow/status/htooaungKyaw40615483/CWProject/main.yml)
+![workflow](https://img.shields.io/github/actions/workflow/status/htooaungKyaw40615483/CWProject/main.yml?branch=master)
+
+![workflow](https://img.shields.io/github/actions/workflow/status/htooaungKyaw40615483/CWProject/main.yml?branch=develop)
 
 [![codecov](https://codecov.io/gh/htooaungKyaw40615483/CWProject/branch/master/graph/badge.svg?token=K7BMMV0OCA)](https://codecov.io/gh/htooaungKyaw40615483/CWProject)
 
