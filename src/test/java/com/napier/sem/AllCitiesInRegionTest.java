@@ -9,6 +9,7 @@ import static org.mockito.Mockito.mock;
 public class AllCitiesInRegionTest {
     static AllCitiesInRegion ACIR;
 
+    String regionName = "Caribbean";
     // This method is executed once before all the test methods in this class.
     @BeforeAll
     static void setup() {
@@ -28,7 +29,7 @@ public class AllCitiesInRegionTest {
     @Test
     void printResultCitiesTestNull() {
         // This test method checks the behavior of the printResult method when the cities ArrayList parameter is null.
-        ACIR.printResult("Caribbean", null);
+        ACIR.printResult(regionName, null);
     }
 
     @Test
@@ -49,7 +50,7 @@ public class AllCitiesInRegionTest {
         City city = new City();
         city.setCityPopulation(99999999);
         cities.add(city);
-        ACIR.printResult("Caribbean", cities);
+        ACIR.printResult(regionName, cities);
     }
 
     @Test
@@ -57,7 +58,7 @@ public class AllCitiesInRegionTest {
         // This test method checks the behavior of the printResult method when the region name parameter is not null
         // and the cities ArrayList parameter is empty.
         ArrayList<City> cities = new ArrayList<City>();
-        ACIR.printResult("Caribbean", cities);
+        ACIR.printResult(regionName, cities);
     }
 
     @Test
@@ -65,7 +66,7 @@ public class AllCitiesInRegionTest {
         // This test method checks the behavior of the printResult method when the cities ArrayList parameter contains null values.
         ArrayList<City> cities = new ArrayList<City>();
         cities.add(null);
-        ACIR.printResult("Caribbean", cities);
+        ACIR.printResult(regionName, cities);
     }
 
     // Testing returnCity
@@ -79,7 +80,7 @@ public class AllCitiesInRegionTest {
     void returnCityConTestNull() {
         // This test method checks the behavior of the returnCity method when the region name parameter is not null
         // but the database connection parameter is null.
-        ACIR.returnCity("Caribbean", null);
+        ACIR.returnCity(regionName, null);
     }
 
     @Test

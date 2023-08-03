@@ -16,6 +16,7 @@ public class AllCitiesInRegionIntegrationTest {
     private static AllCitiesInRegion ACIR;
     private static Connection con;
 
+    String emptyMessage = "The cities list should be empty.";
     @BeforeAll
     public static void setUp() {
         // Set up the database connection
@@ -40,7 +41,7 @@ public class AllCitiesInRegionIntegrationTest {
         ArrayList<City> cities = AllCitiesInRegion.returnCity(regionName, con);
 
         // Check if cities arraylist is empty, as there are no cities for the non-existing region
-        assertTrue(cities.isEmpty());
+        assertTrue(cities.isEmpty(), emptyMessage);
     }
 
     @Test
@@ -50,7 +51,7 @@ public class AllCitiesInRegionIntegrationTest {
         ArrayList<City> cities = AllCitiesInRegion.returnCity(regionName, con);
 
         // Check if cities arraylist is empty, as the region name is empty
-        assertTrue(cities.isEmpty());
+        assertTrue(cities.isEmpty(), emptyMessage);
     }
 
     @Test
@@ -60,7 +61,7 @@ public class AllCitiesInRegionIntegrationTest {
         ArrayList<City> cities = AllCitiesInRegion.returnCity(regionName, con);
 
         // Check if cities arraylist is empty, as the region name is null
-        assertTrue(cities.isEmpty());
+        assertTrue(cities.isEmpty(), emptyMessage);
     }
 
     @Test
@@ -70,7 +71,7 @@ public class AllCitiesInRegionIntegrationTest {
         ArrayList<City> cities = AllCitiesInRegion.returnCity(regionName, con);
 
         // Check if cities arraylist is empty, as there are no cities for the region
-        assertTrue(cities.isEmpty());
+        assertTrue(cities.isEmpty(), emptyMessage);
     }
 
     @Test
@@ -80,7 +81,7 @@ public class AllCitiesInRegionIntegrationTest {
         ArrayList<City> cities = AllCitiesInRegion.returnCity(regionName, con);
 
         // Check if cities arraylist is not null
-        assertNotNull(cities);
+        assertNotNull(cities, "The cities ArrayList is null.");
 
         // Call the printResult method to check if it prints the cities correctly
         AllCitiesInRegion.printResult(regionName, cities);
