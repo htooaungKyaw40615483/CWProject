@@ -2,21 +2,27 @@
 # Software Engineering Methods  
 
 **WorkFlow**
+
 ![workflow](https://github.com/htooaungKyaw40615483/CWProject/actions/workflows/main.yml/badge.svg)
 
 **Release**
+
 ![Releases](https://img.shields.io/github/release/htooaungKyaw40615483/CWProject/all.svg?style=flat-square)
 
 **Master Branch**
+
 ![workflow](https://img.shields.io/github/actions/workflow/status/htooaungKyaw40615483/CWProject/main.yml?branch=master)
 
 **Develop Branch**
+
 ![workflow](https://img.shields.io/github/actions/workflow/status/htooaungKyaw40615483/CWProject/main.yml?branch=develop)
 
 **Code Coverage**
+
 [![codecov](https://codecov.io/gh/htooaungKyaw40615483/CWProject/branch/master/graph/badge.svg?token=K7BMMV0OCA)](https://codecov.io/gh/htooaungKyaw40615483/CWProject)
 
 **License**
+
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 | Name             | Role          | Code Review 1  | Code Review 2 | Code Review 3 | Code Review 4 | Code Review 5 |
