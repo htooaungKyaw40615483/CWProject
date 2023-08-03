@@ -7,7 +7,7 @@
 
 ![workflow](https://img.shields.io/github/actions/workflow/status/htooaungKyaw40615483/CWProject/main.yml)
 
-[![codecov](https://codecov.io/gh/htooaungKyaw40615483/CWProject/branch/develop/graph/badge.svg?token=K7BMMV0OCA)](https://codecov.io/gh/htooaungKyaw40615483/CWProject)
+[![codecov](https://codecov.io/gh/htooaungKyaw40615483/CWProject/branch/master/graph/badge.svg?token=K7BMMV0OCA)](https://codecov.io/gh/htooaungKyaw40615483/CWProject)
 
 | Name             | Role          | Code Review 1  | Code Review 2 | Code Review 3 | Code Review 4 | Code Review 5 |
 |------------------|---------------|----------------|---------------|---------------|---------------|---------------|
