@@ -11,12 +11,12 @@
 
 | Name             | Role          | Code Review 1  | Code Review 2 | Code Review 3 | Code Review 4 | Code Review 5 |
 |------------------|---------------|----------------|---------------|---------------|---------------|---------------|
-| Htet Aung San    | Product Owner | 0.25           | 0.25          | 0.25          | 0.25          |               |
-| Htoo Aung Kyaw   | SCRUM Master  | 0.25           | 0.25          | 0.25          | 0.25          |               |
-| Kyi Sin Min Maw  | Developer     | 0.25           | 0.25          | 0.25          | 0.25          |               |
-| Sai Sai Oam Hart | Developer     | 0.25           | 0.25          | 0.25          | 0.25          |               |
+| Htet Aung San    | Product Owner | 0.25           | 0.25          | 0.25          | 0.25          | 0.25          |
+| Htoo Aung Kyaw   | SCRUM Master  | 0.25           | 0.25          | 0.25          | 0.25          | 0.25          |
+| Kyi Sin Min Maw  | Developer     | 0.25           | 0.25          | 0.25          | 0.25          | 0.25          |
+| Sai Sai Oam Hart | Developer     | 0.25           | 0.25          | 0.25          | 0.25          | 0.25          |
 
-> 20 Requirements of 32 Requirements are met
+> All Requirements are met
 
 **Requirement Check**
 
@@ -51,6 +51,6 @@
 | 27 | The population of a continent.                                                                                                                                                                     | Yes   | <img src="https://github.com/htooaungKyaw40615483/CWProject/blob/develop/img/ReportOutput/27.PNG" alt="Image Description" width="1000"/> |
 | 28 | The population of a region.                                                                                                                                                                        | Yes   | <img src="https://github.com/htooaungKyaw40615483/CWProject/blob/develop/img/ReportOutput/28.PNG" alt="Image Description" width="1000"/> |
 | 29 | The population of a country.                                                                                                                                                                       | Yes   | <img src="https://github.com/htooaungKyaw40615483/CWProject/blob/develop/img/ReportOutput/29.PNG" alt="Image Description" width="1000"/> |
-| 30 | The population of a district.                                                                                                                                                                      | Yes   | <img src="https://github.com/htooaungKyaw40615483/CWProject/blob/develop/img/ReportOutput/6.PNG" alt="Image Description" width="1000"/>  |
-| 31 | The population of a city.                                                                                                                                                                          | Yes   | <img src="https://github.com/htooaungKyaw40615483/CWProject/blob/develop/img/ReportOutput/6.PNG" alt="Image Description" width="1000"/>  |
-| 32 | the number of people who speak the following the following languages from greatest number to smallest, including the percentage of the world population Chinese, English, Hindi, Spanish, Arabic.  | Yes   | <img src="https://github.com/htooaungKyaw40615483/CWProject/blob/develop/img/ReportOutput/6.PNG" alt="Image Description" width="1000"/>  |
+| 30 | The population of a district.                                                                                                                                                                      | Yes   | <img src="https://github.com/htooaungKyaw40615483/CWProject/blob/develop/img/ReportOutput/30.PNG" alt="Image Description" width="1000"/> |
+| 31 | The population of a city.                                                                                                                                                                          | Yes   | <img src="https://github.com/htooaungKyaw40615483/CWProject/blob/develop/img/ReportOutput/31.PNG" alt="Image Description" width="1000"/> |
+| 32 | the number of people who speak the following the following languages from greatest number to smallest, including the percentage of the world population Chinese, English, Hindi, Spanish, Arabic.  | Yes   | <img src="https://github.com/htooaungKyaw40615483/CWProject/blob/develop/img/ReportOutput/32.PNG" alt="Image Description" width="1000"/> |
