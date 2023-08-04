@@ -25,6 +25,10 @@
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
+**Kanban Board**
+
+https://zube.io/group-4-3/cw/w/workspace-1/kanban
+
 | Name             | Role          | Code Review 1  | Code Review 2 | Code Review 3 | Code Review 4 | Code Review 5 |
 |------------------|---------------|----------------|---------------|---------------|---------------|---------------|
 | Htet Aung San    | Product Owner | 0.25           | 0.25          | 0.25          | 0.25          | 0.25          |
